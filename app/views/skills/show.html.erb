@@ -1,0 +1,96 @@
+<%content_for :script do%>
+<%=stylesheet_link_tag "skills"%>
+<%end%>
+
+<% title "Skill" %>
+
+<%= link_to 'Invite People', user_invite_path, {:remote => true, 'data-toggle' => "modal", 'data-targer' => '#modal-window'} %>
+
+<div class="container-fluid" id="skills-form">
+	<div class="row">
+		<div class = "col-md-10">
+			<div class= "skill-show">
+				<div class="col-md-6">			
+					<%= image_tag(@skill.skillimage.url(:original), :class=>"img-thumbnail pull-left", :style => "width:100%;") %>
+				</div>
+				<div class="col-md-6">
+					<%= link_to image_tag(@skill.user.useravatar.url(:small), :class=> "img-thumbnail")%>
+					<div class="pull-right"> Created By <strong><%= @skill.user.name %> </strong> 
+						<p><%= @skill.teachers_title %></p>
+						<p>From: <%= @skill.user.location.city %> </p>
+						<p>Member Since: <%= @skill.user.created_at.strftime('%B %Y')%></p>
+						</div>
+				</div>
+<div class="row">
+	<div class="col-md-12">
+		<h2 strong class="text-center"><%= @skill.name %> </h2>
+	
+		
+	  	<strong>Description</strong>
+	  	<p><%= @skill.necessary_resources %></p>
+		
+	 	<strong>level</strong>
+		<p><%= @skill.level %></p>
+		
+		
+	  	 <strong>Required Experience</strong>
+		<p><%= @skill.required_experience %></p>
+		
+	</div>	
+</div>
+</div>
+ 
+<p>
+  <%= link_to "Edit", edit_skill_path(@skill) %> |
+  <%= link_to "Destroy", @skill, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", skills_path %>
+</p>
+</div>
+
+<div class= "col-md-2">
+	<div class="skill-side">
+		<div class="btn-group btn-group-justified">
+			<div class="btn-group">
+				<%= render partial: 'memb', :locals => {:skill => @skill}%>
+			</div>
+		</div>
+		
+	<strong>Start date</strong>
+	<input class="form-control" type="text" placeholder="<%= @skill.start_date.time.to_formatted_s(:short) %>" readonly>
+
+	<strong>Activity duration</strong>
+	<input class="form-control" type="text" placeholder="<%= @skill.activity_duration.strftime('%H:%M')%>" readonly>
+
+	<strong>Minimum students</strong>
+	<input class="form-control" type="text" placeholder="<%= @skill.min_students %>" readonly>
+	
+	<strong>Maximum students</strong>
+	<input class="form-control" type="text" placeholder="<%= @skill.max_students %>" readonly>
+	
+  <strong>Location</strong> </br>
+	<address>
+	<%= @skill.location.address%></br>
+	<%= @skill.location.city%></br>
+	</address>
+	<strong>Distance from you</strong></br>
+	<input class="form-control" type="text" placeholder="<%= number_with_precision(@distance_from, precision: 0, significant: true)%> miles" readonly>
+  	<strong>Price</strong>
+  	<input class="form-control" type="text" placeholder="<%= quid(@skill.price) %>" readonly>
+
+<p>
+
+	</br>
+	<%= facebook_button :title => "#{@skill.name} in #{@skill.location.city}, At Undersky.co.uk", :url=> 'http://github.com/hermango/', :send => true, :url => 'http://www.undersky.co.uk' %>
+</p>
+		</div>
+			</div>
+
+</div>
+</div>
+<div class="container">
+<div class="row">
+	<div class="col-md-12">
+<%= render partial: 'users/feeds'%>
+	</div>
+</div>
+</div>

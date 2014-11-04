@@ -1,0 +1,11 @@
+<% title "Near by groups" %>
+
+<li class="has_submenu">
+<a href="#"><i class="fa fa-arrow-circle-right"></i> Nearby Groups <span class="nav-caret fa fa-caret-down"></span></a>
+<!-- Submenu -->
+<ul class="list-unstyled">
+  <% @localfeeds.each do |f| %>
+	<li><i class="fa fa-angle-double-right"></i> <%= link_to f.city, f %></a></li>
+  <% end %>
+</ul>
+</li>

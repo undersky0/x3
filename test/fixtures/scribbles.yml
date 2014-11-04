@@ -1,0 +1,9 @@
+one:
+  post: MyString
+  posted_by: MyString
+  posted_by_uid: 1
+
+two:
+  post: MyString
+  posted_by: MyString
+  posted_by_uid: 1

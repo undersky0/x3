@@ -1,0 +1,28 @@
+<% if @inbox.empty?%>
+	
+<h5>No new mail</h5>
+<%end%>
+<%else%>
+
+
+	<% @inbox.each do |g|%>
+	<div class="row" style="padding:0px 15px;">
+		<div class="col-md-3 nopadding">
+				<div class="logo-small" style="padding:8px;">
+				<%= link_to image_tag(g.recipients.last.useravatar.url(:tiny)), user_path(g.recipients.last.id),:class=>"img-thumbnail" %> 
+				</div>
+				</div>
+		<div class="col-md-9" style="padding-top:10px;"> 
+				<%= g.recipients.last.full_name.truncate(35)%> </br>
+			<% if g.subject.nil?%>
+			<p><%= link_to g.last_message.body.truncate(35), conversation_path(g.id) %></p>
+			<%else%>
+			<a><span><%= link_to g.subject.truncate(35), conversation_path(g.id) %></span></a>
+			<!-- Mail message -->
+			<p><%= g.last_message.body.truncate(35)%></p>
+
+		</div>
+	</div>
+<%end%>
+<%end%>
+

@@ -1,0 +1,43 @@
+
+<div id="comments-<%=scribble.id%>"> 
+        <% scribble.comments.each do |comment| %>
+        <div class="row">
+         <div class="commentbox">
+        	<div class ="col-md-1">
+        		<div class = "commentimg">
+                <%= link_to( image_tag(comment.user.useravatar.url(:thumb)))%>
+                </div>
+			</div>
+			<div class= "col-md-11">
+                <div class="scribblehead">
+                                <h4><%= link_to comment.user.full_name, comment.user%></h4> <h5><i class="fa fa-home"></i><%= comment.user.location.city%></h5>
+				</div>
+			</div>
+		 </div>
+		</div>	
+		<div class = "row" style="min-height: 40px;">
+			<div class = "col-md-1">
+				<p></p>
+				</div>
+			<div class="col-md-11">
+                <div class="comment-body-text">
+            <%= comment.content%>
+            	</div>
+           	</div>
+		</div>
+		<div class = "row">
+			<div class = "col-md-1">
+				<p></p>
+			</div>
+			<div class = "col-md-4">
+				<div class="scribbletime"><i class="fa fa-clock-o"></i> <%= l comment.created_at, format: :short %></div>
+				</div>
+				<div class = "col-md-5">
+					<%= render :partial=> "comments/vote", :locals => {comment:  comment}%>
+					</div>
+			</div>
+        <% end %>
+</div>
+
+
+

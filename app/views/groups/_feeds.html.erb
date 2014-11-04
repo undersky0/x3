@@ -1,0 +1,21 @@
+<%=javascript_include_tag "localfeeds"%>
+<% @scribble = Scribble.new %>
+<div class="row">
+  <div class="col-md-12">
+	<div id="post_form">
+		<%=render :partial => 'scribbles/new', :locals => {:scribbled => @scribbled}%>
+  		</div>
+	</div>
+</div>
+
+<div class="row">
+		<div class="col-md-8">
+			<div id="infinite-table">
+			<%=render :partial => 'scribbles/scribbles', :locals => {:scribbles => @scribbles}%>
+			</div>
+		</div>
+</div>
+<%= paginate @scribbles %>
+<div id="loading-indicator">
+<i class="fa fa-spinner fa-spin fa-4x"></i>
+</div>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Undersky Landing page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap -->
+
+    <link href='http://fonts.googleapis.com/css?family=Abel|Open+Sans:400,600' rel='stylesheet'>
+
+    <style>
+
+        body {
+            padding-top: 20px;
+            font-size: 16px;
+            font-family: "Open Sans",serif;
+            background-color: green;
+            background: url("f-b1920.jpg") no-repeat center fixed;
+        }
+
+        h1 {
+            font-family: "Abel", Arial, sans-serif;
+            font-weight: 400;
+            font-size: 40px;
+        }
+
+        .margin-base-vertical {
+            margin: 40px 0;
+        }
+
+    </style>
+
+</head>
+<body>
+
+			
+			<%=render :partial => '/devise/registrations/new'%>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                <h1 class="margin-base-vertical">Friendship is so weird....</h1>
+
+                <p>
+                    You just pick up a human you have met and you are like
+                </p>
+                <p>
+                    "Yep, I like this one" and you just do stuff with them.
+                </p>
+
+                <p>
+                    This project is dedicated to those humans around us.
+                </p>
+					
+					
+                <form class="margin-base-vertical">
+                    <p class="input-group">
+                        <span class="input-group-addon"><span class="icon-envelope"></span></span>
+                        <input type="text" class="form-control input-lg" name="email" placeholder="jonsnow@knowsnothi.ng" />
+                    </p>
+                    <p class="help-block text-center"><small>We won't send you spam. Unsubscribe at any time.</small></p>
+                    <p class="text-center">
+                        <button type="submit" class="btn btn-success btn-lg">Keep me posted</button>
+                    </p>
+                    </span>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+
+<% title "Group" %>
+<div class="Group-main">
+<div class="row">
+	<div class = "col-md-12 no-padd">
+		<div class = "group-header">
+				<h2><i class="fa fa-users"></i> <%= @group.name %>  <%= @group.headline %></h2>
+		</div>
+		
+<ul class = "nav nav-pills nav-justified">
+	<li class= "active">
+		<a class = "tabs" href"#section-1" section= "section-1">
+			<span>Cover</span> <span class="badge badge-inverse"><%= @group.id%></span>
+			</a>
+			</li>
+			        <li>
+                <a class="tabs" href="#section-2" section="section-2">
+                        <span>About</span> <span class="badge badge-inverse"><%= @group.id%></span>
+                </a>
+        </li> 
+        	<li>
+                <a class="tabs" href="#section-3" section="section-3">
+                        <span>Events</span> <span class="badge badge-inverse"><%= @group.id%></span>
+                </a>
+        </li> 
+        <li>
+                <a class="tabs" href="#section-4"section="section-4">
+                        <span>Albums</span> 
+                </a>
+        </li>
+                <li>
+                <a class="tabs" href="#section-5"section="section-5">
+                        <span>People</span>
+                </a>
+        </li>
+                        <li>
+                <a class="tabs" href="#section-6"section="section-6">
+                        <span>Settings</span>
+                </a>
+        </li>
+</ul>
+<div class="content" id="section-1" style="display:block;">
+<%= image_tag(@group.igroupcover.url(:gcover), :class => "group-cover") %>
+</div>
+<div class="content" id="section-2" style="display:none;">
+        <%= render :partial => "groups/about" %>
+</div>
+
+<div class="content" id="section-3" style="display:none;">
+        <%= render :partial => "groups/events" %>
+</div>
+
+<div class="content" id="section-4" style="display:none;">
+        <%= render :partial => "groups/album", :locals => {:albumable => @albumable} %>
+</div>
+<div class="content" id="section-5" style="display:none;">
+        <%= render :partial => "groups/people"%>
+</div>
+<div class="content" id="section-6" style="display:none;">
+        <%= render :partial => "groups/edit"%>
+</div>
+</div>
+</div>
+</div>
+<div class="clearfix"></div>
+
+        <%= render :partial => "groups/feeds", :locals => {:scribbled => @scribbled} %>
+
+
+<%= form_for @group, :html => { :multipart => true } do |f| %>
+	<p>
+		<%= f.fields_for :igroupcover do |g|%>
+		<%= g.label :igroupcover %>
+		<%= g.file_field :attachment %>
+		<%end %>
+		<%= f.submit%>
+	<p>
+		
+<%end%>		
+<div id="product-modal" class="modal fade">
+<div class="modal-dialog">
+<div id="inner-product-modal" class="modal-content">
+</div>
+</div>
+</div>
+
+ 
+<% @avatar = Avatar.new %>
+<p>
+  <%= render partial: 'avatars/form', locals: { avatar: @avatar, avatarable: @avatarable}%>
+  <%= link_to "Edit", edit_group_path(@group) %> |
+  <%= link_to "Destroy", @group, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", groups_path %>
+</p>
+
+<script>
+$(".tabs").click(function() {
+  $(this).parent().parent().children().removeClass("active");
+  $(this).parent().addClass("active");
+  $(".content").css("display","none");
+  $('#'+$(this).attr('section')).css("display","block");
+});
+
+$(document).ready(function(){
+	jQuery(".best_in_place").best_in_place();
+});
+</script>

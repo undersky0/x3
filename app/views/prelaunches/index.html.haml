@@ -1,0 +1,19 @@
+%h1 Listing prelaunches
+
+%table
+  %tr
+    %th Email
+    %th
+    %th
+    %th
+
+  - @prelaunches.each do |prelaunch|
+    %tr
+      %td= prelaunch.email
+      %td= link_to 'Show', prelaunch
+      %td= link_to 'Edit', edit_prelaunch_path(prelaunch)
+      %td= link_to 'Destroy', prelaunch, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Prelaunch', new_prelaunch_path

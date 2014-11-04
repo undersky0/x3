@@ -1,0 +1,38 @@
+<% if @userfriends.empty?%>
+	
+	<% @useroldfriends.each do |g|%>
+	<div class="row" style="padding:0px 15px;">
+
+		<div class="col-md-3 nopadding">
+				<div class="logo-small" style="padding:8px;">
+				<%= link_to image_tag(g.useravatar.url(:tiny)), user_path(g.id),:class=>"img-thumbnail" %> 
+				</div>
+				</div>
+		<div class="col-md-9" style="padding-top:10px;"> 		
+				<span><%=link_to g.full_name.truncate(35), user_path(g.id) %> </br>
+				Recently befriended</span>
+		</div>
+</div>
+<%end%>
+<%else%>
+
+
+	<% @userfriends.each do |g|%>
+	<div class="row" style="padding:0px 15px;">
+		<div class="col-md-3 nopadding">
+				<div class="logo-small" style="padding:8px;">
+				<%= link_to image_tag(g.useravatar.url(:tiny)), user_path(g.id),:class=>"img-thumbnail" %> 
+				</div>
+				</div>
+		<div class="col-md-9 nopadding"> 		
+				<span><%=link_to g.full_name.truncate(35), user_path(g.id) %> </br>
+				Sent you a friend request</span>
+					<%= link_to accept_fr_friendships_path(:id => g.id), :remote => true, :class=>"btn btn-success btn-block", :id=>"fbutton_#{g.id}", :disable_with => "adding" do %>
+ 					 <span class="fa fa-plus-circle fa-1.5x"></span>
+					  Accept
+					<% end %>
+		</div>
+	</div>
+<%end%>
+<%end%>
+

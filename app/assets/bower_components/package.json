@@ -1,0 +1,19 @@
+{
+  "name": "s1",
+  "version": "0.0.1",
+  "description": "s1-t",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/undersky0/uu9.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/undersky0/uu9/issues"
+  },
+  "homepage": "https://github.com/undersky0/uu9"
+}

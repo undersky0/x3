@@ -1,0 +1,14 @@
+- content_for :extra_javascript do
+= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=true"
+
+ .inline-label-container
+  = form_for @location do |form|
+  = form.label :street_address, t(".street_address"), :class => "inline"
+  %small
+  = form.text_field :street_address, :class => "text_field", :onkeyup => "timed_input(this)"
+  %small
+  #settings_map_canvas.map
+  - content_for :extra_javascript do
+    :javascript
+     source = document.getElementById("user_street_address");
+     $(document).ready(function(){googlemapMarkerInit("settings_map_canvas","user_location","user_street_address", true, #{user_latitude}, #{user_longitude});});

@@ -1,0 +1,23 @@
+
+<h2>Group Search</h2>
+<%= form_tag groups_path, class: "form-inline", method: :get do %>
+<div class="input-group input-group-lg">
+  
+ 
+ <%= text_field_tag :query, params[:query], class: "form-control", id: "group_search", autocomplete: "off" %>
+ <%= text_field_tag :location, params[:location], class: "form-control"%>  
+ <div class=input-group-btn>
+   <%= submit_tag "Search", class: "btn btn-primary" %>
+   <% if params[:query].present? %>
+  <div class="input-group-btn">
+    <%= link_to "clear", groups_path, class: "btn btn-default" %>
+ </div>
+ </div>
+</div>
+  <% end %>
+  <%end%>
+</div>
+<%if !@groups.nil?%>
+<%= paginate @groups%>
+<%= render partial: "groups/groupsresults"%>
+<%end%>

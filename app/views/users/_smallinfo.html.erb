@@ -1,0 +1,42 @@
+	<div class="element-header text-center">
+		<strong><%= link_to "Full User Info", user_profile_path(@user)%></strong>
+	</div>
+
+	<div class="col-md-6 whitesmoke-boarder nopadding" style="height: 141px;">
+	<p strong> <i class="fa fa-child"></i> <%= link_to "User Profile", user_profile_path(@user)%></p>
+	<p strong> <i class="fa fa-smile-o"></i> <%= link_to "Friends", showusers_path(@user)%> <span class="badge badge-danger pull-right"><%= @user.friends.count%></span></p>
+	<p strong> <i class="fa fa-users"></i> <%= link_to "Groups", groups_path %> </p>
+	</div>
+	
+	<div class="col-md-6 whitesmoke-boarder nopadding" style="width:50%;height: 141px;">
+		<div class="btn-group btn-group-justified">
+	<% unless current_user == @user%>
+		<% if Friendship.are_friends(current_user.id,@user.id) || Friendship.are_friends_pending(current_user.id,@user.id)%>
+			<%= link_to reject_fr_friendships_path(:id => @user.id), :remote => true, :class=>"btn btn-warning btn-block", :id=>"fbutton_#{@user.id}" do %>
+			  <span class="fa fa-minus-circle fa-1.5x"></span>
+			  Unfriend
+			<% end %>
+		<%else%>	
+			 <%= link_to addfriend_friendships_path(:id => @user.id), :remote => true, :class=>"btn btn-success btn-block", :id=>"fbutton_#{@user.id}" do %>
+			  <span class="fa fa-plus-circle fa-1.5x"></span>
+			  Friend
+			  <%end%>
+		<% end %>
+	<%end%>
+	</div>
+	<% unless current_user==@user%>
+			<div class="btn-group btn-group-justified">
+	<%= link_to new_message_path, :class=> "btn btn-info btn-block" do %>
+	<span class ="fa fa-envelope-o"></span>
+		Message
+		<%end%>
+
+		<%else%>
+	<%= link_to conversations_path, :class=> "btn btn-info btn-block" do%>
+	<span class ="fa fa-envelope"></span>
+	Inbox
+	<%end%>
+			</div>
+			<%end%>
+	</div>
+	

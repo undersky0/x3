@@ -1,0 +1,2 @@
+$('#skill_<%= @inviteable.id %>').addClass('joined');
+$('#skill_<%= @inviteable.id %>').replaceWith("<%= escape_javascript(render(:partial => 'skills/memb', :locals => {:skill => @inviteable})) %>");

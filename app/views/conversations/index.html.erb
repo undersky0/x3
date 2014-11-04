@@ -1,0 +1,70 @@
+<%=content_for :script do %>
+<%=javascript_include_tag "checkbox"%>
+<%end%>
+<div class="page-inbox">
+	<div class="row">
+		<div class="col-md-3 col-sm-4">
+			<!-- Side bar mail navigation menu -->
+<ul class = "nav nav-pills nav-stacked">
+	<li class= "active">
+		<a class = "tabs" href"#section-1" section= "section-1">
+			<span>inbox</span> <span class="badge badge-inverse"><%=@conversations.count%></span>
+		</a>
+	</li>
+	<li>
+	    <a class="tabs" href="#section-2" section="section-2">
+	            <span>Sent Mail</span> <span class="badge badge-inverse"><%= @sentbox.count%></span>
+	    </a>
+   	</li> 
+    <li>
+	    <a class="tabs" href="#section-3" section="section-3">
+	            <span>Trash Mail</span> <span class="badge badge-inverse"><%= @trash.count%></span>
+	    </a>
+    </li> 
+    <li>
+        <a class="tabs" href="#section-4"section="section-4">
+                <span>Compose Mail</span> 
+        </a>
+    </li>
+</ul>
+		</div>
+
+<div class="col-md-9 col-sm-8">	
+<div class="content" id="section-1" style="display:block;">
+	<%if @conversations.empty?%>
+		<p> You have no messages </p>
+	<%else%>	
+		<%= render partial: "messages/inboxmessages", locals: {conversations: @conversations}%>
+	<%end%>
+</div>
+<div class="content" id="section-2" style="display:none;">
+	<%if @sentbox.empty?%>
+		<p> You have no sent messages </p>
+	<%else%>	
+		<%= render partial: "inboxsent"%>
+	<%end%>
+</div>
+
+<div class="content" id="section-3" style="display:none;">
+	<%if @trash.empty?%>
+		<p> You have no tashed messages </p>
+	<%else%>	
+		<%= render partial: "trashbin"%>
+	<%end%>
+</div>
+
+<div class="content" id="section-4" style="display:none;">
+	<%= render partial: "messages/newform" %>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+$(".tabs").click(function() {
+  $(this).parent().parent().children().removeClass("active");
+  $(this).parent().addClass("active");
+  $(".content").css("display","none");
+  $('#'+$(this).attr('section')).css("display","block");
+});
+</script>

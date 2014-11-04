@@ -1,0 +1,2 @@
+module AttachablesHelper
+end

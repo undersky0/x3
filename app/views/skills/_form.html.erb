@@ -1,0 +1,65 @@
+<% content_for :script do %>
+<%=javascript_include_tag "fileinput"%>
+<%=javascript_include_tag "skillvalidator"%>
+<%=javascript_include_tag "moment/min/moment.min"%>
+<%=javascript_include_tag "moment/locale/en-gb"%>
+<%=javascript_include_tag "pickers"%>
+<%=javascript_include_tag "eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min"%>
+<%=javascript_include_tag "bootstrapvalidator/dist/js/bootstrapValidator"%>
+<%=javascript_include_tag "bootstrapvalidator/dist/js/language/en_US"%>
+<%=stylesheet_link_tag "bootstrapvalidator/dist/css/bootstrapValidator"%>
+<%=stylesheet_link_tag "eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker"%>
+<%=stylesheet_link_tag "fileinput"%>
+<%end%>
+
+<div class="container-fluid">
+<%= simple_form_for @skill, :html => {:multipart => true, :class => 'form-horizontal' } do |f| %>
+<h2> Skills & Activities</h2>
+<div class="fileinput fileinput-new" data-provides="fileinput">
+  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+  <div>
+    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span>
+    <span class="fileinput-exists">Change</span><input type="file" id="skill_skillimage_attributes_attachment" name="skill[skillimage_attributes][attachment]"></span>
+    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+  </div>
+</div>
+<div class="form-group">
+<%= f.input :skill_type_id, :collection => SkillType.all.map { |p| ["#{p.name}", p.id]}, :selected => :id, :input_html => {:class=>"form-control"}%>
+</div>
+<div class="form-group">
+<%= f.input :name, label: 'Name', :input_html => {:style => 'width: 34%', :class=>"form-control", :autocomplete => "off"}%>
+</div>
+<div class="form-group">
+<%= f.input :teachers_title, label: 'Teachers title', :input_html => {:style => 'width: 34%', :class=>"form-control"}%>
+</div>
+<div class="form-group">
+<%= f.input :description,as: :text, placeholder: 'Be creative ', :input_html => {:rows => 3, :style => 'width: 100%', :class=>"form-control"}%>
+</div>
+<div class="form-group">
+<%= f.input :necessary_resources,as: :text, placeholder: 'What should people bring with them?', :input_html => {:rows => 3, :style => 'width: 100%', :class=>"form-control"}%>
+</div>
+<div class="form-group">
+<%= f.input :level, collection: ["All Welcome", "Beginners", "Advance", "Experts"], priority: ["All Welcome"], label: 'Skill level', input_html: {id: 'level', :class=>"form-control"}%>
+</div>	
+<div class="form-group" id="r1">
+<%= f.input :required_experience, as: :text, placeholder: 'what experience is advisable?', input_html: {id: 'r1', :rows => 3, :style => 'width: 100%', :class=>"form-control"}%>
+</div>
+<div class="form-group">
+<%= f.input :start_date,:as => :datetime_picker, :id => 'datetimepicker', :input_html => { :class=>"form-control"}%>
+</div>
+<div class="form-group">
+<%= f.input :activity_duration, :as => :time_picker, :id => 'timepicker',:input_html => { :class=>"form-control"}%>
+</div>
+<div class="form-group">
+<%= f.input :min_students, label: 'Minimum number of people required for the activity to start', :input_html => {:class=>"form-control"}%>
+</div>
+<div class="form-group">
+<%= f.input :max_students, label: 'Maximum number of people accepted', :input_html => { :class=>"form-control"}%>
+</div>
+<div class="form-group">
+<%= f.input :price, label: 'Price', inline_label: '£', placeholder: '0 Is FREE', :input_html => {:class=>"form-control"}%>
+</div>
+<div class="form-group">
+<%= f.submit "Create Activity", :class=>"btn btn-success"%>
+</div>
+<% end%>

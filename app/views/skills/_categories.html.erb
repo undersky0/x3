@@ -1,0 +1,3 @@
+<% @skilltypes.each do |f| %>
+<h5 class="nopadding"><i class="fa fa-circle-o" >   <%= link_to f.name.truncate(25), skills_path(:id => f.id)%></style> </h5></i><br/>
+<%end%>

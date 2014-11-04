@@ -1,0 +1,13 @@
+<%if current_user.voted_for?(scribble)%>
+<a href="" id="vote_<%=scribble.id%>" name="promote" class="votes">
+<div class="scribblevote"> 
+	<i class="fa fa-cloud-upload fa-rotate-180"></i>  
+	<%=scribble.votes.count%> <%= link_to "demote", vote_scribble_path(:id => scribble.id, :vote => false), remote: true, method: :post%> 
+	</div></a>
+<%else%>
+<a href="" id="vote_<%=scribble.id%>" name="promote" class="votes">
+<div class="scribblevote"> 
+	<i class="fa fa-cloud-upload"></i>  
+	<%=scribble.votes.count%> <%= link_to "promote", vote_scribble_path(:id => scribble.id, :vote => true), remote: true, method: :post%> 
+	</div></a>
+<%end%>

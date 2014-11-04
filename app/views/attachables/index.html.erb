@@ -1,0 +1,17 @@
+<% title "Attachables" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for attachables in @attachables %>
+    <tr>
+      <td><%= attachables.name %></td>
+      <td><%= link_to "Show", attachables %></td>
+      <td><%= link_to "Edit", edit_attachables_path(attachables) %></td>
+      <td><%= link_to "Destroy", attachables, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Attachables", new_attachables_path %></p>

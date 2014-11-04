@@ -1,0 +1,17 @@
+one:
+  sender_id: 1
+  recipients_id: 1
+  invitable_id: 1
+  invitable_type: MyString
+  status: false
+  token: MyString
+  sent_at: 2014-03-14
+
+two:
+  sender_id: 1
+  recipients_id: 1
+  invitable_id: 1
+  invitable_type: MyString
+  status: false
+  token: MyString
+  sent_at: 2014-03-14

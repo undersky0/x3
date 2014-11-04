@@ -1,0 +1,27 @@
+
+<div class="page-gallery">
+	<div id="gallery">    
+		<!-- Each element -->
+				<% if @user.pending_friends.empty? %>
+		<h2>No pending friendships</h2>
+		<%else%>
+		<% @user.pending_friends.each do |g|%>
+		<div class="element">
+			<!-- Gallery image -->
+				<%= link_to image_tag(g.useravatar.url(:small)), user_path(g.id), :class => "img-responsive" %> 
+			<!-- Gallery caption -->
+			<div class="gall-caption">
+				<ul class="list-unstyled">
+					<li><strong>Name:</strong> <%=link_to "#{g.full_name}", user_path(g.id)%> </li>
+					<%= link_to accept_fr_friendships_path(:id => g.id), :remote => true, :class=>"btn btn-success btn-block", :id=>"fbutton_#{g.id}", :disable_with => "adding" do %>
+ 					 <span class="fa fa-plus-circle fa-1.5x"></span>
+					  Accept
+					<% end %>
+
+				</ul>
+			</div>
+			</div>
+		<%end%>
+		<%end%>
+	</div>
+</div>

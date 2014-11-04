@@ -1,0 +1,13 @@
+
+
+<% @groups.each do |g|%>
+<h5>Name </h5>
+<%=link_to g.name, group_path(g.id) %> <br>
+
+<%if g.avatar.nil?%>
+<li> <%= link_to image_tag("images\55.png"), group_path(g.id) %> </li> 
+<%else%>
+<li> <%= link_to image_tag(g.useravatar.url(:thumb)), group_path(g.id) %> </li> 
+
+<%end%>
+<%end%>

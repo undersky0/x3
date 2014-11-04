@@ -1,0 +1,81 @@
+<div class="row">
+	<div class="col-md-12 col-sm-12">
+<ul class = "nav nav-tabs nav-justified">
+	<li class= "active">
+		<a class = "tabs" href"#section-1" section= "section-1">
+			<strong style="color:black;">Project</strong> <i class="fa fa-send-o"></i>
+		</a>
+	</li>
+	<li>
+	    <a class="tabs" href="#section-2" section="section-2">
+	        <strong style="color:black;">Project TODO</strong> <i class="fa fa-list"></i>
+	    </a>
+   	</li> 
+   		<li>
+	    <a class="tabs" href="#section-3" section="section-3">
+	        <strong style="color:black;">CV</strong> <i class="fa fa-user"></i>
+	    </a>
+   	</li> 
+</ul>
+	</div>
+</div>
+</br>
+<div class="row">
+<div class="col-md-12 col-sm-12">	
+<div class="content" id="section-1" style="display:block;">
+	<%= render :partial => 'project' %>
+</div>
+<div class="content" id="section-2" style="display:none;">
+	
+<div class="col-md-12" style="background:white;">
+<div class="element-header text-center"><strong>intro</strong></div>
+	<div class="text-center">
+		The project is in development. He is the list of features that have been developed and are still in development.
+		Even after the feature is added its not guaranteed that it's going to work flawlesly.
+		All of the features will be reviewed and refactored before the final release.
+		<p class="bg-success">GREEN = Working</p>
+		<p class="bg-warning">YELLOW = Needs a little work</p>
+		<p class="bg-primary">BLUE = TODO</p>
+		<p class="bg-success"><i class="fa fa-check-circle-o"> Ready </i></p>
+		
+	</br>
+	</br>
+	<div class="element-header text-center"><strong>Feature List</strong></div>
+	</br>
+	<p class="bg-success"><i class="fa fa-circle-o"> Facebook authentication</i><p>
+	<p class="bg-success"><i class="fa fa-circle-o"> Simple user authentication</i><p>
+	<p class="bg-success"><i class="fa fa-circle-o"> Map & user location</i><p>
+	<p class="bg-success"><i class="fa fa-circle-o"> User Avatar</i><p>
+	<p class="bg-warning"><i class="fa fa-circle-o"> Avatar Cropping & resizing</i><p>
+	<p class="bg-success"><i class="fa fa-circle-o"> Local Feeds</i><p>
+	<p class="bg-success"><i class="fa fa-circle-o"> Ajax user posts</i><p>
+	<p class="bg-success"><i class="fa fa-circle-o"> Ajax user comments</i><p>
+	<p class="bg-success"><i class="fa fa-circle-o"> User post ajax promoting/demoting buttons</i><p>
+	<p class="bg-warning"><i class="fa fa-circle-o"> Notification System</i><p>
+	<p class="bg-warning"><i class="fa fa-circle-o"> Messaging System</i><p>
+	<p class="bg-warning"><i class="fa fa-circle-o"> Notification System</i><p>
+	<p class="bg-success"><i class="fa fa-circle-o"> Friendship System</i><p>
+	<p class="bg-success"><i class="fa fa-circle-o"> Polymorphic ajax add/decline/remove friends buttons</i><p>
+	<p class="bg-success"><i class="fa fa-circle-o"> Skill page</i><p>
+	<p class="bg-success"><i class="fa fa-circle-o"> New Skills</i><p>
+	<p class="bg-success"><i class="fa fa-circle-o"> Group page</i><p>
+	<p class="bg-success"><i class="fa fa-circle-o"> User & group albums</i><p>
+	<p class="bg-success"><i class="fa fa-circle-o"> Image uploading</i><p>
+	<p class="bg-success"><i class="fa fa-circle-o"> Fancy Box image galeries</i><p>
+	</div>
+</div>
+
+</div>
+<div class="content" id="section-3" style="display:none;">
+	<%= render :partial => 'aboutme' %>
+</div>
+</div>
+</div>
+<script>
+$(".tabs").click(function() {
+  $(this).parent().parent().children().removeClass("active");
+  $(this).parent().addClass("active");
+  $(".content").css("display","none");
+  $('#'+$(this).attr('section')).css("display","block");
+});
+</script>

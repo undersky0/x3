@@ -1,0 +1,34 @@
+
+<i class="fa fa-facebook"></i> <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+<!-- Users page -->
+
+<ul class="nav nav-tabs nav-justified" id="tab" data-tabs="tab">
+	<li class="active"><a href="#section-1" class="br-red" data-toggle="tab"><i class="fa fa-search red"></i> Search</a></li>
+	<li><a href="#section-2" class="br-red" data-toggle="tab"><i class="fa fa-plus red"></i> Friends <span class="badge badge-info"><%= @user.friends.count%></span> </a></li>
+	<li><a href="#section-3" class="br-red" data-toggle="tab"><i class="fa fa-user red"></i> Requested <span class="badge badge-info"><%= @user.requested_friends.count%></span></a></li>
+	<li><a href="#section-4" class="br-red" data-toggle="tab"><i class="fa fa-user red"></i> Pending <span class="badge badge-info"><%= @user.pending_friends.count%></span></a></li>
+	<li><a href="#section-5" class="br-red" data-toggle="tab"><i class="fa fa-user red"></i> All Users</a></li>		
+</ul>
+<div class="tab-content">
+	<div class="tab-pane fade active in" id="section-1">
+        <%= render :partial => "users/usersearch"%>
+</div>
+
+	<div class="tab-pane fade" id="section-2">
+        <%= render :partial => "friendships/friends" %>
+</div>
+
+	<div class="tab-pane fade" id="section-3">
+        <%= render :partial => "friendships/friendrequests" %>
+</div>
+
+<div class="tab-pane fade" id="section-4">
+        <%= render :partial => "friendships/friendspending" %>
+</div>
+
+<div class="tab-pane fade" id="section-5">
+        <%= render :partial => "friendships/all_connections", :locals => {:all_connections=>@all_connections}%>
+</div>
+</div>
+
+

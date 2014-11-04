@@ -1,0 +1,14 @@
+
+	<div class="col-md-2">
+		<table class="table table-hover">
+		<tr>
+			<th><i class="fa fa-arrow-circle-right"></i> City Areas </th>
+		 </tr>
+		 <tr>
+			  <% @localfeeds.each do |f| %>
+			<td><i class="fa fa-angle-double-right"></i> <%= link_to f.city, f %></a></td>
+  		</tr>
+  			<% end %>
+  			</table>
+	</div>
+

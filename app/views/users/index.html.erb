@@ -1,0 +1,15 @@
+<table>
+  <tr>
+    <th>full name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user.each do |user| %>
+  <tr>
+    <td><%= user.full_name %></td>
+  </tr>
+<% end %>
+</table>
+<%= render :partial => "friendships/all_connections", :locals => {:all_connections=>@all_connections}%>

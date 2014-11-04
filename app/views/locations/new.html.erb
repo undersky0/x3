@@ -1,0 +1,39 @@
+<%=javascript_include_tag "googlemaps"%>
+<%= include_gon %>
+<script src="http://maps.google.com/maps/api/js?sensor=false&amp;v=3&amp;libraries=geometry" ></script>
+<script>
+source = document.getElementById("location_street_address");
+$(window).load(function(){
+	console.log("nprefix: " + "location");
+	console.log("textfiedl: " + "location_street_address");
+	console.log("draggable: " + true);
+	console.log("address: " + "location");
+	googlemapMarkerInit("settings_map_canvas","location","location_street_address", true, "location_latitude", "location.longitude");
+});
+</script>
+<div class="row">
+	<div class="col-md-8">
+		<div class="map_container" id="map_container">
+			<div  id="settings_map_canvas" class="settings_map_canvas"></div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		
+			<%= simple_form_for([@context, @location], :html => {:class => 'form-horizontal' }) do |form| %>
+			<div class="map_panel">	
+			  <%= form.input :street_address, input_html: {:onkeyup => 'timed_input(this)', :value => @user.location.address, :autocomplete => :off}, :label => "Your Post Code" %>
+				you can also drag and drop marker!			  
+			  </div>
+			  <div class="boarder-white">
+			  <%= form.input :address, :label => "Approximate Address", :value => @user.location.address, :disabled => :true, input_html: {:class=>'form-control'}%>
+			  <%= form.input :google_address, :value => @user.location.address, :label=> "Address first line",  input_html: {:class=>'validate[required]'} %>
+			  <%= form.input :postcode, :label => "Post Code",  input_html: {:class=>'validate[required]'} %>
+			  <%= form.input :city, :label => "City", input_html: {:class=>'validate[required]'}%>
+			  <%= form.input :political, as: :hidden, :label => "Political"%>
+			  <%= form.input :latitude, as: :hidden, input_html: {:value => @user.location.latitude}%>
+			  <%= form.input :longitude, as: :hidden, input_html: {:value => @user.location.longitude}%>
+			  <%= form.submit "Enter Location", :class => "btn btn-large btn-success" %>
+	</div>
+<%end%>
+	</div>
+</div>

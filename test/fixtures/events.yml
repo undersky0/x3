@@ -1,0 +1,17 @@
+one:
+  name: MyString
+  location_id: 1
+  location_name: MyString
+  event_type: MyString
+  privacy: MyString
+  about: MyString
+  headline: MyString
+
+two:
+  name: MyString
+  location_id: 1
+  location_name: MyString
+  event_type: MyString
+  privacy: MyString
+  about: MyString
+  headline: MyString

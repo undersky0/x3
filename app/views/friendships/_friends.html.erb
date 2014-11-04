@@ -1,0 +1,22 @@
+<div class="page-gallery">
+	<div id="gallery">    
+		<!-- Each element -->
+		<% if @user.friends.empty? %>
+		<h2>Go and find some friends dude</h2>
+		<%else%>
+		<% @user.friends.each do |g|%>
+		<div class="element">
+			<!-- Gallery image -->
+				<%= link_to image_tag(g.useravatar.url(:small)), user_path(g.id), :class => "img-thumbnail", :style=> "width:150px; height:150px;" %>  
+			<!-- Gallery caption -->
+			<div class="gall-caption" >
+				<ul class="list-unstyled">
+					<li> <%=link_to "#{g.full_name}", user_path(g.id) %> </li>
+				</ul>
+			</div>
+			</div>
+		<%end%>
+			<%end%>
+		
+	</div>
+</div>

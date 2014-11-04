@@ -1,0 +1,35 @@
+	<%@albumable = albumable%>
+	<div class="element-header text-center">
+		<strong><%= link_to "Albums", user_albums_path(albumable)%></strong>
+	</div>
+<% if @albumscover.empty?%>
+	<div class="col-md-6 whitesmoke-boarder nopadding">
+		<img src="/assets/NoImageAvailable.jpg" alt="" style="width: 181px; height: 140px;">
+	</div>
+	<div class="col-md-6 whitesmoke-boarder nopadding">
+		<img src="/assets/NoImageAvailable.jpg" alt="" style="width: 100%; height: 140px;">
+	</div>
+<%else%>
+    <% @albumscover.each do |album| %>
+    <%n=@albumscover.count%>
+	<% if n==2%><%n=1%><%else%> <%n=2%><%end%>
+	    <% if album.pictures.empty? %>
+	    	<% n.times do%>
+	    <div class="col-md-6 whitesmoke-boarder nopadding">
+	         <a href="<%= polymorphic_url([@albumable, album]) %>">
+	      		<img src="/assets/NoImageAvailable.jpg" alt="" style="width: 100%; height: 140px;">
+	         </a>
+		</div>
+			<%end%>
+		<%else%>
+		 	<% n.times do%>
+	    <div class="col-md-6 whitesmoke-boarder nopadding">
+	         <a href="<%= polymorphic_url([@albumable, album]) %>">
+	      		<img src="<%= album.pictures.first.file_url(:album) %>" alt="" style="width: 100%; height: 140px;">
+	         </a>
+		</div>
+			<%end%>
+	<%end%>
+<%end%>
+<%end%>
+ 

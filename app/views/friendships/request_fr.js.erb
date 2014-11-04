@@ -1,0 +1,6 @@
+alert("<%=@friend.id%>");
+<% if Friendship.are_friends_pending(@user.id,@friend.id)%>
+$("#fbutton_<%=@friend.id%>").replaceWith("<%= escape_javascript(render(:partial => 'cancelbutton'))%>");
+<%else%>
+$("#fbutton_<%=@friend.id%>").append("fuck");
+<%end%>

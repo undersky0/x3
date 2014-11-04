@@ -1,0 +1,23 @@
+<div class="row">
+<tbody>
+	<tr class="m-unread">
+		<% @unread.each do |coversation| %>
+		<% if participat != current_user%>
+			<%= particapant.name, participant%>
+	<%end%>
+		<!-- Mail check box -->
+		<td><input tabindex="1" type="checkbox"></td>
+		<!-- Sender information -->
+		<td><a class="new-unread">from?</a></td>
+		<td>
+			<!-- Mail subject -->
+			<a><span><%= link_to conversation.subject, conversation %></span></a>&nbsp; <i class="fa fa-paperclip"></i>
+			<!-- Mail message -->
+			<p><%= link_to conversation.body, conversation %></p>
+		</td>
+		<!-- Time of mail receive -->
+		<td><%= conversation.updated_at.strftime("%a, %m/%e/%Y %I:%M %p")%></td>
+	</tr>
+	<%end%>
+</tbody>
+</div>

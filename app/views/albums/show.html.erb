@@ -1,0 +1,63 @@
+
+<%=javascript_include_tag "bootstrap-fileinput/js/fileinput.min"%>
+<%=stylesheet_link_tag "bootstrap-fileinput/css/fileinput.min"%>
+
+	<div class= "album">
+		<div class = "container">
+			<div class="row">
+				<div class="col-md-12"
+						<div class="single-head">
+							<!-- Heading -->
+							<strong><h3 style="display: inline"><i class="fa fa-picture-o red" ></i> <%= @album.name %>  </strong><h5 style="display: inline"><%= @album.description %></h5></h3>
+							
+							<!-- Bread crumbs -->
+							<div class="breads pull-right">
+							<%= link_to "Remove Gallery", @album, class: 'btn btn-success',:confirm => 'Are you sure?', :method => :delete %>
+							<%= link_to "Albums", polymorphic_url([@albumable, :albums]), class: 'btn btn-success'%>
+							</div>
+						</div>
+				</div>
+			</div>
+	<div class="row top-buffer">
+		<div class = "col-md-12">
+
+					<%= form_for Picture.new, :html => { :multipart => true } do |f| %>
+					<%= f.file_field :file, :multiple => true, :id => "input-20", :class=> "file" %>
+                    <%= f.hidden_field :album_id, value: @album.id %>
+                    
+                    <%= f.submit "Upload Images", :id => "submitimage", :class => "btn btn-success btn-block btn-lg top-buffer" %>
+                    <%end%>
+		</div>
+	</div>
+</div>
+		
+
+<div class="container">
+
+<div class="row top-buffer">
+
+<% if @album.pictures.exists? %>
+<%= render :partial => "pictures", :locals => {:album => @album}%>
+<%end%>
+</div>
+</div>
+
+		<script>
+		$('#submitimage').hide();
+		$('#input-20').click(function() { $('#submitimage').show() });
+			$("#input-20").fileinput({
+			browseClass: "btn btn-primary btn-block btn-lg",
+			browseLabel: "Click here to pick images",
+			showCaption: false,
+			showRemove: false,
+			showUpload: false,
+			maxFileCount: 10
+			});
+			$(document).ready(function() {
+				$(".fancybox").fancybox({
+
+				});
+
+	
+});
+		</script>

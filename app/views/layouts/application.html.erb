@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title><%= yield(:title) || "undersky" %></title>
+   <!-- Javascripts
+    ================================================== -->
+    <%= include_gon %>
+	<%= javascript_include_tag "application" %>
+	<%= stylesheet_link_tag "application"%>
+	
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+
+<%if current_user%>
+<%= render :partial => 'layouts/sidebar' %>
+<%= render :partial => 'layouts/navbar'%>
+<div class="container">
+<div class="row">
+		<div class="col-md-12">
+			<div id="flash-message"></div>
+			<%= render partial: "shared/flash_messages", flash: flash %> 
+
+  	<%=yield%>
+
+
+  	<div id="loading-indicator">
+<i class="fa fa-spinner fa-spin fa-4x"></i>
+</div>
+  	</div>
+  	</div>
+</div>
+<div class="container">
+<%else%>
+<%= render partial: "shared/flash_messages", flash: flash %> 
+<%= gflash %>
+<%=yield%>
+
+
+<%end%>
+
+</div>
+
+  </body>
+
+  	<%=yield(:script)%>	
+
+</html>

@@ -1,0 +1,6 @@
+
+<%= link_to addwatch_invites_path(:user_id => user.id, :inviteable_id => inviteable.id,
+ :inviteable_type => inviteable.class.name), :remote => true, :class=>"btn btn-info btn-xs", :id=>"wbutton_#{inviteable.id}" do %>
+<i class="fa fa-plus-circle"></i>
+  Watchlist
+<% end %>

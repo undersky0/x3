@@ -1,0 +1,36 @@
+<h2>Sign up</h2>
+
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  	<%= f.fields_for :profile do |profile_form| %>
+  
+  <%= profile_form.label :firstname %>
+  <%= profile_form.text_field :firstname%>
+  
+  <%= profile_form.label :lastname %>
+  <%= profile_form.text_field :lastname %>
+  <% end %>
+  <%= f.fields_for :location do |location_form| %>
+  
+  <%= location_form.label :postal_code %>
+  <%= location_form.text_field :postal_code%>
+  
+  <%= location_form.label :city %>
+  <%= location_form.text_field :city %>
+  <% end %>
+  
+    <%= f.input :email, :required => true, :autofocus => true %>
+    <% if f.object.password_required? %>
+    <%= f.input :password, :required => true %>
+    <%= f.input :password_confirmation, :required => true %>
+    <%end%>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up" %>
+  </div>
+<% end %>
+<%= link_to "Sign in with Facebook", "users/auth/facebook", id: "sign_in" %>
+<%= render "devise/shared/links" %>

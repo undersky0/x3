@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="group-header">
+		<h3 strong> Please enter your details</h3>
+	</div>
+	<div class="col-md-12 whitesmoke-boarder">
+		
+<%= simple_form_for @profile,:html => { :class => 'form-horizontal' } do |f| %>
+
+<div class="form-group">
+	<h4><%= f.label "First name"%> </h4>
+    <%= f.input :firstname, label: false, :input_html => { class: 'form-control'}%>
+</div>
+<div class="form-group">
+	<h4><%= f.label "last name"%> </h4>
+    <%= f.input :lastname, label: false, :input_html => { class: 'form-control'} %>
+</div>
+	<%= f.submit "Enter", :class=>"btn btn-success btn-block"%>
+<% end %>
+
+</div>
+</div>

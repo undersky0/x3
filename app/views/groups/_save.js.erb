@@ -1,0 +1,10 @@
+$("ul.errors").html("")
+<% if @group.errors.any? %>
+  <% @group.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+<% else %>
+  $(window.location.replace("/groups/<%= @group.id %>"))
+  $("#inner-product-modal").modal("hide")
+  $("#product-modal").modal("")
+<% end %>

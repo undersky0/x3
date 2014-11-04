@@ -1,0 +1,9 @@
+one:
+  city: MyString
+  scribble_id: 1
+  location_id: 1
+
+two:
+  city: MyString
+  scribble_id: 1
+  location_id: 1

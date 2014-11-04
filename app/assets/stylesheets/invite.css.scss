@@ -1,0 +1,10 @@
+.invite {
+  /* off by default */
+  .leave { display: none; }
+}
+
+/* when the post is favorited show the unfavorite button instead */
+.invite.joined {
+  .join { display: none; }
+  .leave { display: inline-block; }
+}

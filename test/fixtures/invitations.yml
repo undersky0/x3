@@ -1,0 +1,11 @@
+one:
+  inviter: 
+  inviteable: 
+  sent_at: 2014-03-20
+  status: MyString
+
+two:
+  inviter: 
+  inviteable: 
+  sent_at: 2014-03-20
+  status: MyString

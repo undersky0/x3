@@ -1,0 +1,9 @@
+// Append new data
+
+$("<%=j render(:partial => 'scribbles/scribbles', :scribbles => @scribbles) %>")
+  .appendTo($("#infinite-table"));
+<% if (@scribbles.current_page < @scribbles.num_pages) %>
+$('.pagination').replaceWith('<%= j paginate(@scribbles) %>');
+<% else %>
+$('.pagination').remove();
+<% end %>

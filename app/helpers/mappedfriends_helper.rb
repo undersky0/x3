@@ -1,0 +1,2 @@
+module MappedfriendsHelper
+end

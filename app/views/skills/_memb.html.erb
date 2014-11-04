@@ -1,0 +1,10 @@
+<%= div_for(skill, class: invite_css(skill)) do %> 
+
+  <%= toggle_button_to 'fa fa-star', 'Join',
+   	join_invites_path(:user_id => current_user.id, :inviteable_id => skill.id,
+	 :inviteable_type => skill.class.name), 
+	leave_invites_path(:id => skill.users_joined.where(user_id: current_user.id).first),
+	'Leave',
+       on: 'join btn btn-success btn-xs', 
+       off: 'leave btn btn-danger btn-xs' %> 
+<% end %> 

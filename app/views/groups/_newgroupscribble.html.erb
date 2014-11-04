@@ -1,0 +1,14 @@
+
+<%= form_for @scribble, :url => url_for(:controller => 'groups', :action => 'newgroupscribble') do |f| %>
+<div class="">
+        <div class="field">
+                <%= f.text_area :post, :rows=>3,:placeholder=>"What's on your mind,#{current_user.full_name}?",
+                :class=>"sribble-status-text"
+                %>
+                <%= f.hidden_field :posted_by, :value => current_user.full_name%>
+        </div>
+        <div class="sribble-status-actions" >
+                <%= f.submit "Share",:class=>"btn btn-info" %>
+        </div>
+</div>
+<% end %>

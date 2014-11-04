@@ -1,0 +1,17 @@
+<% title "Avatars" %>
+
+<table>
+  <tr>
+    <th>Add Attachement</th>
+  </tr>
+  <% for avatar in @avatars %>
+    <tr>
+      <td><%= avatar.add_attachement %></td>
+      <td><%= link_to "Show", avatar %></td>
+      <td><%= link_to "Edit", edit_avatar_path(avatar) %></td>
+      <td><%= link_to "Destroy", avatar, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Avatar", new_avatar_path %></p>

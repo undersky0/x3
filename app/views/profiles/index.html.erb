@@ -1,0 +1,27 @@
+
+
+
+<% title "Profiles" %>
+
+<table>
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Age</th>
+    <th>Website</th>
+    <th>Phoneno</th>
+  </tr>
+  <% for profile in @profiles %>
+    <tr>
+      <td><%= profile.firstname %></td>
+      <td><%= profile.lastname %></td>
+      <td><%= profile.age %></td>
+      <td><%= profile.website %></td>
+      <td><%= profile.phoneNo %></td>
+
+
+    </tr>
+  <% end %>
+</table>
+
+

@@ -1,0 +1,59 @@
+<% if @scribbles.empty? %>
+<h2 class="text-center"> Be The First To Write A Post </h2>
+<% else %>
+  <% @scribbles.each do |scribble| %>
+
+    	<div class="container" style="padding: 0px;">
+    		<div class="scribblebody"> 
+    	<div class="row">
+    	<div class="col-md-2"><%= link_to( image_tag(scribble.user.useravatar.url(:feed), :class=> "scribbleimg"))%>
+    		</div>
+    	<div class="col-md-10">
+    		<div class="scribblehead">
+    			<h4><%= link_to scribble.user.full_name, scribble.user%></h4> <h5><i class="fa fa-home"></i><%= scribble.user.location.city%></h5>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="row">
+    		<div class="col-md-2">
+    			
+    		</div>
+
+    		<div class="col-md-10">
+    			<div class="scribbletext">
+    			<p><%= scribble.post %></p>
+				</div>
+    		</div>
+    	</div>  		
+    	<div class="row">
+    		<div class="col-md-2">
+    			
+    		</div>
+    		<div class="col-md-3">
+    			<div class="scribbletime"><i class="fa fa-clock-o"></i> <%= l scribble.created_at, format: :short %></div>
+    		</div>
+    		<div class="col-md-2">
+    			<div class="scribbletime"> <i class="fa fa-comments"></i> <%if scribble.comments.nil?%> comments <%else%> <%=scribble.comments.count%> comments <%end%></div>
+    			</div>
+    			<div class="col-md-4">
+    				<div id="vote_<%=scribble.id%>">
+    			<%= render :partial=> "scribbles/vote", :locals => {scribble:  scribble}%>
+    				</div>
+    			</div>
+    			
+    	</div>
+    	<div class = "row" style="margin:0px;">
+    			
+          <%= render :partial=>"comments/postedcomments",:locals=>{:scribble=>scribble} %>
+
+          <div class = "row">
+          	
+          <%= render :partial=>"comments/new",:locals=>{:scribble=>scribble} %>
+          </div>
+     </div>
+
+         </div>
+        
+  <% end %>
+<% end %>
+    

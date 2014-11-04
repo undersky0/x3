@@ -1,0 +1,16 @@
+<%content_for :script do %>
+<%=javascript_include_tag "tokensearch"%>
+<%=javascript_include_tag "bootstrap/dist/js/bootstrap-tokenfield"%>
+<%=stylesheet_link_tag "bootstrap/dist/css/bootstrap-tokenfield"%>
+<%=stylesheet_link_tag "bootstrap/dist/css/tokenfield-typeahead"%>
+<%end%>
+<div class="row">
+	<div class = "col-md-8 col-sm-8">
+	<%= simple_form_for :messages, :url => url_for(:action => 'create', :controller => 'messages'), :method => 'post' do |f|%>
+		<%= f.input :recipients, as: :text, label: "Recipients",:input_html => { class: 'form-control', id: 'to-tags'}%>
+		<%= f.input :subject, as: :string, :input_html => { class: 'form-control'}%>
+		<%= f.input :body, as: :text, :input_html => { class: 'form-control'}%>
+		<%= f.button :submit, :class=> 'btn btn-success'%>
+	<%end%>
+	<div>
+</div>

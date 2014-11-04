@@ -1,0 +1,64 @@
+ 		<!-- Styles -->
+		<!-- Bootstrap CSS -->
+
+		 	
+		 		<!-- Favicon -->
+		<link rel="shortcut icon" href="#">
+
+        <!-- Sidebar -->
+        <div class="row" style="margin-left: 0px;">
+
+ <div class="outer">
+			
+			<!-- Sidebar starts -->
+			<div class="sidebar">
+			
+				<div class="sidey">
+			
+					<!-- Logo -->
+					<div class="logo">
+						<h4><i><%= link_to image_tag(current_user.useravatar.url(:small)), current_user, :class=>"img-thumbnail" %></i><h4><%= link_to current_user.full_name, showusers_path(current_user.id)%></h4> <span><h5>App Ninja</h5></span></a></h1>
+					</div>
+					
+					<!-- Sidebar navigation starts -->
+
+					<!-- Responsive dropdown -->
+					<div class="sidebar-dropdown"><a href="#" class="br-red"><i class="fa fa-bars"></i></a></div>
+					
+					<div class="side-nav">
+					
+						<div class="side-nav-block">
+							<!-- Sidebar heading -->
+							<h4>Main</h4>
+							<!-- Sidebar links -->
+							<ul class="list-unstyled">
+								<!-- Mainmenu with submenu -->
+								
+								<%= render_cell :arealist, :show %>						
+								<%= render_cell :grouplist, :show %>
+								<li><i class="fa fa-bullseye"></i> <%= link_to "Friends", showusers_path(current_user.id)%> <span class="badge badge-danger pull-right"><%= current_user.requested_friends.count + current_user.pending_friends.count%></span></a></li>						
+								<li><a href=#><i class="fa fa-folder-open-o"></i> Projects <span class="badge badge-danger pull-right">1</span></a></li>	
+								<li><a href=#><i class="fa fa-paper-plane-o"></i> Skills Attended<span class="badge badge-danger pull-right">3</span></a></li>
+								<li><a href=#><i class="fa fa-paper-plane"></i> Skills Created<span class="badge badge-danger pull-right">1</span></a></li>								
+								<li><a href=#><i class="fa fa-heart-o"></i> Endorsements <span class="badge badge-danger pull-right">23</span></a></li>	
+								
+							</ul>
+						</div>
+					
+						
+						
+					</div>
+					
+					<!-- Sidebar navigation ends -->
+					
+				</div>
+			</div>
+			</div>
+			<!-- Sidebar ends -->   
+    
+	
+</div>
+    
+    
+    
+   

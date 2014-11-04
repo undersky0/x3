@@ -1,0 +1,17 @@
+%h1 Listing localfeeds
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @localfeeds.each do |localfeed|
+    %tr
+      %td= link_to 'Show', localfeed
+      %td= link_to 'Edit', edit_localfeed_path(localfeed)
+      %td= link_to 'Destroy', localfeed, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Localfeed', new_localfeed_path

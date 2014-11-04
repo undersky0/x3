@@ -1,0 +1,19 @@
+<h2>Invite Friends</h2>
+<div>
+	<ul>
+		<% @users.each do |f|%>
+		
+		<li>
+			<% if f.profile.nil? || f==current_user%>
+
+			<%elsif Invitation.been_sent(@inviteable, f)%>
+
+			<%= link_to "#{f.full_name}", user_path(f.id)%> <h5>Has been Invited</h5>
+			
+			<%else%>
+			<%= link_to "#{f.full_name}", user_path(f.id)%>
+			<%= button_to "invite Friend", invite_invitations_path(:user_id => f.id, :inviteable_id => @inviteable.id, :c => @inviteable.class.base_class.name), :action => :sendinv%>
+			<%end%>
+		</li>
+		<%end%>
+	</ul>

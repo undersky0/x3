@@ -1,0 +1,127 @@
+
+<div class="mainbar">
+
+<!-- Mainbar head starts -->
+<div class="main-head">
+<div class="container">
+<div class="row">
+<div class="col-md-3 col-sm-4 col-xs-6" style="max-height: 30px;padding-left: 0px;">
+	<!-- Page title -->
+	<h2 style="margin: 0px;"><%= link_to "Undersky", root_path %></h2>
+</div>
+
+<div class="col-md-3 col-sm-4 col-xs-6">
+	<!-- Search block -->
+	<div class="head-search">
+		<form class="form" role="form">
+			<div class="input-group mainsearch">
+			  <input type="text" class="typeahead form-control" placeholder="Search...">
+			  <span class="input-group-btn">
+				<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+			  </span>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+<div class="col-md-3 col-sm-4 hidden-xs">
+	<!-- Notifications -->
+	<div class="head-noty text-center">
+			<a>	<%= link_to '<i class="fa fa-home "></i>'.html_safe, root_path, :class => "mhead-icon pull-left" %> </a>
+		    <a> <%= link_to '<i class="fa fa-paper-plane-o"></i>'.html_safe, skills_path, :class => "mhead-icon pull-left" %> </a>
+		  <!-- Notifications -->
+		  <div class="dropdown">
+		  	
+			  <a href="#" id="notifications" data-toggle="dropdown" class="mhead-icon" ><i class="fa fa-bell"></i> <span class="label label-info"><%=current_user.mailbox.notifications.count%></span></a>
+			  <!-- Dropdown -->
+			  <ul class="dropdown-menu" role="button" aria-labelledby="notifications">
+				
+				<!-- Dropdown menu head -->
+				<li class="dropdown-head">
+					Notifications <span class="label label-info pull-right"><%=current_user.mailbox.notifications.count%></span>
+				</li>
+				<!-- Content -->
+				<%= render_cell :notification, :show%>
+				
+
+				
+				<li class="dropdown-foot text-center">
+					<a href="#">View All</a>
+				</li>
+				
+			  </ul>
+		  </div>
+		
+		  <!-- Messages -->
+		  <div class="dropdown">
+			  <a href="#" id="messages" data-toggle="dropdown" class="mhead-icon" ><i class="fa fa-envelope"></i> <span class="label label-danger"><%=current_user.mailbox.inbox.count%></span></a>
+			  <ul class="dropdown-menu" role="button" aria-labelledby="messages">
+				
+				<!-- Dropdown menu head -->
+				<li class="dropdown-head">
+					Messages <span class="label label-danger pull-right"><%=current_user.mailbox.inbox.count%></span>
+				</li>
+				<!-- Content -->
+					<%= render_cell :message, :show %>
+				
+				<li class="dropdown-foot text-center">
+					<a href="#"><%= link_to "View All", conversations_path%></a>
+				</li>
+				
+			  </ul>
+		  </div>
+		  
+		  <!-- Users -->
+		  <div class="dropdown">
+			  <a href="#" id="users" data-toggle="dropdown" class="mhead-icon" ><i class="fa fa-user"></i> <span class="label label-success"><%= current_user.pending_friends.count %></span></a>
+			  <!-- Dropdown -->
+			  <ul class="dropdown-menu drop-users" role="button" aria-labelledby="users">
+				
+				<!-- Dropdown menu head -->
+				<li class="dropdown-head">
+					Users <span class="label label-success pull-right"><%= current_user.pending_friends.count %></span>
+				</li>
+				<!-- Content -->
+				<%= render_cell :users, :show %>	
+
+				
+				<li class="dropdown-foot text-center">
+					<a href="#"><%= link_to "View All", showusers_path(current_user.id)%></a>
+				</li>
+				
+			  </ul>
+		  </div>
+		  
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+
+<div class="col-md-3 hidden-sm hidden-xs">
+	<!-- Head user -->
+	<div class="head-user dropdown pull-right">
+			<!-- Icon 
+			<i class="fa fa-user"></i>  -->
+			
+			<%= link_to( image_tag(current_user.useravatar.url(:tiny), :class=> "img-responsive img-circle"))%>
+			
+			<!-- User name -->
+			<%=current_user.name%> 
+		<!-- Dropdown -->
+
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+     <li> <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> </li>
+    </ul>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</div>	
+</div>
+
+</div>
+
+

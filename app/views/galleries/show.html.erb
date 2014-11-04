@@ -1,0 +1,11 @@
+
+  <% @gallery.pictures.each do |picture| %>
+
+      <%= image_tag picture.image_url(:thumb).to_s %>
+		<%= picture.name %>
+      <div class="actions">
+        <%= link_to "edit", edit_painting_path(picture) %> |
+        <%= link_to "remove", picture, :confirm => 'Are you sure?', :method => :delete %>
+      </div>
+  <% end %>
+  <div class="clear"></div>

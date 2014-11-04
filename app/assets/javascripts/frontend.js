@@ -1,0 +1,15 @@
+//= require bootstrapjs/affix
+//= require bootstrapjs/alert
+//= require bootstrapjs/button
+//= require bootstrapjs/carousel
+//= require bootstrapjs/collapse
+//= require bootstrapjs/dropdown
+//= require bootstrapjs/tab
+//= require bootstrapjs/transition
+//= require bootstrapjs/scrollspy
+//= require bootstrapjs/modal
+//= require bootstrapjs/tooltip
+//= require bootstrapjs/popover
+//= require googlemaps
+//= require maplace
+//= require jquery

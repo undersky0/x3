@@ -1,0 +1,11 @@
+
+
+<li class="has_submenu">
+<a href="#"><i class="fa fa-arrow-circle-right"></i> City Areas <span class="nav-caret fa fa-caret-down"></span></a>
+<!-- Submenu -->
+<ul class="list-unstyled">
+  <% @localfeeds.each do |f| %>
+  <li><i class="fa fa-angle-double-right"></i> <%= link_to f.city, f %></a></li>
+  <% end %>
+</ul>
+</li>

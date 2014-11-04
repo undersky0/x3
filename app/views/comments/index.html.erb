@@ -1,0 +1,11 @@
+
+
+<div id="comments ">
+	<div class = "commentbox" id="record-17626" align="left">
+	<% @commentable.comments.each do |comment| %>
+		<div class="comment-body-text>
+			<%= comment.content %>
+			</div>
+			<%end%>
+			</div>
+<p><%= link_to "new Comment",  [:new, @commentable, :comment]%></p>

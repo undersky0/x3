@@ -1,0 +1,29 @@
+<%= form_for @group, remote: true, html: { class: "form-horizontal", style: "display:inline;" } do |f| %>
+  <div class="modal-body">
+    <ul class="errors"></ul>
+
+    <div class="control-group">
+      <%= f.label :name, class:"control-label" %>
+      <div class="controls">
+        <%= f.text_field :name %>
+      </div>
+    </div>
+<div class="control-group">
+  <%= f.label :group_type %> 
+  <%= f.select(:group_type, options_for_select([['Open', 1], ['Private', 2], ['Community', 3]]), {}, {class: "form-control"}) %>
+</div>
+   
+        <div class="control-group">
+        	<%= f.fields_for :location do |builder|%>
+      <%= builder.label :city, class:"control-label" %>
+      <div class="controls">
+        <%= builder.text_field :city %>
+        <%end%>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <%= f.submit class: "btn btn-primary" %>
+    <%= link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+  </div>
+<% end %>

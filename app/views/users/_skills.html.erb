@@ -1,0 +1,74 @@
+
+<% @skills.each do |skill| %>
+
+	<div class="skillbox">
+		<div class= "row">
+			<div class= "col-md-2 no-padd">
+				<%= link_to image_tag(skill.skillimage.url(:small)), skill_path(skill), :style => "z-index: 1;"%>
+				<% if skill.user.useravatar.nil?%>
+				<%skill.user.build_useravatar%>
+				<% else %>
+				<%= link_to image_tag(skill.user.useravatar.url(:thumb)), user_path(skill.user), :class => "pin" %>
+				<%end%> 
+		</div>
+		<div class= "col-md-8">
+			<h3><%= link_to skill.name, skill_path(skill)%></h3> by <strong> <%= skill.user.name%></strong> - <%= skill.teachers_title%><br>
+			<%= skill.description.first(300)%>
+		</div>
+		<div class= "col-md-2 text-center">
+			<div class = "skill-minibox">
+				<strong>
+					<h5><%= skill.start_date.to_date.to_formatted_s(:short) %> 
+					<%= skill.start_date.to_formatted_s(:time) %></h5>
+					<%if skill.location.nil?%>
+					<h5> Check</h5>
+					<h5> -</h5>
+					<%else%>
+					<h5><%= skill.location.google_address %></h5>
+					<h5><%= skill.location.city %></h5>
+					<%end%>
+					<%if skill.price.nil?%>
+					<h5>FREE</h5>
+					<%else%>
+					<h5><%= quid(skill.price)%></h5>
+					<%end%>
+				</strong>
+			</div>
+		</div>
+			</div>
+		<div class = "row black-boarder no-padd">
+			<div class="col-md-2">
+				Places left <strong> <%= skill.places_left %> </strong>
+				
+				</div>
+			<div class = "col-md-2">
+				<%= link_to "Users joined: #{skill.users_joined.count}", skills_path(:skill_id => skill.id), data: { toggle: "modal", target: "#ajax-modal" } %>
+				</div>
+				<div class="col-md-3">
+					Activity duration <strong> <%= skill.activity_duration.strftime("%I:%M")%></strong>
+					</div>
+				<div class="col-md-1">
+					
+				</div>
+				<div class="col-md-2">
+					<div class="btn-group btn-group-justified">
+						<div class="btn-group">
+							<%= render :partial => 'skills/memb', :locals => {:skill => skill} %>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="btn-group btn-group-justified">
+						<div class="btn-group">
+							<%= render :partial => "invites/addwatchlist", :locals => {user: current_user, inviteable: skill}%>
+						</div>
+					</div>					
+				</div>	
+			</div>
+
+
+	</div>
+
+<%end%>
+
+

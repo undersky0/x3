@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Email:
+  = @prelaunch.email
+
+= link_to 'Edit', edit_prelaunch_path(@prelaunch)
+\|
+= link_to 'Back', prelaunches_path

@@ -1,0 +1,13 @@
+<%if current_user.voted_for?(comment)%>
+
+<div class="scribblevote" id="vote_<%=comment.id%>"> 
+	<i class="fa fa-cloud-upload fa-rotate-180"></i>  
+	<%=comment.votes.count%> <%= link_to "demote", vote_comment_path(:id => comment.id, :vote => false), remote: true, method: :post%> 
+	</div>
+<%else%>
+
+<div class="scribblevote" id="vote_<%=comment.id%>"> 
+	<i class="fa fa-cloud-upload"></i>  
+	<%=comment.votes.count%> <%= link_to "promote", vote_comment_path(:id => comment.id, :vote => true), remote: true, method: :post%> 
+	</div>
+<%end%>

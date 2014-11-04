@@ -1,0 +1,1 @@
+$("#wbutton_<%=@inviteable.id%>").replaceWith("<%= escape_javascript(render(:partial => 'invites/removewatch', :locals => {:inviteable => @inviteable}))%>");

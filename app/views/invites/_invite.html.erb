@@ -1,0 +1,6 @@
+
+<%= link_to invite_invites_path(:user_id => user.id, :inviteable_id => inviteable.id,
+ :inviteable_type => inviteable.class.name), :remote => true, :class=>"btn btn-success btn-block btn-xs" do %>
+<span class="fa fa-plus-circle fa-1.5x"></span>
+  Join
+<% end %>

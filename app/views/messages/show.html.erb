@@ -1,0 +1,64 @@
+<div class="col-md-9 col-sm-8">
+	<!-- Page for read mails from inbox -->
+	<div class="mail-read">
+		<!-- Mail Head -->
+		<div class="mail-head">
+			<% conversation.recipients.each do |r|
+			<!-- Heading -->
+			<h3 class="pull-left">From : <strong><%= link_to image_tag(r.useravatar.url(:small), :title => r.full_name, :alt => r.full_name) %> </strong></h3>
+			
+			<span class="pull-right"><strong>Dated</strong> - Feb 23, 02:45 AM</span>
+			<div class="clearfix"></div>
+			<!-- Paragraph -->
+			<h6>%= r.subject%</h6>
+			
+			<%end%>
+			<!-- Button Group -->
+			<div class="mail-button">
+				<div class="form-group">
+					<button type="button" class="btn btn-danger">
+						<i class="fa fa-trash-o"></i>
+						<span>Delete</span>
+					</button>
+					<button type="button" class="btn btn-default">
+						<i class="fa fa-share"></i>
+						<span>Reply</span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<!-- Mail Details -->
+		<div class="mail-details">
+			  <% @receipts.each do |receipt| %>
+    <p><%= render receipt.message %> </p>
+  <% end %>
+			 
+			<!-- Heading -->
+			<h5><i class="fa fa-paperclip"></i>&nbsp; Attachments</h5>
+			<!-- Attachment data -->
+			<div class="mail-attach">
+				
+				<div class="attach-data">
+					<!-- Title -->
+					<p><a href="#">name</a>,&nbsp; Size: 00kb <a href="#" class="pull-right"><i class="fa fa-times red"></i></a></p>
+					<div class="clearfix"></div>
+				</div>
+			</div> <!-- End mail attach -->
+		</div> <!-- End mail details -->
+		<hr /> <!-- Horizontal line -->
+		<!-- Mail reply section -->
+		<div class="mail-reply">
+			<!-- Heading -->
+			<h3>Reply To : <strong>John Desoza</strong> &lt;<a href="#">john.desoza@example.com</a>&gt; </h3>
+			<!-- Reply Message form -->
+			<form role="form">
+				<div class="form-group">
+					<textarea class="textarea" class="form-control" placeholder="Type your message ..."></textarea>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-info">Reply</button>
+				</div>
+			</form>
+		</div>
+	</div> <!-- End mail read -->
+	</div>

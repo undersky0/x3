@@ -1,0 +1,23 @@
+
+<div class = "row top-buffer">
+	<div class = "col-md-12">
+		<div class = "boardered">
+
+<%= form_for [@albumable, @album], :html => { :class => 'form-inline' } do |f| %>
+<%= f.hidden_field :token %>
+  <div class="form-group">
+    	<%= f.label :name, :class => 'control-label' %>
+      <%= f.text_field :name, :class => 'form-control', :html => 'width:40%;' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, :class => 'control-label' %>
+      <%= f.text_field :description, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    </div>
+<% end %>
+		</div>
+	</div>
+</div>
+

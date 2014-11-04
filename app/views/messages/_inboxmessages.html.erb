@@ -1,0 +1,46 @@
+<table class="table table-hover">
+	<!-- Table head -->
+	<thead>
+		<tr>
+			<!-- Mail select box -->
+			<th><input tabindex="1" type="checkbox" id="selectAllinbox" value="selectAll"></th>
+			<th>Sender</th>
+			<th>Subject</th>
+			<th>Dated</th>
+		</tr>
+	</thead>
+<div class="row">
+<tbody>
+	<tr class="m-unread">
+		<%= form_tag url_for(:controller => 'conversations', :action => 'trash'), :method => :POST do %>
+		<% @conversations.each do |conversation| %>
+		<% if conversation.participants != current_user%>
+		<!-- Mail check box -->
+		<td><%= check_box_tag "id[]", conversation.id %></td>
+		<!-- Sender information -->
+		<td><%=conversation.recipients.each.map(&:full_name).uniq.take(3).join(" , ")%></td>
+		<td>
+			<!-- Mail subject -->
+			<% unless conversation.subject.nil?%>
+			<a><span><%= link_to conversation.subject, conversation_path(conversation.id) %></span></a>&nbsp; <i class="fa fa-paperclip"></i>
+			<%else%>
+			<!-- Mail message -->
+			<p><%= link_to conversation.last_message.body.truncate(10), conversation_path(conversation.id) %></p>
+			<%end%>
+		</td>
+		<!-- Time of mail receive -->
+		<td><%= conversation.updated_at.strftime("%a, %m/%e/%Y %I:%M %p")%></td>
+	</tr>
+	<%end%>
+	<%end%>
+</tbody>
+</div>
+	<div class="pull-left">
+				<%= submit_tag "Delete selected", :class => "btn btn-danger", :style=> "margin:20px 0px;", :id => "submit" %>
+	<% end %>
+	
+	</div>
+	<div class="pull-right">
+	<%= paginate @conversations %>
+	</div>
+</table>

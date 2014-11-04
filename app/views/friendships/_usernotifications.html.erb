@@ -1,0 +1,24 @@
+<li><a href="#">
+	<% @user.requested_friends.each do |g|%>
+		<!-- User image -->
+	<img src="img/user1.png" alt="" class="img-responsive img-circle" />
+		<!-- User details -->
+		<div class="duser-content">
+			Anjelina Jolie
+			<span>Lorem ipsum dolor sit amet elit.</span>
+		</div>
+	<div class="clearfix"></div>	
+</a></li>
+
+<% @user.requested_friends.each do |g|%>
+
+			<%if g.avatar.nil?%>
+			<%= link_to image_tag(g.useravatar.url(:default_url)), user_path(g.id), :class => "img-responsive" %> 
+			<%else%>
+				<%= link_to image_tag(g.useravatar.url(:large)), user_path(g.id), :class => "img-thumbnail", :style=> "width:150px; height:150px;" %> 
+
+										
+					<li><h3> <%=link_to g.full_name, user_path(g.id) %> </h3></li>
+
+			<%end%>
+		<%end%>

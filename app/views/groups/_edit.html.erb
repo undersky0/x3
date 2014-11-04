@@ -1,0 +1,16 @@
+<div class = "row">
+	<div class = "col-md-6">
+<%= simple_form_for @group, :html => { :multipart => true } do |f| %>
+	<p>
+		<%= f.input :name, label:'Group name', placeholder: '@group.name.to_s', input_html: {maxlenght: 20, :style => 'width: 100%'} %>
+		<%= f.input :about, label:'What is the group about ?', as: :text, :input_html => {:rows => 5, :style => 'width: 100%', maxlenght: 2000} %>
+		<%= f.input :group_type, priority: [ "Open" ], collection: [ "Open", "Private", "Local Community"] %>
+		<%= f.simple_fields_for :igroupcover do |g|%>
+		<%= g.input :attachment, as: :file %>
+		<%end %>
+		<%= f.submit%>
+	</p>
+		
+<%end%>	
+</div>
+</div>

@@ -1,0 +1,9 @@
+<div class="col-md-12">
+<div id="Comment-<%= scribble.id %>">
+        <%= form_for([scribble, scribble.comments.build], :class => 'form-group', :remote=>true) do |f| %>
+          <%= f.text_field :content,:placeholder=>"What do you think #{current_user.full_name}?", :class=>"form-control"%>
+          <br clear="all">
+          <%= f.submit "Add Comment", :class => "btn btn-success"%>
+        <% end %>
+      </div>
+      </div>

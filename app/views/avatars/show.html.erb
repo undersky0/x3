@@ -1,0 +1,13 @@
+<% title "Avatar" %>
+
+<p>
+  <strong>Add Attachement:</strong>
+
+
+</p>
+
+<p>
+  <%= link_to "Edit", edit_avatar_path(@avatar) %> |
+  <%= link_to "Destroy", @avatar, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", avatars_path %>
+</p>

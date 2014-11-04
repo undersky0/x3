@@ -1,0 +1,10 @@
+<%= simple_form_for @skill_type do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description,as: :text, placeholder: 'Be creative ', :input_html => {:rows => 3, :style => 'width: 100%'}%>
+    
+    <p>  #activities & skills has a type such as: social activty, business activies, design activities, fashion&style, film & video, Community & voluntering,
+  #sports, music, photography, technology, writting, Art, Science</p>
+  <p><%= f.submit %></p>
+<% end %>
+
+

@@ -1,0 +1,12 @@
+<% title "Attachables" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @attachables.name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_attachables_path(@attachables) %> |
+  <%= link_to "Destroy", @attachables, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", attachables_path %>
+</p>

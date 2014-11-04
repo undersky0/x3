@@ -1,0 +1,63 @@
+<%content_for :script do%>
+<%=stylesheet_link_tag "bootstrap-modal/css/bootstrap-modal"%>
+<%=javascript_include_tag "bootstrap/js/modal"%>
+<%=javascript_include_tag "modals"%>
+<%=javascript_include_tag "bootstrap-modal/js/bootstrap-modal"%>
+<%=javascript_include_tag "bootstrap-modal/js/bootstrap-modalmanager"%>
+<%=stylesheet_link_tag "skills"%>
+<%end%>
+<h4 class="text-center whitesmoke-boarder">Skills</h4>
+<div class = "row">
+	<div class = "col-md-10">
+<div class="content" id="section-1" style="display:<%=  if params[:tab] == 'tab1' then 'block' elsif params[:tab].nil? then 'block' else 'none' end %>;">
+<%= render 'skills', locals:{skills: @skills}%>
+</div>
+<div class="content" id="section-2" style="display:<%=  if params[:tab] == 'tab2' then 'block' else 'none' end%>;">
+render Attended Skills
+</div>
+<div class="content" id="section-3" style="display:<%=  if params[:tab] == 'tab3' then 'block' else 'none' end%>;">
+Render Whishlisted Skills
+</div>
+<div class="content" id="section-4" style="display:<%=  if params[:tab] == 'tab4' then 'block' else 'none' end%>;">
+render Projects
+</div>
+</div>
+
+
+
+<div class="col-md-2 no-padd" style="padding-left: 5px; padding-right: 20px">
+	<ul class = "nav nav-pills nav-stacked">
+	<li class= "<%=  if params[:tab] == 'tab1' then 'active' elsif params[:tab].nil? then 'active' end %>">
+		<a class = "tabs" href"#section-1" section= "section-1">
+			<span>Created</span> <span class="badge badge-inverse"><%=@skills.count%></span>
+		</a>
+	</li>
+	<li class= "<%= 'active' if params[:tab] == 'tab2' %>">
+	    <a class="tabs" href="#section-2" section="section-2">
+	            <span>Attended</span> <span class="badge badge-inverse"><%= @skills.count%></span>
+	    </a>
+   	</li> 
+    <li class= "<%= 'active' if params[:tab] == 'tab3' %>">
+	    <a class="tabs" href="#section-3" section="section-3">
+	            <span>Wishlisted</span> <span class="badge badge-inverse"><%= @skills.count%></span>
+	    </a>
+    </li> 
+    <li class= "<%= 'active' if params[:tab] == 'tab4' %>">
+        <a class="tabs" href="#section-4"section="section-4">
+                <span>Projects</span> 
+        </a>
+    </li>
+</ul>
+</div>
+</div>	
+<script>
+$(".tabs").click(function() {
+  $(this).parent().parent().children().removeClass("active");
+  $(this).parent().addClass("active");
+  $(".content").css("display","none");
+  $('#'+$(this).attr('section')).css("display","block");
+});
+</script>
+			
+			
+			<%= render :partial => 'layouts/modal' %>

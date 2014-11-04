@@ -1,0 +1,22 @@
+<% if @notification.empty?%>
+	
+<h5>No new notifications</h5>
+<%end%>
+<%else%>
+
+
+	<% @notification.each do |g|%>
+	<div class="row" style="padding:0px 15px;">
+		<div class="col-md-12" style="padding-top:10px;"> 
+			<% if g.subject.nil?%>
+			<i class="fa fa-user"></i> <%= g.body.truncate(35)%> <b class="pull-right"><%= distance_of_time_in_words_to_now(g.created_at) %> ago</b>
+			<div class="clearfix"></div>
+			<%else%>
+			<p><i class="fa fa-user"></i> <%= link_to g.notified_object.name, user_path(g.notified_object.id)%><b class="pull-right"><%= distance_of_time_in_words_to_now(g.created_at) %> ago</b></p>
+			<%= g.body.truncate(44)%>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+<%end%>
+<%end%>
+

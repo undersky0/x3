@@ -1,0 +1,34 @@
+
+<div class="page-gallery">
+	<div id="gallery">    
+		<!-- Each element -->
+		<% @all_connections.each do |g|%>
+		<div class="element">
+			<% if current_user != g && g.useravatar.nil?%>
+			<%g.build_useravatar%> 
+			<%end%>
+				<%= link_to image_tag(g.useravatar.url(:small)), user_path(g.id), :class => "img-thumbnail", :style=> "width:150px; height:150px;" %> 
+			<!-- Gallery caption -->
+			<div class="gall-caption">
+				<ul class="list-unstyled">
+					<% if Friendship.are_friends(current_user.id,g.id) || Friendship.are_friends_pending(current_user.id,g.id)%>
+					<li><h3> <%=link_to g.full_name.truncate(18), user_path(g.id) %> </h3></li>
+										<%= link_to reject_fr_friendships_path(:id => g.id), :remote => true, :class=>"btn btn-warning btn-block", :id=>"fbutton_#{g.id}" do %>
+					  <span class="fa fa-minus-circle fa-1.5x"></span>
+					  Unfriend
+					<% end %>
+					<%else%>
+					<li><h3> <%=link_to g.full_name.truncate(18), user_path(g.id) %> </h3></li>	
+					 <%= link_to addfriend_friendships_path(:id => g.id), :remote => true, :class=>"btn btn-success btn-block", :id=>"fbutton_#{g.id}" do %>
+					  <span class="fa fa-plus-circle fa-1.5x"></span>
+					  Friend
+					<% end %>
+					
+
+					<%end%>
+				</ul>
+			</div>
+			</div>
+			<%end%>
+	</div>
+</div>

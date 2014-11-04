@@ -1,0 +1,40 @@
+<h2>Search</h2>
+<%=form_tag group_path, class: "form-inline", method: :get do %>
+<div class="form-group">
+  <%= text_field_tag :query, params[:query], class: "form-control" %>    
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% if params[:query].present? %>    
+    <%= link_to "clear", group_path %>
+  <% end %>
+  <%end%>
+</div>
+<h3>Search Results</h3>
+<%= paginate @profiles%>
+<%= render "users", locals: @profiles%>
+
+<h2>Network Users</h2>
+<div class="page-gallery">
+	<div id="gallery">    
+		<!-- Each element -->
+		<% @users.each do |f|%>
+		<div class="element">
+			<!-- Gallery image -->
+			<%if Invitation.been_sent(@group, f)%>
+			<%= link_to image_tag(f.useravatar.url(:default_url)), user_path(f.id), :class => "img-responsive" %> 
+			<%= link_to "#{f.full_name}", user_path(f.id)%> <h5>Has been Invited</h5>
+			<%else%>
+				<%= link_to image_tag(f.useravatar.url(:thumb)), user_path(f.id), :class => "img-thumbnail", :style=> "width:150px; height:150px;" %>
+				<%= button_to "invite Friend", invite_invitations_path(:user_id => f.id, :group_id => @group.id), :action => :sendinv%> 
+			<!-- Gallery caption -->
+			<div class="gall-caption">
+				<ul class="list-unstyled">
+					<li> <%=link_to "#{f.full_name}", user_path(f.id) %> </li>
+				</ul>
+			</div>
+			</div>
+			<%end%>
+		<%end%>
+			
+		
+	</div>
+</div>

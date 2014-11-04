@@ -1,0 +1,9 @@
+	<%= javascript_include_tag "update.js" %>
+	
+	<div id="flash_notice" style="display:none"></div>
+	<div id="post_form">
+		<%=render :partial => 'scribbles/new'%>
+  		</div>
+  					<div id="posts_list">
+			<%=render :partial => 'scribbles/scribbles', :locals => {:scribbles => @scribbles}%>
+			</div>

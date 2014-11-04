@@ -1,0 +1,3 @@
+console.log('scribble: <%= @scribble.inspect %>')
+$("#vote_<%=@scribble.id%>").html("<%=j render(:partial => "scribbles/vote", :locals => {:scribble => @scribble})  %>");
+

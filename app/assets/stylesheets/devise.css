@@ -1,0 +1,32 @@
+body 
+{
+	background-image: url('f-b1920.jpg');
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	padding-top: 20px;
+	font-size: 18px;
+	font-weight: 600;
+	font-family: "Open Sans",serif;
+    
+}
+p{
+	line-height: 2
+}
+h1
+{
+    font-family: "Abel", Arial, sans-serif;
+    font-weight: 600;
+    font-size: 50px;
+	color:whitesmoke;
+}
+
+
+.margin-base-vertical 
+{
+    margin: 40px 0;
+}
+.logo{
+	
+}

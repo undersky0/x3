@@ -1,0 +1,16 @@
+<%= form_for @localfeed do |f| %>
+
+  <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= f.label :scribble_id %><br />
+    <%= f.number_field :scribble_id %>
+  </p>
+  <p>
+    <%= f.label :location_id %><br />
+    <%= f.number_field :location_id %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
