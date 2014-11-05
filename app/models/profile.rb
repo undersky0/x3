@@ -18,9 +18,11 @@ class Profile < ActiveRecord::Base
     # }
   # end
   
-  def reindex
-    self.reindex
-  end
+  
+  
+  # def reindex
+    # self.reindex
+  # end
 
   # def add_to_soulmate
     # loader = Soulmate::Loader.new("profile")

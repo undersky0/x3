@@ -25,4 +25,5 @@ jquery.js
 jquery.Jcrop.css
 jquery.Jcrop.js
 users.js
+googlemaps.js
 )
