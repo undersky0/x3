@@ -7,7 +7,7 @@ class Group::Useravatar < Asset
   :small  => "136x136#",
   :medium => "243x143>",
   :large => "786x500"},
-  :default_url => "./images/default_avatar_:style.jpg",
+  :default_url => "images/default_avatar_:style.jpg",
   :processors => [:cropper]
   validates_attachment_content_type :attachment, 
   :content_type => ['image/jpeg', 'image/png']

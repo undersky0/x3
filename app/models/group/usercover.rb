@@ -3,7 +3,7 @@ class Group::Usercover < Asset
   :styles => {
   :small  => "136x136#",
   :large => "1044x286"},
-  :default_url => "./images/default_usercover_:style.jpg",
+  :default_url => "images/default_usercover_:style.jpg",
   :processors => [:cropper]
   validates_attachment_content_type :attachment, 
   :content_type => ['image/jpeg', 'image/png']

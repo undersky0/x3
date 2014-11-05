@@ -77,24 +77,14 @@ class User < ActiveRecord::Base
   
   has_many :friendship
   
-  has_many :friends,
-           :through => :friendship,
-           :source => :friend,
-           :conditions => "status = 'accepted'",
-           :order => :created_at
+  has_many :friends, -> { where  "friendships.status = 'accepted'" }, :through => :friendship, source: :friend
   
   
-  has_many :requested_friends,
-           :through => :friendship,
-           :source => :friend,
-           :conditions => "status = 'requested'",
-           :order => :created_at
+  has_many :requested_friends, -> { where ("friendships.status = 'requested'")},
+           through: :friendship, source: :friend
            
-  has_many :pending_friends,
-           :through => :friendship,
-           :source => :friend,
-           :conditions => "status = 'pending'",
-           :order => :created_at
+  has_many :pending_friends, -> { where("friendships.status = 'pending'")},
+           through: :friendship, source: :friend
            
   # has_many :neighbours,
            # :through => :friendships,

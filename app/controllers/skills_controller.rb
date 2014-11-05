@@ -48,7 +48,7 @@ class SkillsController < ApplicationController
 
   def create
     @user = current_user
-    @skill = @user.skills.build(params[:skill])
+    @skill = @user.skills.build(skill_params)
     if @skill.save
       redirect_to new_skill_locations_path(@skill), :notice => "Successfully created skill."
     else
@@ -76,4 +76,13 @@ class SkillsController < ApplicationController
     @skill.destroy
     redirect_to skills_url, :notice => "Successfully destroyed skill."
   end
+  
+  private
+  def skill_params
+    params.require(:skill).permit(:name, :description,
+  :skill_type_id, :properties, :teachers_title, :necessary_resources, :level, 
+  :required_experience,:price, :start_date, :min_students, :max_students, :activity_duration,
+  :location_id, :user_id, :location_attributes => [:address, :street_address, :post_code], skillimage_attributes: :attachment)
+  end
+  
 end

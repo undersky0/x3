@@ -2,13 +2,6 @@ class ScribblesController < ApplicationController
    # GET /scribbles
   # GET /scribbles.json
     #before_filter :load_scribbled
-    before_filter :load_posts
-    respond_to :json
-    
-  def load_posts
-    @scribbles = Scribble.all(:order => "created_at DESC")
-    @scribble = Scribble.new
-  end
     
   def promote
     @user = current_user

@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
     # GET /users
   # GET /users.js.coffee
-autocomplete :profile, :first_name, :full => true, :extra_data => [:lastname]
 
   def user_skills
     @user = User.find(params[:id])
@@ -188,7 +187,4 @@ end
     end
   end
   
-    def autocomplete
-    render json: Profile.search(params[:query], autocomplete: true, limit: 10).map(&:firstname)
-  end
 end

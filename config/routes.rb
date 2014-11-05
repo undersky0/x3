@@ -48,7 +48,7 @@ Uu2::Application.routes.draw do
     
     resources :users do
       member do
-        match 'crop', :action => :crop
+        get 'crop', :action => :crop
       end
       resources :profiles do
         member do
@@ -141,9 +141,9 @@ Uu2::Application.routes.draw do
    
 
   
-   match "/showusers/:id" => "users#showconnections", :as=>"showusers"
+   get "/showusers/:id" => "users#showconnections", :as=>"showusers"
    mount Soulmate::Server, :at => '/sm'
-   match "/usersearch/" => "users#usersearch", :as=>"usersearch"
+   get "/usersearch/" => "users#usersearch", :as=>"usersearch"
    
 
    

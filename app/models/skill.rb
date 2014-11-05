@@ -30,8 +30,8 @@ class Skill < ActiveRecord::Base
   validates :teachers_title, :price, :start_date, :activity_duration, 
                       :level, :min_students, :max_students, presence: true
 
-  has_many :users_joined, :class_name => 'Invite', foreign_key: :inviteable_id, :conditions => "status = 'Joined'"
-  has_many :watchers, :class_name => 'Invite', foreign_key: :inviteable_id, :conditions => "status = 'Watched'"
+  has_many :users_joined, -> { where(status: 'Joined')}, :class_name => 'Invite', foreign_key: :inviteable_id
+  has_many :watchers, -> { where(status: 'Watched')}, :class_name => 'Invite', foreign_key: :inviteable_id
 
   has_many :scribbles, :as => :scribbled, :dependent => :destroy
   accepts_nested_attributes_for :scribbles

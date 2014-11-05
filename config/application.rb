@@ -1,30 +1,35 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-require "active_record/railtie"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "active_resource/railtie"
-require "sprockets/railtie"
 
-if defined?(Bundler)
-  # If you precompile assets before deploying to production, use this line
-  Bundler.require(*Rails.groups(:assets => %w(development test)))
-  # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
-end
+
+Bundler.require(:default, Rails.env)
 
 module Uu2
   class Application < Rails::Application
+    
+    # We don't want the default of everything that isn't js or css, because it pulls too many things in
+config.assets.precompile.shift
+
+# Explicitly register the extensions we are interested in compiling
+config.assets.precompile.push(Proc.new do |path|
+  File.extname(path).in? [
+    '.html', '.erb', '.haml',                 # Templates
+    '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
+    '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
+  ]
+end)
+    
+    
     Paperclip.options[:command_path] = "/usr/local/bin/identify"
     config.autoload_paths << "#{config.root}/lib"
     config.autoload_paths += %W(#{config.root}/lib/facebook_wrapper)
-    config.action_view.javascript_expansions[:defaults] = %w(jquery.min jquery_ujs)
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts', 'bower_components')
-    config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = true
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
@@ -63,7 +68,7 @@ module Uu2
     # This will create an empty whitelist of attributes available for mass-assignment for all models
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
-    config.active_record.whitelist_attributes = true
+    config.active_record.whitelist_attributes = false
     config.active_record.mass_assignment_sanitizer = :strict
 
     # Enable the asset pipeline

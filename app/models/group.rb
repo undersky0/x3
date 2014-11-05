@@ -5,7 +5,7 @@ class Group < ActiveRecord::Base
   validates_presence_of :name, :group_type
   has_one :igroupcover, :as => :assetable, :class_name => "Group::Igroupcover", :dependent => :destroy
   accepts_nested_attributes_for :igroupcover, reject_if: :all_blank
-  acts_as_authorization_object
+  # acts_as_authorization_object
   searchkick autocomplete: ['name']
   attr_accessible :location_attributes, :image_attributes, :name,
                    :location_id, :location_name, :scribble_attributes, 
