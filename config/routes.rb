@@ -44,7 +44,8 @@ Uu2::Application.routes.draw do
       end
     end
 
-    devise_for :users, path_names: {sign_in: "login"}, controllers: {omniauth_callbacks: "authentications", registrations: "registrations"}
+    devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
+    match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
     
     resources :users do
       member do

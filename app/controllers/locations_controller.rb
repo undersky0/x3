@@ -3,6 +3,7 @@ class LocationsController < ApplicationController
   # GET /locations.json
   #before_filter :load_mappable
   skip_before_filter :redirect_invalid_locations, only: [:new, :create]
+  skip_filter :ensure_signup_complete
   def index
   @locations = Location.all
   @user = current_user

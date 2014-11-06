@@ -187,4 +187,17 @@ end
     end
   end
   
+    # GET/PATCH /users/:id/finish_signup
+  def finish_signup
+    # authorize! :update, @user 
+    @user = current_user
+    if request.patch? && params[:user] #&& params[:user][:email]
+      if @user.update(params[:user])
+        redirect_to @user, notice: 'Your profile was successfully updated.'
+      else
+        @show_errors = true
+      end
+    end
+  end
+  
 end

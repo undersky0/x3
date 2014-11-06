@@ -1,9 +1,9 @@
 	<div class="element-header text-center">
-		<strong><%= link_to "Full User Info", user_profiles_path(@user)%></strong>
+		<strong><%= link_to "Full User Info", user_profile_path(@user, @user.profile)%></strong>
 	</div>
 
 	<div class="col-md-6 whitesmoke-boarder nopadding" style="height: 141px;">
-	<p strong> <i class="fa fa-child"></i> <%= link_to "User Profile", user_profiles_path(@user)%></p>
+	<p strong> <i class="fa fa-child"></i> <%= link_to "User Profile", user_profile_path(@user, @user.profile)%></p>
 	<p strong> <i class="fa fa-smile-o"></i> <%= link_to "Friends", showusers_path(@user)%> <span class="badge badge-danger pull-right"><%= @user.friends.count%></span></p>
 	<p strong> <i class="fa fa-users"></i> <%= link_to "Groups", groups_path %> </p>
 	</div>

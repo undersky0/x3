@@ -2,7 +2,7 @@ Uu2::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
   config.assets.initialize_on_precompile = false
   config.eager_load = true
-  
+  config.app_domain = 'http://undersky.co.uk'
    # Compress JavaScripts and CSS
  config.assets.js_compressor = :uglifier
   # Code is not reloaded between requests
@@ -68,4 +68,19 @@ Uu2::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  
+   # Email
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { host: config.app_domain }
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com', 
+    port: '587',
+    enable_starttls_auto: true,
+    user_name: 'someuser',
+    password: 'somepass',
+    authentication: :plain,
+    domain: 'http://undersky.co.uk'
+  }
+  
 end
