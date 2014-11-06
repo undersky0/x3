@@ -4,7 +4,7 @@ Uu2::Application.routes.draw do
     get "search/query"
     get "search/tokenquery"
     get "friendmap/index"
-    get "home/index"
+    get 'home', to: 'home#index'
     get "invites/user_invite" => 'invites#user_invite', :as => :user_invite
     resources :locations
     resources :prelaunches

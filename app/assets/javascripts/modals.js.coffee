@@ -2,13 +2,13 @@
 $('a[data-toggle=modal]').on 'click', ->
   $('.dropdown').removeClass('open')
 # this sets up the ajax loader, and it will stay until the method specific js removes it
-$('a[data-target=#ajax-modal]').on 'click', (e)->
+$('a[data-target=#ajax-groupmodal]').on 'click', (e)->
    e.preventDefault()
    e.stopPropagation();
    $.rails.handleRemote( $(this) );
 #removes whatever is in the modal body content div upon clicking close/outside modal
 $(document).on 'click', '[data-dismiss=modal], .modal-scrollable', ->
   $('.modal-body-content').empty()
-$(document).on 'click', '#ajax-modal', (e) ->
+$(document).on 'click', '#ajax-groupmodal', (e) ->
   console.log("modal clicked")
   e.stopPropagation();

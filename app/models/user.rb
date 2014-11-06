@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   searchkick
   make_flagger
   acts_as_voter
-  before_save :create_actor_id, :create_location, :create_avatar, :create_cover, :create_profile
-  
+  after_save :create_location, :create_avatar, :create_cover, :create_profile
+  before_save :create_actor_id
   
   has_many :scribbles, :as => :scribbled, :dependent => :destroy
   accepts_nested_attributes_for :scribbles
@@ -111,22 +111,24 @@ class User < ActiveRecord::Base
   def prefix
     try(:full_name) || email
   end
-# def message_title
-    # "#{prefix} <#{email}>"
-# end
-# 
-# def mailbox
-  # mailbox.new(self)
-# end
+
   
   def full_name
     @profile = self.profile
+    if @profile.firstname.nil?
+      return "No Name"
+    else
     return "#{@profile.firstname.humanize} #{@profile.lastname.humanize}"
+    end
   end
   
   def name
     @profile = self.profile
-    return "#{@profile.firstname.humanize} #{@profile.lastname.humanize}"
+    if @profile.firstname.nil?
+      return "No Name"
+    else
+    return "#{@profile.firstname} #{@profile.lastname}"
+    end
   end
   
   def create_profile

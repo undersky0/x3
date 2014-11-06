@@ -14,7 +14,7 @@ class AlbumsController < ApplicationController
   def show
     
     @album = @albumable.albums.find(params[:id])
-    @pictures = Picture.find(:all, :conditions => ['album_id = ?', @album.id])
+    @pictures = Picture.where(album_id: @album.id)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @album }

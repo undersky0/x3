@@ -43,15 +43,15 @@ class Skill < ActiveRecord::Base
     return self.max_students -=self.min_students
     end
   end  
-    def search_data
-    {
-      name: name
-    }
-  end
-  
-  def reindex
-    self.reindex
-  end
+    # def search_data
+    # {
+      # name: name
+    # }
+  # end
+#   
+  # def reindex
+    # self.reindex
+  # end
 
   
   

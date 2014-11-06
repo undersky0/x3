@@ -14,3 +14,19 @@
 <%end%>	
 </div>
 </div>
+<%= form_for @group, :html => { :multipart => true } do |f| %>
+	<p>
+		<%= f.fields_for :igroupcover do |g|%>
+		<%= g.label :igroupcover %>
+		<%= g.file_field :attachment %>
+		<%end %>
+		<%= f.submit%>
+	<p>
+		
+<%end%>		
+
+<p>
+  <%= link_to "Edit", edit_group_path(@group) %> |
+  <%= link_to "Destroy", @group, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", groups_path %>
+</p>

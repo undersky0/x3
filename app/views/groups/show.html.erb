@@ -39,24 +39,24 @@
                 </a>
         </li>
 </ul>
-<div class="content" id="section-1" style="display:block;">
+<div class="content" id="section-1" style="display:block; min-height: 286px;">
 <%= image_tag(@group.igroupcover.url(:gcover), :class => "group-cover") %>
 </div>
-<div class="content" id="section-2" style="display:none;">
+<div class="content" id="section-2" style="display:none;min-height: 286px;">
         <%= render :partial => "groups/about" %>
 </div>
 
-<div class="content" id="section-3" style="display:none;">
+<div class="content" id="section-3" style="display:none;min-height: 286px;">
         <%= render :partial => "groups/events" %>
 </div>
 
-<div class="content" id="section-4" style="display:none;">
+<div class="content" id="section-4" style="display:none;min-height: 286px;">
         <%= render :partial => "groups/album", :locals => {:albumable => @albumable} %>
 </div>
-<div class="content" id="section-5" style="display:none;">
+<div class="content" id="section-5" style="display:none;min-height: 286px;">
         <%= render :partial => "groups/people"%>
 </div>
-<div class="content" id="section-6" style="display:none;">
+<div class="content" id="section-6" style="display:none;min-height: 286px;">
         <%= render :partial => "groups/edit"%>
 </div>
 </div>
@@ -67,31 +67,7 @@
         <%= render :partial => "groups/feeds", :locals => {:scribbled => @scribbled} %>
 
 
-<%= form_for @group, :html => { :multipart => true } do |f| %>
-	<p>
-		<%= f.fields_for :igroupcover do |g|%>
-		<%= g.label :igroupcover %>
-		<%= g.file_field :attachment %>
-		<%end %>
-		<%= f.submit%>
-	<p>
-		
-<%end%>		
-<div id="product-modal" class="modal fade">
-<div class="modal-dialog">
-<div id="inner-product-modal" class="modal-content">
-</div>
-</div>
-</div>
 
- 
-<% @avatar = Avatar.new %>
-<p>
-  <%= render partial: 'avatars/form', locals: { avatar: @avatar, avatarable: @avatarable}%>
-  <%= link_to "Edit", edit_group_path(@group) %> |
-  <%= link_to "Destroy", @group, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", groups_path %>
-</p>
 
 <script>
 $(".tabs").click(function() {

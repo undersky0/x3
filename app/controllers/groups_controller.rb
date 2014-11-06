@@ -70,7 +70,8 @@ class GroupsController < ApplicationController
     if @group.save
     respond_to do |format|  
       #format.html {redirect_to group_path(@group), :notice => "Successfully created new group." }
-      format.js{}
+      format.html { redirect_to @group, notice: 'Group was successfully created.' }
+      format.js   { render action: 'show', status: :created, location: @group }
     end
     else
       render :action => 'new'

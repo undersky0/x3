@@ -26,4 +26,10 @@ jquery.Jcrop.css
 jquery.Jcrop.js
 users.js
 googlemaps.js
+typeahead.js
+bootstrap/dist/css/bootstrap.css
+bootstrap-fileinput/js/fileinput.min.js
+bootstrap-fileinput/css/fileinput.min.css
+fancybox/source/jquery.fancybox.js
+fancybox/source/jquery.fancybox.css
 )

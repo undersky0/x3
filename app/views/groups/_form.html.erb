@@ -1,21 +1,25 @@
-<%= form_for @group, remote: true, html: { class: "form-horizontal", style: "display:inline;" } do |f| %>
+<% modal ||= false %>
+<% remote = modal ? true : false %>
+<%= form_for(Group.new, remote: remote, html: {role: :form, 'data-model' => 'group'}) do |f| %>
   <div class="modal-body">
     <ul class="errors"></ul>
 
-    <div class="control-group">
+    <div class="form-group">
       <%= f.label :name, class:"control-label" %>
-      <div class="controls">
+      <div class="controls-control">
         <%= f.text_field :name %>
       </div>
     </div>
-<div class="control-group">
-  <%= f.label :group_type %> 
-  <%= f.select(:group_type, options_for_select([['Open', 1], ['Private', 2], ['Community', 3]]), {}, {class: "form-control"}) %>
-</div>
+		<div class="form-group">
+		  <%= f.label :group_type, class: "control-label" %> 
+		  <div class="controls-control">
+		  <%= f.select(:group_type, options_for_select([['Open', 1], ['Private', 2], ['Community', 3]]), {}, {class: "form-control"}) %>
+		</div>
+		</div>
    
         <div class="control-group">
         	<%= f.fields_for :location do |builder|%>
-      <%= builder.label :city, class:"control-label" %>
+      		<%= builder.label :city, class:"control-label" %>
       <div class="controls">
         <%= builder.text_field :city %>
         <%end%>
