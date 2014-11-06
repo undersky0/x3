@@ -3,9 +3,12 @@
 <a href="#"><i class="fa fa-users"></i> Y&A Groups<span class="nav-caret fa fa-caret-down"></span></a>
 <!-- Submenu -->
 <ul class="list-unstyled"> 
- <%= link_to "Create Group", new_group_path, remote: true, class: "btn btn-primary-sm" %>
+<%= link_to 'New group', '#new_group_modal', 'data-toggle' => 'modal' %>
   <% @groups.each do |f| %>
   <li><i class="fa fa-angle-double-right"></i> <h4><%= link_to f.name, f %> </h4></a></li>
   <% end %>
 </ul>
 </li>
+
+
+
