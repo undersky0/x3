@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029023629) do
+ActiveRecord::Schema.define(version: 20141107153623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -215,10 +215,10 @@ ActiveRecord::Schema.define(version: 20141029023629) do
 
   create_table "localfeeds", force: true do |t|
     t.string   "city"
-    t.integer  "scribble_id"
     t.integer  "location_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "ward_id"
   end
 
   add_index "localfeeds", ["city"], name: "index_localfeeds_on_city", using: :btree

@@ -97,7 +97,7 @@ end
   end
   
   def createward
-     c = self.create_ward!({:name => self.city, :city => self.city}) # should be [name => self.sublocality]
+     c = self.create_ward!({:name => self.city, :city => self.city, :location_id => self.id}) # should be [name => self.sublocality]
     self.ward_id = c.id
   end
 

@@ -5,10 +5,8 @@ class Localfeed < ActiveRecord::Base
   accepts_nested_attributes_for :scribbles
   before_validation :downcase_city
   validates :city, :presence => true, :uniqueness => { :case_sensitive => false }
-  has_one :location, :as => :mappable
-  
-  has_one :ward, :as => :warded
-  
+  belongs_to :ward
+  after_save :first_scribble
   
   private
   def downcase_city
@@ -16,7 +14,7 @@ class Localfeed < ActiveRecord::Base
   end
   
   def first_scribble
-    self.scribbles.create(:post => "Welcome, You are the first in your location! ")
+    self.scribbles.create!(:user_id => User.first.id, :post => "Welcome, You are the first in #{self.city} to join our network! ")
   end
   # after_validation :savefeed
 end
