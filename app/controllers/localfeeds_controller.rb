@@ -9,7 +9,7 @@ class LocalfeedsController < ApplicationController
   end
 
   def show
-    
+    @localfeeds = Localfeed.all
     @localfeed = Localfeed.find(params[:id])
     if @localfeed.nil?
       @localfeed = Localfeed.find_by_city(current_user.location.city || @city)

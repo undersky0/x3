@@ -14,6 +14,7 @@
 			<%=render :partial => 'scribbles/scribbles', :locals => {:scribbles => @scribbles}%>
 			</div>
 		</div>
+		<%= render partial: "feedlist" %>
 </div>
 <%= paginate @scribbles %>
 
