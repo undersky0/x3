@@ -19,11 +19,4 @@ class Localfeed < ActiveRecord::Base
     self.scribbles.create(:post => "Welcome, You are the first in your location! ")
   end
   # after_validation :savefeed
-#   
-#   
-#   
-#   
-  # def savefeed
-    # self.save!
-  # end
 end

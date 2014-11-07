@@ -10,12 +10,18 @@ class LocalfeedsController < ApplicationController
 
   def show
     @localfeeds = Localfeed.all
-    @localfeed = Localfeed.find(params[:id])
-    if @localfeed.nil?
-      @localfeed = Localfeed.find_by_city(current_user.location.city || @city)
+    if params[:id].present?
+      @localfeed = Localfeed.find(params[:id])
+    end
+    
+    if params[:city].present?
+      c = params[:city]
+      @localfeed = Localfeed.find_by_city(c)
     else
     @scribbles = @localfeed.scribbles.order("created_at DESC").page params[:page]
     end
+    
+    
     @scribbled = @localfeed
     
       respond_to do |format|
