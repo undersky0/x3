@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!, :redirect_invalid_locations
   #before_filter :authenticate_user!
     include ApplicationHelper
-helper_method :recipients
-after_filter :prepare_unobtrusive_flash
-before_filter :ensure_signup_complete, only: [:new, :create, :update, :destroy]
+  helper_method :recipients
+  after_filter :prepare_unobtrusive_flash
+  before_filter :ensure_signup_complete, only: [:new, :create, :update, :destroy]
 
 
    def recipients
@@ -34,10 +34,10 @@ before_filter :ensure_signup_complete, only: [:new, :create, :update, :destroy]
     current_user.try(:location).try(:city).nil?
   end
   
+  
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop
     return if action_name == 'finish_signup'
-
     # Redirect to the 'finish_signup' page if the user
     # email hasn't been verified yet
     if current_user && !current_user.email_verified?

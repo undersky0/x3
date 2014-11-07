@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   skip_filter :redirect_invalid_locations, :only => [:new, :create]
-  layout "devise", :only => :new
+  skip_filter :ensure_signup_complete
+  layout "about", :only => :new
   # before_filter :load_user
   def index
     @profiles = Profile.all

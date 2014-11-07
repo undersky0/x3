@@ -1,21 +1,24 @@
-<div class="row">
+<div class="col-md-4 col-md-offset-4 top-buffer">
 	<div class="group-header">
-		<h3 strong> Please enter your details</h3>
+		<div class="text-center"><h4>Please enter your details</h4></div>
 	</div>
 	<div class="col-md-12 whitesmoke-boarder">
 		
 <%= simple_form_for @profile,:html => { :class => 'form-horizontal' } do |f| %>
 
 <div class="form-group">
-	<h4><%= f.label "First name"%> </h4>
+	<div class="text-center"><%= f.label "First name"%> </div>
     <%= f.input :firstname, label: false, :input_html => { class: 'form-control'}%>
 </div>
 <div class="form-group">
-	<h4><%= f.label "last name"%> </h4>
+	<div class="text-center"><%= f.label "last name"%> </div>
     <%= f.input :lastname, label: false, :input_html => { class: 'form-control'} %>
 </div>
-	<%= f.submit "Enter", :class=>"btn btn-success btn-block"%>
+<div class="form-group">
+	<%= f.submit "Enter", :class=>"btn btn-success btn-block btn-lg"%>
+	</div>
 <% end %>
 
 </div>
+
 </div>

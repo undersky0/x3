@@ -9,7 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require typeaheadjs
- *= require bootstrap/dist/css/bootstrap
  *= require style
+ *= require bootstrap/dist/css/bootstrap
  *= require font-awesome
  */
