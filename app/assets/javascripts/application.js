@@ -12,15 +12,15 @@
 //
 
 //= require jquery/dist/jquery-1.11.1
-//= require jquery-ujs/src/rails
-//= require typeahead.js/dist/typeahead.bundle
 //= require unobtrusive_flash
-//= require custom
+//= require jquery-ujs/src/rails
 //= require bootstrap/dist/js/bootstrap
 //= require jquery.infinite-pages
+//= require custom
+//= require search
+//= require typeahead.js/dist/typeahead.bundle
 //= require hogan/lib/template
 //= require hogan/lib/compiler
 //= require hogan/lib/hogan
-//= require search
 //
 
