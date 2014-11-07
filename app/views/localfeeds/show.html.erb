@@ -1,6 +1,6 @@
 <%=javascript_include_tag "localfeeds"%>
 <% @scribble = Scribble.new %>
-<div class="row">
+<div class="row top-buffer">
   <div class="col-md-12">
 	<div id="post_form">
 		<%=render :partial => 'scribbles/new', :locals => {:scribbled => @scribbled}%>
