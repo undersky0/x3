@@ -39,7 +39,7 @@ end
     if price==0
       return "FREE"
     else
-    return number_to_currency(price, :unit=> "&pound")
+    return number_to_currency(price, :unit=> "£")
     end
   end  
   

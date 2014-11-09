@@ -29,11 +29,7 @@
 					<h5><%= skill.location.google_address %></h5>
 					<h5><%= skill.location.city %></h5>
 					<%end%>
-					<%if skill.price.nil?%>
-					<h5>FREE</h5>
-					<%else%>
 					<h5><%= quid(skill.price)%></h5>
-					<%end%>
 				</strong>
 			</div>
 		</div>	
