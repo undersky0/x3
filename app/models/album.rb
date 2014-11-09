@@ -4,8 +4,7 @@ class Album < ActiveRecord::Base
   
   belongs_to :albumable, :polymorphic => true
   
-  
-    def generate_token
+  def generate_token
     self.token = loop do
       random_token = SecureRandom.urlsafe_base64
       break random_token unless Gallery.where(token: random_token).exists?

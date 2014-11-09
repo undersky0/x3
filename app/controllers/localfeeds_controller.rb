@@ -37,8 +37,6 @@ class LocalfeedsController < ApplicationController
     else
       render :action => 'new'
     end
-    
-
   end
 
   def edit
@@ -71,8 +69,6 @@ class LocalfeedsController < ApplicationController
     @user = current_user
     @newlocalscribble = @localfeed.scribbles.create(params[:scribble])
     redirect_to @localfeed
-    #@localscribble.scribbled = @user
-    #@localscribble.scribbled = @localfeed
   end
   
   def useraddress

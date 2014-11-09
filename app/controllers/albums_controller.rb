@@ -12,7 +12,6 @@ class AlbumsController < ApplicationController
   end
 
   def show
-    
     @album = @albumable.albums.find(params[:id])
     @pictures = Picture.where(album_id: @album.id)
     respond_to do |format|

@@ -3,7 +3,7 @@ class Skill < ActiveRecord::Base
   belongs_to :user
   searchkick word_start: [:name]
   #after_save :reindex
-
+  before_save :build_image
   attr_accessible :skillimage_attributes, :photo_attributes, :name, :description,
   :skill_type_id, :properties, :teachers_title, :necessary_resources, :level, 
   :required_experience,:price, :start_date, :min_students, :max_students, :activity_duration,
@@ -25,7 +25,8 @@ class Skill < ActiveRecord::Base
   accepts_nested_attributes_for :skillimage, reject_if: :all_blank
   
   
-  validates :name, length: {minimum: 2, maximum: 50}
+  validates :name, length: {minimum: 2, maximum: 60}
+  validates :teachers_title, length: {minimum: 2, maximum: 70}
   validates :description, length:{in: 1..2500}
   validates :teachers_title, :price, :start_date, :activity_duration, 
                       :level, :min_students, :max_students, presence: true
@@ -42,7 +43,14 @@ class Skill < ActiveRecord::Base
     else
     return self.max_students -=self.min_students
     end
-  end  
+  end
+  
+    def build_image
+     if self.skillimage.nil?
+       self.build_skillimage()
+     end
+  end
+    
     # def search_data
     # {
       # name: name

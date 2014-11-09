@@ -1,6 +1,5 @@
 class MembershipsController < ApplicationController
   
-
     def create
     @membership = current_user.memberships.build(:group_id => params[:group_id])
     if  current_user.memberships.find_by_group_id(params[:group_id]).nil?

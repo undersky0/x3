@@ -32,19 +32,15 @@ respond_to :json
   end
 
   def create
-    #@picture = Picture.create(params[:picture])
-
-    
       p_attr = params[:file]
       @album = Album.find(params[:picture][:album_id])
       @picture = @album.pictures
     
- respond_to do |format|
+    respond_to do |format|
     if params[:picture][:file].present?
         params[:picture][:file].each do |a|
           @album.pictures.create(file: a)
         format.html {redirect_to :back}
-        
       end
     else
       format.html {redirect_to :back, :notice => "please browse for right picture first"}
@@ -54,9 +50,7 @@ respond_to :json
 
   def edit
     @album = Album.find(params[:gallery_id])
-
     @picture = @album.pictures.find(params[:id])
-    # @picture = Picture.find(params[:id])
   end
 
   def update
@@ -69,26 +63,23 @@ respond_to :json
   end
 
   def destroy
-    
     @album = Album.find(params[:album_id])
     @picture = @album.pictures.find(params[:picture_id])
-    #@picture = Picture.find(params[:id])
     @picture.destroy
     respond_to do |format|
-  format.html { redirect_to :back }
-  format.json { head :no_content }
-end
+      format.html { redirect_to :back }
+      format.json { head :no_content }
+    end
   end
   
   def make_default
     @picture = Picture.find(params[:id])
     @album = Album.find(params[:album_id])
-
     @album.cover = @picture.id
     @album.save
-
     respond_to do |format|
       format.js
     end
   end
+  
 end

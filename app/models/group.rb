@@ -1,12 +1,16 @@
 class Group < ActiveRecord::Base
   include ActiveModel::Validations
-  # validates_length_of :name, :within => 3..20, :wrong_lenght => "Try a name between 5 and 20 characters. {{count}}"
+  validates_length_of :name, :within => 3..20, :wrong_lenght => "Try a name between 5 and 20 characters. {{count}}"
   # validates_lenght_of :about, :within => 1..2000, :wrong_lenght => "A little too long ?. {{count}}"
   validates_presence_of :name, :group_type
   has_one :igroupcover, :as => :assetable, :class_name => "Group::Igroupcover", :dependent => :destroy
   accepts_nested_attributes_for :igroupcover, reject_if: :all_blank
   # acts_as_authorization_object
   searchkick autocomplete: ['name']
+  
+  before_save :build_avatar
+  before_save :build_cover
+  
   attr_accessible :location_attributes, :image_attributes, :name,
                    :location_id, :location_name, :scribble_attributes, 
                    :group_type, :privacy, :about, :membership_id, :event_id, :headline, :avatar_attributes, :user_id, :igroupcover_attributes 
@@ -41,7 +45,13 @@ class Group < ActiveRecord::Base
        self.build_igroupcover()
      end
   end
-  after_create :build_avatar
+  
+  def build_cover
+    if self.igroupcover.nil?
+      self.build_igroupcover()
+    end
+  end
+
 
 
 end

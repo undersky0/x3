@@ -2,7 +2,7 @@ class AttachablesController < ApplicationController
   def index
     @attachables = Attachables.all
   end
-
+  
   def show
     @attachables = Attachables.find(params[:id])
   end

@@ -7,24 +7,20 @@ class ProfilesController < ApplicationController
     @profiles = Profile.all
     @profile = current_user.profile
     
-        if params[:query].present?
+    if params[:query].present?
       @user = Profile.search(params[:query])
-     # @user = Kamari.paginate_array(@use).page(params[:page]).per(5)
     else
       @use = Profile.all
       @user = Kaminari.paginate_array(@use).page(params[:page]).per(5)
-          end
+    end
   end
 
   def show
-    #@profile = Profile.find(params[:id])
     @user = User.find_by_id(params[:user_id])
-    #@user = current_user
     @profile = @user.profile
   end
 
   def new
-    
     @user = current_user
     @profile = @user.build_profile
   end
@@ -32,8 +28,6 @@ class ProfilesController < ApplicationController
   def create
     @user = current_user
     @profile = @user.build_profile(params[:profile])
-
-  
     if @profile.save
       redirect_to new_user_locations_path(current_user), :notice => "Successfully created profile."
     else
@@ -43,12 +37,10 @@ class ProfilesController < ApplicationController
 
   def edit
    @profile = Profile.find(params[:id])
-
   end
 
   def update
     @profile = Profile.find(params[:id])
-
     if @profile.update_attributes(params[:profile])
       redirect_to @profile, :notice  => "Successfully updated profile."
     else

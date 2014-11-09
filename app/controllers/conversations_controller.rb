@@ -14,12 +14,12 @@ class ConversationsController < ApplicationController
   end
   
   def reply
-    # current_user.replay_to_conversation(conversation, *message_params(:body, :subject))\
     @conversation = current_user.mailbox.conversations.find(params[:id])
     
     conversation = current_user.reply_to_conversation(@conversation, *message_params(:body))
     redirect_to :conversation
   end
+  
   def trashbin
     @trash ||= current_user.mailbox.trash.all
   end
@@ -28,24 +28,24 @@ class ConversationsController < ApplicationController
      redirect_to :back
      flash[:notice] = "No messages selected"
    else
-    params[:id].each do |id| 
-  @conversation = current_user.mailbox.conversations.find(id.to_i)
-  @conversation.move_to_trash(current_user)
-  end
+      params[:id].each do |id| 
+        @conversation = current_user.mailbox.conversations.find(id.to_i)
+        @conversation.move_to_trash(current_user)
+      end
   redirect_to :conversations
-  end
+    end
   end
   
   def untrash
-       if params[:id].nil?
+   if params[:id].nil?
      redirect_to :back
      flash[:notice] = "No messages selected"
    else
     params[:id].each do |id| 
-    @conversation = current_user.mailbox.conversations.find(id.to_i)
-    @conversation.untrash(current_user)
-    redirect_to :back
-    end
+       @conversation = current_user.mailbox.conversations.find(id.to_i)
+       @conversation.untrash(current_user)
+       redirect_to :back
+      end
     end
   end
   
@@ -55,12 +55,15 @@ class ConversationsController < ApplicationController
     end
     redirect_to conversations_path
   end
+  
   def mailbox
     @mailbox ||= current_user.mailbox
   end
+  
   def converstion
     @conversation ||= mailbox.conversation.find(params[:id])
   end
+  
   def conversation_params(*keys)
     fetch_params(:conversation, *keys)
   end
@@ -80,6 +83,7 @@ class ConversationsController < ApplicationController
   end
   
   private
+  
   def check_conversations
     @conversation = current_user.mailbox.conversations.find(params[:id])
     if @conversation.nil? or !@conversation.is_participant?(current_user)

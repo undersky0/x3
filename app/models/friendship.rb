@@ -4,7 +4,8 @@ class Friendship < ActiveRecord::Base
   belongs_to :friend, :class_name => "User", :foreign_key => 'friend_id'
   #has_many :notifications, foreign_key: :notified_object_id, conditions: {notified_object_type: 'Friendship'}, dependent: :destroy
   validates_presence_of :friend_id, :user_id
-#   http://blog.meldium.com/home/2013/4/22/dont-spam-your-users-batch-notifications-in-rails  for notifications scheduale
+  #http://blog.meldium.com/home/2013/4/22/dont-spam-your-users-batch-notifications-in-rails  for notifications scheduale
+  
   def self.accepted_friend_notification(user, friend)
     @user = User.find_by_id(user)
     @friend = User.find_by_id(friend)

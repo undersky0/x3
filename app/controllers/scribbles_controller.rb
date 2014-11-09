@@ -1,7 +1,7 @@
 class ScribblesController < ApplicationController
-   # GET /scribbles
+  # GET /scribbles
   # GET /scribbles.json
-    #before_filter :load_scribbled
+  #before_filter :load_scribbled
     
   def promote
     @user = current_user
@@ -10,26 +10,24 @@ class ScribblesController < ApplicationController
           @user.unflag(@scribble, :promote)
       else
           @user.flag(@scribble, :promote)
-  end
-  redirect_to @scribbled, :notice => "Liked!"
+      end
+    redirect_to @scribbled, :notice => "Liked!"
   end
   
   
   def vote
-  @scribble = Scribble.find(params[:id])
-  @vote = params[:vote]
-  if @vote == "true"
-    @v = :up
-    current_user.vote(@scribble, :direction => @v)
-  else
-    current_user.unvote_for(@scribble)
-  end
+    @scribble = Scribble.find(params[:id])
+    @vote = params[:vote]
+    if @vote == "true"
+      @v = :up
+      current_user.vote(@scribble, :direction => @v)
+    else
+      current_user.unvote_for(@scribble)
+    end
     respond_to do |format|
       scribble = @scribble
       format.js{}
-      
     end
-    
   end
   
   def vote_against
@@ -42,10 +40,6 @@ class ScribblesController < ApplicationController
     
   end
 
-  # GET /scribbles/1
-  # GET /scribbles/1.json
-
-  # GET /scribbles/1/edit
   def edit
     @scribble = Scribble.find(params[:id])
   end
@@ -57,8 +51,8 @@ class ScribblesController < ApplicationController
     @scribble = @user.scribbles.new(params[:scribble])
     @scribble.promotes = 0
     @scribble.demotes = 0
-     @scribble.scribbled_type = params[:scribbled_type]
-     @scribble.scribbled_id = params[:scribbled_id]
+    @scribble.scribbled_type = params[:scribbled_type]
+    @scribble.scribbled_id = params[:scribbled_id]
     respond_to do |format|
       if @scribble.save
         unless params[:scribbled_type]  == "User"
@@ -79,13 +73,9 @@ class ScribblesController < ApplicationController
     end
 
   end
-  
 
-  # PUT /scribbles/1
-  # PUT /scribbles/1.json
   def update
     @scribble = Scribble.find(params[:id])
-
     respond_to do |format|
       if @scribble.update_attributes(params[:scribble])
         format.html { redirect_to @scribble, :notice => 'Scribble was successfully updated.' }
@@ -102,7 +92,6 @@ class ScribblesController < ApplicationController
   def destroy
     @scribble = Scribble.find(params[:id])
     @scribble.destroy
-
     respond_to do |format|
       format.html { redirect_to scribbles_url }
       format.json { head :no_content }

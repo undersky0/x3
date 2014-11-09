@@ -30,16 +30,12 @@ class User < ActiveRecord::Base
   has_many :albums, :as => :albumable, :dependent => :destroy
   accepts_nested_attributes_for :albums
 
-  #set_primary_key :id
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  # Setup accessible (or protected) attributes for your model
   attr_accessible :user_id, :photo_attributes, :email, :password, :password_confirmation, :remember_me, :scribbles_attributes, :profile_attributes, :location_attributes, :useravatar_attributes, :usercover_attributes
-  # attr_accessible :title, :body
+
   
   has_one :avatar, :as => :avatarable, :dependent => :destroy
   accepts_nested_attributes_for :avatar
@@ -54,30 +50,12 @@ class User < ActiveRecord::Base
   
   has_many :scribbles
   
-  
-  
   has_many :comments
   
   has_many :memberships, dependent: :destroy
   has_many :groups, :through => :memberships
   
   has_many :groups
-  
-  #user.places , location.places, user.locations
-  # has_many :locations, :through => :places, :primary_key => 'user_id'
-  # has_many :places, :as => :locationable, :primary_key => 'user_id'
-#   
-  
-
-  # accepts_nested_attributes_for :locations
-  
-  # @user = User.find(params[:id]) # finds user
-  # @commentable = @user # find the right link with commentable
-  # @comments = @commentable.comments # finds the associated comments
-  # @comment = Comment.new 
-  #after_create :create_avatar
-  #self.primary_key = 'actor_id'
-  
   
   has_many :friendship
   
@@ -90,22 +68,7 @@ class User < ActiveRecord::Base
   has_many :pending_friends, -> { where "friendships.status = 'pending'" },
            through: :friendship, source: :friend
            
-  # has_many :neighbours,
-           # :through => :friendships,
-           # :source => :friend,
-           # :conditions => :location
-           
-    
-    #after_initialize :create_profile
-    # before_create :create_location
-    # before_create :create_avatar
-    # before_create :create_profile
-           
-  # def unread_messages?
-    # unread_messages_count > 0 ? true : false
-  # end
      
-           
   def create_actor_id
     begin
       self.actor_id = SecureRandom.base64(8)
@@ -278,10 +241,6 @@ end
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
   end    
-
-    
-    
-
   end
   
   

@@ -10,7 +10,5 @@ class Vote < ActiveRecord::Base
 
   attr_accessible :vote, :voter, :voteable if ActiveRecord::VERSION::MAJOR < 4
 
-
-  # Comment out the line below to allow multiple votes per user.
   
 end

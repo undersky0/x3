@@ -75,4 +75,4 @@ private
       Skill.find(params[:inviteable_id])
     end
   end 
-  end
+end

@@ -133,13 +133,5 @@ private
       group_path(context)
     end
   end
-  
-  
-      
-  # def load_mappable
-    # resource, id = request.path.split('/')[1,2]
-    # @mappable = resource.singularize.classify.constantize.find(id)
-  # end
-    
-    
+
 end

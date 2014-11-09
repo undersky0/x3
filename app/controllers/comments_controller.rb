@@ -12,9 +12,7 @@ class CommentsController < ApplicationController
   end
     respond_to do |format|
       format.js{}
-      
-    end
-    
+  end
   end
   
   def index

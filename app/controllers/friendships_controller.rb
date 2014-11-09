@@ -11,7 +11,6 @@ class FriendshipsController < ApplicationController
         flash[:notice] = "friend request could not be sent"
         redirect_to :back
       end
-      #flash[:notice] = "hey"
       flash[:notice] = 'hey'
       
     rescue PG::UniqueViolation => error
@@ -36,6 +35,4 @@ class FriendshipsController < ApplicationController
         flash[:notice] = "friend request rejected"
       end
   end
-  
-  
 end

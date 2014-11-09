@@ -1,7 +1,4 @@
 class Profile < ActiveRecord::Base
-  # include ActiveModel::ForbiddenAttributesProtection
-  
-
   searchkick word_start: [:firstname]
   
   #after_save :reindex
@@ -17,8 +14,6 @@ class Profile < ActiveRecord::Base
       # lastname: lastname
     # }
   # end
-  
-  
   
   # def reindex
     # self.reindex

@@ -20,26 +20,12 @@ class FriendmapController < ApplicationController
   marker.json({name: friend.name,
                 location: friend.address,
                 picture: friend.pic})
-  
-  # marker.infowindow friend.name
-  
-  
-  # marker.picture({"url" => '/assets/images/MapMarker.png',
-    # "width" => 32,
-    # "height" => 32})
   marker.json({ name: friend.name})
   end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @friends }
     end
-
-# 
-    # @json = @friends.to_gmaps4rails
-    # respond_to do |format|
-      # format.html # index.html.erb
-      # format.json { render json: @friends }
-    # end
   end
 
   private

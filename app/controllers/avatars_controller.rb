@@ -18,26 +18,24 @@ class AvatarsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @avatar }
-end
+    end
   end
 
   def create
-    
-    #@s = @avatarable.build_avatar
     @avatarable = load_avatarable
     @avatar = Avatar.new(params[:avatar])
 
-respond_to do |format| 
-  if @avatar.save 
-    @avatarable.avatar = @avatar
-    format.html { redirect_to @avatarable, notice: 'Photo was successfully created.' } 
-    format.json { data = {id: @avatar.id, thumb: view_context.image_tag(@avatar.photo.url(:thumb))} 
-    render json: data, status: :created, location: @avatar } 
-    else format.html { render action: "new" } 
-         format.json { render json: @avatar.errors, status: :unprocessable_entity } 
-         end 
+    respond_to do |format| 
+    if @avatar.save 
+      @avatarable.avatar = @avatar
+      format.html { redirect_to @avatarable, notice: 'Photo was successfully created.' } 
+      format.json { data = {id: @avatar.id, thumb: view_context.image_tag(@avatar.photo.url(:thumb))} 
+      render json: data, status: :created, location: @avatar } 
+      else format.html { render action: "new" } 
+           format.json { render json: @avatar.errors, status: :unprocessable_entity } 
+           end 
+      end
   end
-end
 
   def edit
     @avatar = Avatar.find(params[:id])

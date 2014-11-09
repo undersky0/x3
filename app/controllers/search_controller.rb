@@ -38,8 +38,6 @@ class SearchController < ApplicationController
       render json: results
       end
   end
-  
-  
 end
 end
 

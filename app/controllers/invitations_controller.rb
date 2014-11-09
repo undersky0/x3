@@ -11,51 +11,43 @@ class InvitationsController < ApplicationController
   
   
    def sendinv
-     # invited_params[:user_id]=invited_params[:user_id].select{|r| !r.blank?}
-     # @invited = invited_params.merge
      @invited = User.find_by_id(params[:user_id])
      
      if params[:c] == "Group"
-     @inviteable = Group.find_by_id(params[:group_id])
-    else 
-     @inviteable = Skill.find_by_id(params[:skill_id])
+        @inviteable = Group.find_by_id(params[:group_id])
+     else 
+        @inviteable = Skill.find_by_id(params[:skill_id])
      end
        
-    
-    
-    unless @invited.nil? or @inviteable.nil?
+     unless @invited.nil? or @inviteable.nil?
        if Invitation.send_invite(@inviteable, @invited)
-        flash[:notice] = "Invite sent"
-      redirect_to :back      
-      else
-        flash[:notice] = "Invite could not be sent"
-      redirect_to :back   
-    end
-      end
-end
+         flash[:notice] = "Invite sent"
+         redirect_to :back      
+       else
+         flash[:notice] = "Invite could not be sent"
+         redirect_to :back   
+       end
+     end
+  end
 
-def cancel_inv
-       @invited = User.find_by_id(params[:user_id])
+  def cancel_inv
+   @invited = User.find_by_id(params[:user_id])
      
      if params[:c] == "Group"
-     @inviteable = Group.find_by_id(params[:group_id])
-    else
-     @inviteable = Skill.find_by_id(params[:skill_id])
-     
+        @inviteable = Group.find_by_id(params[:group_id])
+     else
+        @inviteable = Skill.find_by_id(params[:skill_id])
      end
-       
-    
-    
+
     unless @invited.nil? or @inviteable.nil?
        if Invitation.cancel_invite(@inviteable, @invited)
         flash[:notice] = "Invite canceled"
-      #redirect_to :back
-      else
+       else
         flash[:notice] = "Invite could not be canceled"
-      respond_with @inviteable
+        respond_with @inviteable
+       end
     end
-      end
-end
+  end
     
    def accept
     @invited = current_user
@@ -65,8 +57,7 @@ end
         flash[:notice] = "Invite accepted"
       else
         flash[:notice] = "Invite error"
-      end
-      
+      end  
     end
     redirect_to :back
   end
@@ -84,16 +75,12 @@ end
     redirect_to :back
   end
       
-  
-  
-  
-  
   def index
     @invitations = Invitation.all
     @users = User.all
     @group = Group.last
     @skill = Skill.last
-  @inviteable = @skill
+    @inviteable = @skill
     
     #people from the same city as the skill
     if params[:location].present?
@@ -104,9 +91,6 @@ end
       @users1 = Location.users_city(@l)
       @localusers = User.find([@users1])
     end
-    
-    #show people from city, friendlist, city as skill/group
-   
   end
 
   def show

@@ -67,10 +67,10 @@ class AuthenticationsController < ApplicationController
        user.profile.lastname =  omni['extra']['raw_info'].last_name
        user.profile.age = omni['extra']['raw_info'].birthday
        user.location.address = omni['extra']['raw_info'].location
-       #if env["omniauth.auth"]["info"].present?
+       if env["omniauth.auth"]["info"].present?
        avatar_url = process_uri(env["omniauth.auth"]["info"]["image"])
         user.useravatar.attachment = URI.parse(avatar_url)
-#end
+        end
        
        #user.avatar_remote_url = env["omniauth.auth"]["info"]["image"]
        user.apply_omniauth(omni)

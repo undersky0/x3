@@ -56,17 +56,11 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
-    
     @group.build_location
   end
 
   def create
-    #params = { group: { name: :name, group_type: :group_type, privacy: :privacy, location_attributes: { city: :location_name }}}
-    #@user = current_user
-    @group = Group.new(params[:group])
-    
-    
-
+    @group = current_user.groups.build(params[:group])
     if @group.save
     respond_to do |format|  
       #format.html {redirect_to group_path(@group), :notice => "Successfully created new group." }
@@ -76,6 +70,7 @@ class GroupsController < ApplicationController
     else
       render :action => 'new'
     end
+    
   end
 
   def edit
@@ -102,8 +97,6 @@ class GroupsController < ApplicationController
     @user = current_user
     @newgroupscribble = @group.scribbles.create(params[:scribble])
     redirect_to @group
-    #@localscribble.scribbled = @user
-    #@localscribble.scribbled = @localfeed
   end
   
     def loadscribbles

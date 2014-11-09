@@ -8,15 +8,12 @@ class Invitation < ActiveRecord::Base
   scope :for_voteable, lambda { |*args| where(["voteable_id = ? AND voteable_type = ?", args.first.id, args.first.class.base_class.name]) }
   scope :recent, lambda { |*args| where(["created_at > ?", (args.first || 2.weeks.ago)]) }
   scope :descending, lambda { order("created_at DESC") }
-  
-  
+
   #invite has_many many users
   #belongs_to inviteable, :polymorphic => true
   
   #user has_many invites
-  #group has_many invites, as: :inviteable
-  
-  
+  #group has_many invites, as: :inviteable  
   #scope groups_invites returns all of the invites that a group has made
   #scope :group_invites_sent, lambda {where(["inviteable_id = ? AND inviteable_type = 'Group' AND status = 'Sent'", inviteable.id])}
   #scope groups_invites_sent
@@ -61,9 +58,6 @@ class Invitation < ActiveRecord::Base
     end
   
   #scope :aleardy_invited?, lambda {where(["invited_id = AND invited_type = ? AND inviteable_type"])}
-  
-  
-  
   # def self.are_invited(inviteable, invited)
     # return false if inviteable == invited
     # return true unless find_by_invitable

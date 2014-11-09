@@ -16,5 +16,4 @@ class Localfeed < ActiveRecord::Base
   def first_scribble
     self.scribbles.create!(:user_id => User.first.id, :post => "Welcome, You are the first in #{self.city} to join our network! ")
   end
-  # after_validation :savefeed
 end
