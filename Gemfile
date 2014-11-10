@@ -10,7 +10,6 @@ gem 'activerecord-postgres-hstore'
 gem 'less-rails'
 gem 'shareable'
 gem 'gon'
-gem 'faker'
 gem 'jquery-infinite-pages'
 gem 'unobtrusive_flash', '>=3'
 gem 'cells'
@@ -78,10 +77,15 @@ group :development do
 end
 
 gem "rspec-rails", :group => [:test, :development]
+gem "factory_girl_rails", :group => [:test, :development]
 group :test do
-  gem "factory_girl_rails"
+  gem 'shoulda-matchers'
   gem "capybara"
   gem "guard-rspec"
+  gem "faker"
+  gem "database_cleaner"
+  gem "launchy"
+  gem "selenium-webdriver"
 end
 
 gem 'jquery-ui-rails'
