@@ -15,8 +15,6 @@ class Group < ActiveRecord::Base
                    :location_id, :location_name, :scribble_attributes, 
                    :group_type, :privacy, :about, :membership_id, :event_id, :headline, :avatar_attributes, :user_id, :igroupcover_attributes 
                    
-  
-  
   has_many :users, :through => :memberships
   has_many :memberships
   

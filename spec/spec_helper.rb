@@ -14,7 +14,11 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+#require 'devise'
 RSpec.configure do |config|
+  #config.include ControllerHelpers, type: :controller
+  #config.include Devise::TestHelpers, :type => :controller
+  #config.extend AuthHelper, :type => :controller
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

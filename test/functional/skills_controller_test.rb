@@ -1,6 +1,13 @@
 require 'test_helper'
 
 class SkillsControllerTest < ActionController::TestCase
+    include Devise::TestHelpers
+
+  def setup
+    @request.env["devise.mapping"] = Devise.mappings[:admin]
+    sign_in FactoryGirl.create(:admin)
+  end
+  
   def test_index
     get :index
     assert_template 'index'
