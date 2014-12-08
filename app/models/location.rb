@@ -1,11 +1,15 @@
 class Location < ActiveRecord::Base
   include ActiveModel::Validations
-  validates :address, :latitude, :longitude, :postcode,:city, presence: true
+  validates_presence_of :address, message: "Address can't be blank"
+  validates_presence_of :latitude, message: "can't be blank"
+  validates_format_of :postcode, :multiline => true, :with =>  /^([A-PR-UWYZ]([0-9]{1,2}|([A-HK-Y][0-9]|[A-HK-Y][0-9]([0-9]|[ABEHMNPRV-Y]))|[0-9][A-HJKS-UW])\s?[0-9][ABD-HJLNP-UW-Z]{2}|(GIR\ 0AA)|(SAN\ TA1)|(BFPO\ (C\/O\ )?[0-9]{1,4})|((ASCN|BBND|[BFS]IQQ|PCRN|STHL|TDCU|TKCA)\ 1ZZ))$$/i, :message => "invalid postcode", :on => :create
   belongs_to :mappable, :polymorphic => true
-  
+  include HTTParty
   searchkick word_start: [:city]
   #has_one :map, :dependent => :destroy
-  
+  before_validation :downcase
+    has_many :scribbles, :as => :scribbled
+  accepts_nested_attributes_for :scribbles 
   belongs_to :ward
   accepts_nested_attributes_for :ward
   has_one :localfeed
@@ -24,27 +28,38 @@ class Location < ActiveRecord::Base
     :mappable_type,
     :ward_id,
     :location
-      
-  geocoded_by :to_s
+  #before_save :geocode
+ # geocoded_by :to_s
   #before_save :geolocate
   #validate :street_address, :address_validator => true
   
   after_validation :geocode
   #before_save :geolocate
-  after_save :ward_exists?
+  before_save :get_ward #, :ward_exists?
   #after_save :ward_present #creates new ward and feed if not existant
+ after_save :first_scribble
+  
+  def get_ward
+    postcode = self.postcode.delete(' ')
+    response = HTTParty.get("http://api.postcodes.io/postcodes/#{postcode}").parsed_response
+    if response["status"] == 200
+    self.locality = response["result"]["admin_ward"]
+    self.political = response["result"]["parliamentary_constituency"]
+    self.city = response["result"]["admin_district"]
+   
+    createlocalfeed
+    else
+      puts "error"
+    end
+  end
   
   def address_changed?
-  attrs = %w(street_address city postal_code)
+  attrs = %w(street_address city postal_code locality)
   attrs.any?{|a| send "#{a}_changed?"}
   end
   
   def to_s
     "#{google_address} #{city} #{postal_code}" +" GB"
-  end
-  
-  def gmaps4rails_address
-    address
   end
   
   def ward_present
@@ -96,10 +111,43 @@ end
     end
   end
   
-  def createward
-     c = self.create_ward!({:name => self.city, :city => self.city, :location_id => self.id}) # should be [name => self.sublocality]
-    self.ward_id = c.id
+  def type_ward
+    
   end
+  
+  def locality=(val)
+    self[:locality] = val
+  end
+  
+  def political=(val)
+    self[:political] = val
+  end
+  
+  def createlocalfeed
+   l = Location.where(locality: self.locality).count
+    if l == 0
+      puts "no good"
+      self.type = "Localfeed"
+    else
+      puts "all good"
+      return l 
+    end
+  end
+  
+  def createward
+    tries ||= 2
+    begin
+    @c = Ward.where(
+     locality: self.locality,
+     political: self.political,
+     city: self.city).first_or_create
+     puts @c.id  
+     rescue ActiveRecord::RecordNotUnique
+        retry unless (tries -= 1).zero?
+    end
+     self.ward_id = @c.id if self.ward_id.nil?
+  end
+
 
   
 
@@ -129,6 +177,18 @@ end
     # end
     # okresponse
   # end
-
+  def downcase
+    self.city = self.city.downcase if self.city.present?
+    self.political = self.political.downcase if self.political.present?
+    self.locality = self.locality.downcase if self.locality.present?
+  end
+    def first_scribble
+    self.scribbles.create!(:user_id => User.first.id, :post => "Welcome, You are the first in #{self.locality} to join our network! ") if self.type.present?
+  end
   
+    def city_localities(city)
+        Location.where(city: city).map
+    end
+
+
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141109145343) do
+ActiveRecord::Schema.define(version: 20141124162123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -219,6 +219,8 @@ ActiveRecord::Schema.define(version: 20141109145343) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "ward_id"
+    t.string   "locality"
+    t.string   "political"
   end
 
   add_index "localfeeds", ["city"], name: "index_localfeeds_on_city", using: :btree
@@ -244,6 +246,7 @@ ActiveRecord::Schema.define(version: 20141109145343) do
     t.integer  "ward_id"
     t.integer  "mappable_id"
     t.string   "mappable_type"
+    t.string   "type"
   end
 
   add_index "locations", ["mappable_id", "mappable_type"], name: "index_locations_on_mappable_id_and_mappable_type", using: :btree
@@ -516,13 +519,14 @@ ActiveRecord::Schema.define(version: 20141109145343) do
   add_index "votes", ["voter_id", "voter_type"], name: "index_votes_on_voter_id_and_voter_type", using: :btree
 
   create_table "wards", force: true do |t|
-    t.string   "name"
     t.integer  "location_id"
     t.integer  "warded_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "warded_type"
     t.string   "city"
+    t.string   "locality"
+    t.string   "political"
+    t.string   "warded_type"
   end
 
   add_index "wards", ["warded_id"], name: "index_wards_on_warded_id", using: :btree

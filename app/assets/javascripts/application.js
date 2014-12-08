@@ -15,6 +15,7 @@
 //= require unobtrusive_flash
 //= require jquery-ujs/src/rails
 //= require bootstrap/dist/js/bootstrap
+//= require bootstrap-material-design/dist/js/material.min
 //= require jquery.infinite-pages
 //= require custom
 //= require search

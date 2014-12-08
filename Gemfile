@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '4.1.7'
 gem 'unicorn'
-gem 'simple_form', '~> 3.0.2'
+gem 'simple_form', '~> 3.1.0.rc2'
 gem 'turbolinks'
 gem 'pg'
 gem 'tire'
@@ -16,6 +16,7 @@ gem 'cells'
 gem 'mailboxer'
 gem "font-awesome-rails"
 gem 'fancybox2-rails'
+gem 'httparty'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 #avatar

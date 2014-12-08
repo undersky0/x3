@@ -32,4 +32,9 @@ bootstrap-fileinput/js/fileinput.min.js
 bootstrap-fileinput/css/fileinput.min.css
 fancybox/source/jquery.fancybox.js
 fancybox/source/jquery.fancybox.css
+checkbox.js
+tokensearch.js
+bootstrap/dist/js/bootstrap-tokenfield.js
+bootstrap/dist/css/bootstrap-tokenfield.css
+bootstrap/dist/css/tokenfield-typeahead.css
 )

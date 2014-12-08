@@ -157,13 +157,11 @@ padding: 0px;
 
 .facebook{
 	background: #3B5998;
-	display:inline-block;
+
 	height:30px;
 	padding:0px 10px 0px 0px;
 }
-.facebook:hover{
-  cursor: pointer;
-}
+
 
 .facebook-icon{
 	padding-top:2px;
@@ -777,6 +775,7 @@ form label{
 	padding:0px;
 	z-index:10000;
 	color:#aaa;
+	background-color:#FFFFFF;
 }
 
 /* Sidebar logo */

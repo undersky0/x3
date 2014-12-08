@@ -18,10 +18,14 @@
 	      <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), defaults: {input_html: {class: 'form-horizontal'}}) do |f| %>
 		  <%= f.input :email, :required => true, :autofocus => true, :input_html => { class: 'form-control', id: 'email'} %> 
 	      <%= f.input :password, :required => false, placeholder: "Password", :input_html => {class: 'form-control', id: 'password'} %>
-		  <%= f.input :remember_me, :as => :boolean, checked_value: true, label: false, wrapper_html: { class: 'checkbox'}, inline_label: 'Yes, remember me' if devise_mapping.rememberable? %>
-		  <%= f.button :submit, "Sign in", :class => 'btn btn-success btn-lg' %>
+		  <%= f.input :remember_me, :as => :boolean, checked_value: true, label: false, wrapper_html: { class: 'checkbox'}, input_html: { opacity:1 }, inline_label: 'Yes, remember me' if devise_mapping.rememberable? %>
+		  <div class="btn-group btn-group-justified">
+		  	<div class="btn-group">
+		  <%= f.button :submit, "Sign in", :class => "btn btn-success" %>
+		 	 </div>
+		  </div>
 				<% end %>
-				<div class="clearfix"></div></br>
+				<div class="clearfix"></div>
 				<%= render "devise/shared/links" %>
 				
 			 </div>

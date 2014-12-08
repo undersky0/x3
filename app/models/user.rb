@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   searchkick
   make_flagger
   acts_as_voter
-  after_save :create_location, :create_avatar, :create_cover, :create_profile
+  after_save :create_avatar, :create_cover, :create_profile
   before_save :create_actor_id
   
   has_many :scribbles, :as => :scribbled, :dependent => :destroy
@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
   
   def full_name
     @profile = self.profile
-    if @profile.firstname.nil?
+    if @profile.nil?
       return "No Name"
     else
     return "#{@profile.firstname.humanize} #{@profile.lastname.humanize}"

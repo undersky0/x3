@@ -180,6 +180,9 @@ GEM
     http (0.6.2)
       http_parser.rb (~> 0.6.0)
     http_parser.rb (0.6.0)
+    httparty (0.13.3)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     httpclient (2.5.3)
     i18n (0.6.11)
     jquery-infinite-pages (0.1.2)
@@ -368,7 +371,7 @@ GEM
       activesupport (>= 3.0.0)
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
-    simple_form (3.0.2)
+    simple_form (3.1.0.rc2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
     simple_oauth (0.3.0)
@@ -479,6 +482,7 @@ DEPENDENCIES
   guard-rspec
   haml-rails
   hpricot
+  httparty
   jquery-infinite-pages
   jquery-rails
   jquery-ui-rails
@@ -512,7 +516,7 @@ DEPENDENCIES
   selenium-webdriver
   shareable
   shoulda-matchers
-  simple_form (~> 3.0.2)
+  simple_form (~> 3.1.0.rc2)
   slim
   soulmate
   therubyracer

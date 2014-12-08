@@ -6,7 +6,7 @@
 		 </tr>
 		 <tr>
 			  <% @localfeeds.each do |f| %>
-			<td><i class="fa fa-angle-double-right"></i> <%= link_to f.city, f %></a></td>
+			<td><i class="fa fa-angle-double-right"></i> <%= link_to f.locality.humanize, f %></a></td>
   		</tr>
   			<% end %>
   			
