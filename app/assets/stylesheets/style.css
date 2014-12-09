@@ -777,6 +777,12 @@ form label{
 	color:#aaa;
 	background-color:#FFFFFF;
 }
+.search-icon {
+	background-color: white;
+	border-style: solid;
+	border-color: rgb(207, 207, 207);
+	border-width: 1px 1px 1px 1px;
+}
 
 /* Sidebar logo */
 
