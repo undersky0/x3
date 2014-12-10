@@ -6,11 +6,11 @@
 <div class="row">
 	<div class="col-md-8 col-sm-8" style="padding-right: 5px;">
 		<div class="group-header">
-			<h4><%= @conversation.subject%>
+			<h4>
 			<% @conversation.recipients.each do |r| %>
-			
-			<%= link_to image_tag(r.useravatar.url(:tiny), :title => r.full_name, :alt => r.full_name), user_path(r) %> 
+			<%= link_to image_tag(r.useravatar.url(:tiny), :title => r.full_name, :alt => r.full_name), user_path(r) %>
 			<%end%>
+			<%= @conversation.subject%>
 			</h4>
 		</div>
 	</div>
@@ -18,12 +18,13 @@
 
 			<div id="conversation" style="overflow:scroll; max-height:680px;">
 			  <% @receipts.each do |receipt| %>
-			  <div class="col-md-8 col-sm-8 boarder-white2">
+			  <div class="col-md-8 col-sm-8 boarder-white2" style="padding:0px;">
 			  		<div class="col-md-1">
 			  <%= link_to image_tag(receipt.message.sender.useravatar.url(:tiny), :title => receipt.message.sender.full_name, :alt => receipt.message.sender.full_name) %>
 			  		</div>
-			  		<div class="col-md-11">
-			  <p><strong><%= receipt.message.sender.name %> </strong> <span class="pull-right"> <%= distance_of_time_in_words_to_now(receipt.message.created_at) %> ago</span> </p>
+			  		<div class="col-md-11" style="word-wrap: break-word;">
+			  <strong><%= receipt.message.sender.name %> </strong> <span class="pull-right"> <%= distance_of_time_in_words_to_now(receipt.message.created_at) %> ago</span><br>
+    			
     			<%= receipt.message.body %>
     				</div>
     		  </div>

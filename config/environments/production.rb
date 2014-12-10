@@ -3,6 +3,7 @@ Uu2::Application.configure do
   config.assets.initialize_on_precompile = false
   config.eager_load = true
   config.app_domain = 'http://undersky.co.uk'
+  config.action_mailer.default_url_options = { :host => 'http://undersky.co.uk' }
    # Compress JavaScripts and CSS
  config.assets.js_compressor = :uglifier
   # Code is not reloaded between requests
