@@ -141,7 +141,7 @@
 
     // Set up mirror for input auto-sizing
     this.$mirror = $('<span style="position:absolute; top:-999px; left:0; white-space:pre;"/>');
-    this.$input.css('min-width', this.options.minWidth + 'px')
+    this.$input.css('min-width', 505 + 'px')
     $.each([
         'fontFamily',
         'fontSize',

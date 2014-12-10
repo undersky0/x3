@@ -7,6 +7,7 @@ Rails.application.configure do
   config.cache_classes = false
   config.serve_static_assets = false
   config.app_domain = 'localhost:3000'
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   # Do not eager load code on boot.
   config.eager_load = false

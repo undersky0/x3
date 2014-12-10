@@ -37,4 +37,5 @@ tokensearch.js
 bootstrap/dist/js/bootstrap-tokenfield.js
 bootstrap/dist/css/bootstrap-tokenfield.css
 bootstrap/dist/css/tokenfield-typeahead.css
+bootstrap/js/scrollspy.js
 )
