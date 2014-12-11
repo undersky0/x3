@@ -3,6 +3,11 @@ class Localfeed < Location
   
   has_many :scribbles, :as => :scribbled
   accepts_nested_attributes_for :scribbles 
+  
+  before_save {|localfeed| 
+    localfeed.locality = localfeed.locality.downcase
+    localfeed.city = localfeed.locality.downcase
+    }
   private
 
   

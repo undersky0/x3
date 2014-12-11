@@ -38,6 +38,10 @@ class Location < ActiveRecord::Base
   before_save :get_ward #, :ward_exists?
   #after_save :ward_present #creates new ward and feed if not existant
  after_save :first_scribble
+  before_save { |location|
+    location.city = location.city.downcase
+    location.locality = location.locality.downcase
+    location.political = location.political.downcase}
   
   def get_ward
     postcode = self.postcode.delete(' ')
@@ -46,7 +50,6 @@ class Location < ActiveRecord::Base
     self.locality = response["result"]["admin_ward"]
     self.political = response["result"]["parliamentary_constituency"]
     self.city = response["result"]["admin_district"]
-   
     createlocalfeed
     else
       puts "error"
@@ -58,7 +61,7 @@ class Location < ActiveRecord::Base
   attrs.any?{|a| send "#{a}_changed?"}
   end
   
-  def to_s
+  def addess_string
     "#{google_address} #{city} #{postal_code}" +" GB"
   end
   
@@ -71,7 +74,7 @@ class Location < ActiveRecord::Base
     end
   end
   
-    geocoded_by :to_s do |prof,results|
+    geocoded_by :address_string do |prof,results|
   if result = results.select{|res| res.country_code == "GB" }.first
     unless (result.latitude.nil? || result.longitude.nil?)
       prof.latitude = result.latitude
@@ -89,7 +92,7 @@ class Location < ActiveRecord::Base
 end
   
   def geolocate 
-    res = GoogleGeocoder.geocode(to_s)
+    res = GoogleGeocoder.geocode(address_string)
     
     if res.success
 

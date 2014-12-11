@@ -1,7 +1,11 @@
 class LocalfeedsController < ApplicationController
   before_filter :loadscribbles
   def index
-    @localfeeds = Localfeed.all
+    @user = current_user
+    @location = @user.location.city
+    @cities = Localfeed.select(:id, :locality, :city).order('city ASC')
+    r = @cities.group_by {|k| k[:city] }
+    @localfeeds = r
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @localfeeds }
@@ -9,7 +13,9 @@ class LocalfeedsController < ApplicationController
   end
 
   def show
-    @localfeeds = Localfeed.all
+    @cities = Localfeed.select(:id, :locality, :city).order('city ASC')
+    r = @cities.group_by {|k| k[:city] }
+    @localfeeds = r
     if params[:id].present?
       @localfeed = Localfeed.find(params[:id])
     else

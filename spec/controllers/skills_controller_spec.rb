@@ -1,7 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe SkillsController, :type => :controller do
-   
+  
+  describe 'test' do
+    it "works" do
+      
+    end
+  end
+    
   describe 'GET #index' do
      context 'with params[:id]' do
      it "populates an array of skills from with skill_type(:id)" do
