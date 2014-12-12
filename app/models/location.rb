@@ -37,7 +37,7 @@ class Location < ActiveRecord::Base
   #before_save :geolocate
   before_save :get_ward #, :ward_exists?
   #after_save :ward_present #creates new ward and feed if not existant
- after_save :first_scribble
+  after_save :first_scribble
   before_save { |location|
     location.city = location.city.downcase
     location.locality = location.locality.downcase

@@ -1,17 +1,17 @@
+<ul class="list-unstyled">
+<div class="col-md-4 whitesmoke-boarder">
+	<h4 class="text-center"><strong> All Areas</strong></h4>
+<% @localfeeds.each do |f, t| %>
+<li class="has_submenu">
+<a><p class="bg-primary"><strong><%= f.humanize%> </strong><span class="nav-caret fa fa-caret-up"></span></p></a>
+<ul class="list-unstyled"> 
+<% t.each do |y| %>
+<li><i class="fa fa-angle-double-right">  <%= link_to y.locality.humanize, y%></i></li>
+<% end %>
+</br>
+</ul>
+</li>
+<% end %>
 
-	<div class="col-md-4 whitesmoke-boarder">
-		<table class="table table-hover">
-		<tr>
-			<th><p class="text-center">All Areas</p> </th>
-		</tr>
-			  <% @localfeeds.each do |f, t| %>
-				 <tr><th><i class="fa fa-arrow-circle-right"></i> <%= f.humanize%></th></tr>
-			  <% t.each do |y| %>
-			  <tr><td><i class="fa fa-angle-double-right"></i> <%= link_to y.locality.humanize, y%></td></tr>
-			  <%end%>
-  		
-  			<% end %>
-  			
-  			</table>
-	</div>
-
+</div>
+</ul>
