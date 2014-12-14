@@ -1,1 +1,1 @@
-$("#cbutton_<%=@invite.id%>").replaceWith("<%= escape_javascript(render(:partial => 'invites/join', :locals => {:inviteable => @invite, user: current_user}))%>");
+$("#wbutton_<%=@invite.id%>").replaceWith("<%= escape_javascript(render(:partial => 'invites/addwatchlist', :locals => {:inviteable => @invite, user: current_user}))%>");

@@ -5,8 +5,7 @@
 	<div class="skillbox">
 		<div class= "row">
 			<div class= "col-md-2 no-padd">
-
-				<%= link_to image_tag(skill.skillimage.url(:small)), skill_path(skill), :style => "z-index: 1;"%>
+				<%= link_to image_tag(skill.skillimage.url(:small), :size => "136x146"), skill_path(skill), :style => "z-index: 1; max-width:136; max-heigh:146;"%>
 				<% if skill.user.useravatar.nil?%>
 				<%skill.user.build_useravatar%>
 				<% else %>
@@ -36,32 +35,43 @@
 				</div>
 				<div class = "row black-boarder no-padd">
 					<div class="col-md-2">
+						<div class="center-block" style="margin-top: 12.5%;">
+							<p class="bg-primary">
 						Places left <strong> <%= skill.places_left %> </strong>
-						
+							</p>
 						</div>
+					</div>
 					<div class = "col-md-2">
+						<div class="center-block" style="margin-top: 12.5%;">
+							<p class="bg-info">
 						<%= link_to "Users joined: #{skill.users_joined.count}", skills_path(:skill_id => skill.id), data: { toggle: "modal", target: "#ajax-modal" } %>
+							</p>
 						</div>
-						<div class="col-md-3">
-							Activity duration <strong> <%= skill.activity_duration.strftime("%I:%M")%></strong>
+					</div>
+					<div class="col-md-3">
+						<div class="center-block" style="margin-top: 7.5%;">
+							<p class="bg-primary">
+						Activity duration <strong> <%= skill.activity_duration.strftime("%I:%M")%></strong>
+							</p>
+						</div>
+					</div>
+					<div class="col-md-1">
+						
+					</div>
+					<div class="col-md-2">
+						<div class="btn-group btn-group-justified">
+							<div class="btn-group">
+								<%= render :partial => 'memb', :locals => {:skill => skill} %>
 							</div>
-						<div class="col-md-1">
-							
 						</div>
-						<div class="col-md-2">
-							<div class="btn-group btn-group-justified">
-								<div class="btn-group">
-									<%= render :partial => 'memb', :locals => {:skill => skill} %>
-								</div>
+					</div>
+					<div class="col-md-2">
+						<div class="btn-group btn-group-justified">
+							<div class="btn-group">
+								<%= render :partial => "invites/addwatchlist", :locals => {user: current_user, inviteable: skill}%>
 							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="btn-group btn-group-justified">
-								<div class="btn-group">
-									<%= render :partial => "invites/addwatchlist", :locals => {user: current_user, inviteable: skill}%>
-								</div>
-							</div>					
-						</div>
+						</div>					
+					</div>
 				</div>
 				</div>
 				</div>

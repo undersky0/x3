@@ -4,7 +4,7 @@ class Skill < ActiveRecord::Base
   searchkick word_start: [:name]
   #after_save :reindex
   before_save :build_image
-  attr_accessible :skillimage_attributes, :photo_attributes, :name, :description,
+  attr_accessible :photo_attributes, :name, :description,
   :skill_type_id, :properties, :teachers_title, :necessary_resources, :level, 
   :required_experience,:price, :start_date, :min_students, :max_students, :activity_duration,
   :location_id, :user_id, :location_attributes, :skill_type_attributes

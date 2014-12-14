@@ -10,7 +10,7 @@ class Group::Skillimage < Asset
   validates_attachment_content_type :attachment, 
   :content_type => ['image/jpeg', 'image/png']
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
-attr_accessible :attachment_content_type, :attachment_file_name, :attachment_file_size, :attachment,
+attr_accessible :attachment_content_type, :attachment_file_size, :attachment,
   :crop_x, :crop_y, :crop_w, :crop_h
 
 end

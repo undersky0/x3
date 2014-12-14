@@ -41,9 +41,6 @@ class SkillsController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @skill }
     end
-    
-    #@location = Location.new
-   # @location = Skill.build_location
   end
 
   def create

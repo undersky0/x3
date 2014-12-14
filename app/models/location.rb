@@ -61,7 +61,7 @@ class Location < ActiveRecord::Base
   attrs.any?{|a| send "#{a}_changed?"}
   end
   
-  def addess_string
+  def address_string
     "#{google_address} #{city} #{postal_code}" +" GB"
   end
   
