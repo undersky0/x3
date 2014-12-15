@@ -2,8 +2,8 @@ namespace :db do
   desc "Erase and fill database"
   task :populate => :environment do
     require 'faker'
-
-     #Rake::Task['db:reset'].invoke
+  # Faker::Config.locale = :engb
+     Rake::Task['db:reset'].invoke
      
 
 50.times do |n|

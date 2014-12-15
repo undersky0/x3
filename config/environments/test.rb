@@ -5,6 +5,7 @@ Uu2::Application.configure do
   # test suite. You never need to work with it otherwise. Remember that
   # your test database is "scratch space" for the test suite and is wiped
   # and recreated between test runs. Don't rely on the data there!
+  config.active_record.maintain_test_schema = false
   config.cache_classes = true
 config.eager_load = false
   # Configure static asset server for tests with Cache-Control for performance
