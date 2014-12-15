@@ -60,6 +60,7 @@ gem "haml-rails"
 gem "acl9"
 gem 'make_flaggable', :git => 'git://github.com/cavneb/make_flaggable.git'
 gem 'rails_12factor', group: :production
+gem 'faker'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -83,7 +84,6 @@ group :test do
   gem 'shoulda-matchers'
   gem "capybara"
   gem "guard-rspec"
-  gem "faker"
   gem "database_cleaner"
   gem "launchy"
   gem "selenium-webdriver"
