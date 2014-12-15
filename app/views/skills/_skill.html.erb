@@ -13,7 +13,7 @@
 				<%end%> 
 		</div>
 		<div class= "col-md-8">
-			<h3><%= link_to skill.name, skill_path(skill)%></h3> by <strong> <%= skill.user.name%></strong> - <%= skill.teachers_title%><br>
+			<h3><%= link_to skill.name, skill_path(skill)%></h3> by <strong> <%= skill.user.name%></strong> - <%= skill.teachers_title.humanize%><br>
 			<%= skill.description.first(300)%>
 		</div>
 		<div class= "col-md-2 text-center">
@@ -25,8 +25,8 @@
 					<h5> Check</h5>
 					<h5> -</h5>
 					<%else%>
-					<h5><%= skill.location.google_address %></h5>
-					<h5><%= skill.location.city %></h5>
+					<h5><%= skill.location.google_address.humanize %></h5>
+					<h5><%= skill.location.city.humanize %></h5>
 					<%end%>
 					<h5><%= quid(skill.price)%></h5>
 				</strong>
@@ -44,7 +44,8 @@
 					<div class = "col-md-2">
 						<div class="center-block" style="margin-top: 12.5%;">
 							<p class="bg-info">
-						<%= link_to "Users joined: #{skill.users_joined.count}", skills_path(:skill_id => skill.id), data: { toggle: "modal", target: "#ajax-modal" } %>
+						<%= link_to "Users joined: #{skill.users_joined.count} ", skills_path(:skill_id => skill.id), data: { toggle: "modal", target: "#ajax-modal" } %>
+						<i class="fa fa-search"></i>
 							</p>
 						</div>
 					</div>
