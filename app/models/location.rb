@@ -27,7 +27,8 @@ class Location < ActiveRecord::Base
     :mappable_id,
     :mappable_type,
     :ward_id,
-    :location
+    :location,
+    :type
   #before_save :geocode
  # geocoded_by :to_s
   #before_save :geolocate
