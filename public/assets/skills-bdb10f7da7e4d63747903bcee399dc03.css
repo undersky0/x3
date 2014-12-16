@@ -1,0 +1,11 @@
+/* assets/stylesheets/posts.css.scss */
+.skill {
+  /* off by default */ }
+  .skill .leave {
+    display: none; }
+
+/* when the post is favorited show the unfavorite button instead */
+.skill.joined .join {
+  display: none; }
+.skill.joined .leave {
+  display: inline-block; }

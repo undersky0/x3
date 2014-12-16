@@ -5,7 +5,8 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w( search.js devise.css localfeeds.js 
+Rails.application.config.assets.precompile += %w( bootstrap-material-design/dist/js/material.min.js
+bootstrap-material-design/dist/css/material.css search.js devise.css localfeeds.js 
 bootstrap-modal/css/bootstrap-modal.css modals.js skills.css
 bootstrap-modal/js/bootstrap-modalmanager.js
 bootstrap/js/modal.js
@@ -40,6 +41,4 @@ bootstrap/dist/css/tokenfield-typeahead.css
 bootstrap/js/scrollspy.js
 hogan/web/builds/3.0.2/template-3.0.2.min.js
 hogan/web/builds/3.0.2/hogan-3.0.2.min.js
-bootstrap-material-design/dist/js/material.min.js
-bootstrap-material-design/dist/css/material.css
 )

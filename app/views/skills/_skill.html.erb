@@ -36,22 +36,26 @@
 				<div class = "row black-boarder no-padd">
 					<div class="col-md-2">
 						<div class="center-block" style="margin-top: 12.5%;">
-							<p class="bg-primary">
+							<p class="bg-primary text-center">
 						Places left <strong> <%= skill.places_left %> </strong>
 							</p>
 						</div>
 					</div>
 					<div class = "col-md-2">
 						<div class="center-block" style="margin-top: 12.5%;">
-							<p class="bg-info">
+							<p class="bg-info text-center">
+								<% if skill.users_joined.count == 0 %>
+						Users joined: <%= skill.users_joined.count%> 
+								<%else%>
 						<%= link_to "Users joined: #{skill.users_joined.count} ", skills_path(:skill_id => skill.id), data: { toggle: "modal", target: "#ajax-modal" } %>
-						<i class="fa fa-search"></i>
+								<i class="fa fa-search"></i>
+								<%end%>						
 							</p>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="center-block" style="margin-top: 7.5%;">
-							<p class="bg-primary">
+							<p class="bg-primary text-center">
 						Activity duration <strong> <%= skill.activity_duration.strftime("%I:%M")%></strong>
 							</p>
 						</div>
