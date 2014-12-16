@@ -10,7 +10,7 @@
  *
  *= require typeaheadjs
  *= require style
- *= require bootstrap/dist/css/bootstrap
  *= require bootstrap-material-design/dist/css/material.min
+ *= require bootstrap/dist/css/bootstrap
  *= require font-awesome
  */
