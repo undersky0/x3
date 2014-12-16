@@ -15,7 +15,7 @@
 			
 					<!-- Logo -->
 					<div class="logo">
-						<h4><i><%= link_to image_tag(current_user.useravatar.url(:small)), current_user, :class=>"img-thumbnail" %></i><h4><%= link_to current_user.full_name, showusers_path(current_user.id)%></h4> <span><h5>App Ninja</h5></span></a></h1>
+						<h4><i><%= link_to image_tag(current_user.useravatar.url(:small), :size => "136x136"), current_user, :class=>"img-thumbnail" %></i><h4><%= link_to current_user.full_name, showusers_path(current_user.id)%></h4> <span><h5>App Ninja</h5></span></a></h1>
 					</div>
 					
 					<!-- Sidebar navigation starts -->

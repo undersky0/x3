@@ -7,7 +7,7 @@ namespace :db do
      
 
                 displayName = Faker::Name.name
-                email = "test-#{23+11238}@tests.org"
+                email = "test-#{531+11238}@tests.org"
                 password = "password"
                 test_user = User.create!(
                   :email => email,
@@ -21,7 +21,7 @@ namespace :db do
                 :longitude => -0.1110795637328,
                 :google_address => "116 Farringdon Road",
                 :city => "London",
-                :locality => "Clerkenwell",
+                :locality => "Clerkenwell1",
                 :political => "Islington South and Finsbury",
                 :type => "Localfeed")
 
@@ -58,18 +58,11 @@ namespace :db do
                 :activity_duration => Faker::Number.digit,
                 :teachers_title => Faker::Name.title)
                 # location.save
-
+                skills.build_location
+                skills.location = location
                 skills.save
 
-                slocation = skills.build_location(:address => location.street_address,
-                :street_address => location.street_address,
-                :postcode => location.postcode,
-                :latitude => location.latitude,
-                :longitude => location.longitude,
-                :google_address => location.street_address,
-                :city => location.city,
-                :locality => location.locality)
-                slocation.save
+                
 
                 # group = test_user.groups.build(
                 # :name => Faker::Company.name,

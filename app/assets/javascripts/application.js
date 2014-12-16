@@ -20,8 +20,7 @@
 //= require custom
 //= require search
 //= require typeahead.js/dist/typeahead.bundle
-//= require hogan/lib/template
-//= require hogan/lib/compiler
-//= require hogan/lib/hogan
+//= require hogan/web/builds/3.0.2/template-3.0.2.min
+//= require hogan/web/builds/3.0.2/hogan-3.0.2.min
 //
 

@@ -128,12 +128,12 @@ end
   end
   
   def createlocalfeed
-   l = Location.where(locality: self.locality).count
+   l = Location.where(locality: self.locality.downcase).count
     if l == 0
-      puts "no good"
+      puts "localfeed created"
       self.type = "Localfeed"
     else
-      puts "all good"
+      puts "localfeed exists"
       return l 
     end
   end

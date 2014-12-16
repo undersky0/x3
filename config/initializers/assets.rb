@@ -38,4 +38,6 @@ bootstrap/dist/js/bootstrap-tokenfield.js
 bootstrap/dist/css/bootstrap-tokenfield.css
 bootstrap/dist/css/tokenfield-typeahead.css
 bootstrap/js/scrollspy.js
+hogan/web/builds/3.0.2/template-3.0.2.min.js
+hogan/web/builds/3.0.2/hogan-3.0.2.min.js
 )

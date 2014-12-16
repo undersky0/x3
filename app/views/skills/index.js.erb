@@ -11,7 +11,7 @@ $(title).html('Users');
 //hides the modal and shows the ajax content
 $(loader).fadeToggle('fast', function() {
   $(loader).fadeOut('slow');
-  $(content).html('<%= j render :partial => "skills/index", :locals => {:users => @users} %>');
+  $(content).html('<%= j render :partial => "skills/joined", :locals => {:users => @users} %>');
   $(modal).modal('show');
 });
 console.log("middle");

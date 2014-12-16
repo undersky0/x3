@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
   
   def full_name
     @profile = self.profile
-    if @profile.nil?
+    if @profile.firstname.nil?
       return "No Name"
     else
     return "#{@profile.firstname.humanize} #{@profile.lastname.humanize}"
@@ -94,7 +94,7 @@ class User < ActiveRecord::Base
     if @profile.firstname.nil?
       return "No Name"
     else
-    return "#{@profile.firstname} #{@profile.lastname}"
+    return "#{@profile.firstname.humanize} #{@profile.lastname.humanize}"
     end
   end
   

@@ -3,6 +3,12 @@ class SkillsController < ApplicationController
     sleep 1
     if params[:skill_id].present?
       @users = Skill.find(params[:skill_id])
+       respond_to do |format|
+         puts @users.id
+          #format.html
+          #format.html {render :partial => "skills/joined", :locals => {:users => @users}}
+          format.js 
+       end
     end
     @s = Skill.all
     @skills = Kaminari.paginate_array(@s).page(params[:page]).per(25)
@@ -18,10 +24,7 @@ class SkillsController < ApplicationController
       @s = Skill.where(skill_type_id: params[:id])
       @skills = Kaminari.paginate_array(@s).page(params[:page]).per(25)
     end
-   respond_to do |format|
-    format.html 
-    format.js
-  end
+
     
   end
 
