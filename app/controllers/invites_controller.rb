@@ -45,7 +45,7 @@ respond_to :js
     end
   end
 
-  def removewatch
+  def removewatch   
     @invites = Invite.find(params[:id])
     @invite = invitetype
     @user = current_user

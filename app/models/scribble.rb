@@ -10,4 +10,8 @@ class Scribble < ActiveRecord::Base
   paginates_per 12
   mount_uploader :file, FileUploader
   
+    def scribbled_type=(class_name)
+     super(class_name.constantize.base_class.to_s)
+  end
+  
 end

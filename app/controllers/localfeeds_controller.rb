@@ -12,6 +12,7 @@ class LocalfeedsController < ApplicationController
     end
   end
 
+
   def show
     @cities = Localfeed.select(:id, :locality, :city).order('city ASC')
     r = @cities.group_by {|k| k[:city] }
@@ -26,7 +27,7 @@ class LocalfeedsController < ApplicationController
     
       respond_to do |format|
       format.js
-      format.html # index.html.erb
+      format.html
       format.json { render :json => @localscribbles }
     end
   end
