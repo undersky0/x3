@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Profile, :type => :model do
   
+  it { should belong_to(:user)}
+  
   it "has a valid factory" do
     expect(FactoryGirl.build(:profile)).to be_valid
   end
@@ -23,8 +25,4 @@ RSpec.describe Profile, :type => :model do
     expect(profile.errors[:lastname]).not_to include("can't be blank")
   end
   
-  it "returns a profile's full name as a string" do 
-    profile = Profile.new(firstname: 'John', lastname: 'Doe')
-    expect(profile.full_name).to eq 'John Doe'
-  end
 end

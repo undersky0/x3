@@ -1,7 +1,10 @@
 class Location < ActiveRecord::Base
   include ActiveModel::Validations
   validates_presence_of :address, message: "Address can't be blank"
-  validates_presence_of :latitude, message: "can't be blank"
+  validates_presence_of :latitude
+  validates_presence_of :longitude
+  validates_presence_of :city, message: "can't be blank"
+  validates_presence_of :postcode, message: "Invalid postcode"
   validates_format_of :postcode, :multiline => true, :with =>  /^([A-PR-UWYZ]([0-9]{1,2}|([A-HK-Y][0-9]|[A-HK-Y][0-9]([0-9]|[ABEHMNPRV-Y]))|[0-9][A-HJKS-UW])\s?[0-9][ABD-HJLNP-UW-Z]{2}|(GIR\ 0AA)|(SAN\ TA1)|(BFPO\ (C\/O\ )?[0-9]{1,4})|((ASCN|BBND|[BFS]IQQ|PCRN|STHL|TDCU|TKCA)\ 1ZZ))$$/i, :message => "invalid postcode", :on => :create
   belongs_to :mappable, :polymorphic => true
   include HTTParty

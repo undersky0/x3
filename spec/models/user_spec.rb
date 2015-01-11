@@ -8,8 +8,8 @@ RSpec.describe User, :type => :model do
   it { should have_one(:profile).dependent(:destroy)}
   it { should have_many(:groups)}
   it { should have_many(:friends).through(:friendship)}
-  it { should have_many(:pending_friends).conditions(status: 'pending').through(:friendship)}
-  it { should have_many(:requested_friends).condition(status: 'requested').through(:friendship)}
+  it { should have_many(:pending_friends).through(:friendship)}
+  it { should have_many(:requested_friends).through(:friendship)}
   it { should have_many(:friendship)}
   it { should have_many(:invites)}
   it { should have_many(:invitations)}

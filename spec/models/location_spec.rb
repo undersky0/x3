@@ -2,16 +2,12 @@ require 'rails_helper'
 require 'spec_helper'
 RSpec.describe Location, :type => :model do
   
-  context "validations" do 
-    before(:each) { create(:location, postcode: "CF24 1PL")}
-    
+  # create(:location, postcode: "CF24 1PL")
+  
   it { should have_many(:scribbles) }
   it { should validate_presence_of(:address).with_message("Address can't be blank") }
-  it { should validate_presence_of(:latitude).with_message("can't be blank") }
-  it { should validate_presence_of(:longitude).with_message("can't be blank") }
   it { should validate_presence_of(:city).with_message("can't be blank") }
   it { should validate_presence_of(:postcode).with_message("invalid postcode") }
-  end
   
   it "is invalid without postcode" do
    l = build(:location, postcode: "gdsgdgdfgd")
@@ -22,13 +18,19 @@ RSpec.describe Location, :type => :model do
   end
 
   describe '#get_ward' do
+    location = FactoryGirl.build(:location, :postcode => "CF24 1PL")
   it "returns locations ward" do
-    location = build(:location, :postcode => "CF24 1PL")
+    
     response = HTTParty.get("http://api.postcodes.io/postcodes/cf241pl").parsed_response    
     location.locality = response["result"]["admin_ward"]
     location.political = response["result"]["parliamentary_constituency"]
     location.city = response["result"]['admin_district']
     expect(response["status"]).to eq 200
+  end
+  
+  it "creates localfeed if ward doesn't exist" do
+    l = Location.where(locality: location.locality.downcase).count
+    expect(l).to eq 0
   end
   end
   
@@ -41,10 +43,11 @@ RSpec.describe Location, :type => :model do
     end
   end
   
-  describe 'after_save' do 
-    it 'should run proper call backs' do 
+  describe 'create localfeed' do 
+    it 'should created localfeed' do 
       location = build(:location, postcode: "CF24 1PL")
-      #expect(location).to receive(:get_ward)
+      location.type = "Localfeed"
+      expect(location.type).to eq "Localfeed"
       #location.should_receive(:get_ward)
     end
     it 'should create localfeed' do 
@@ -54,6 +57,14 @@ RSpec.describe Location, :type => :model do
       puts s
     end
   end
+    describe 'after_save' do
+    it 'should run the proper callbacks' do
+      location = create(:location, postcode: "CF24 1PL")
+      expect(location).to receive(:get_ward)
+      location.run_callbacks(:save) {false}
+    end
+  end
+
   
   
 end
