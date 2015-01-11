@@ -1,5 +1,12 @@
 <div class="row">
-  <h1 class="text-center">Galleries</h1>
+  <h1 class="text-center">Galleries </h1>
+  <div class="col-md-12">
+	<div class="btn-group btn-group-justified">
+		<%if @album.nil? then @album = Album.new end%>
+  <%= render "albums/form" %>
+ 	 </div>
+</div>
+  
     <% @albums.each do |album| %>
 	<div class="col-md-4">
           <div class="thumbnail">
@@ -28,6 +35,4 @@
           </div>
           </div>
     <% end %>
-
-  <%= link_to 'New', new_album_path, :class => 'btn btn-mini' %>
 </div>
