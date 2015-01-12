@@ -9,13 +9,13 @@
     <div class= "thumbnails">
             <% if album.pictures.empty? %>
               <a href="<%= polymorphic_url([@albumable, album]) %>">
-                <img src="/assets/NoImageAvailable.jpg" alt="" style="width: 242px; height: 240px;">
+                <img src="/assets/NoImageAvailable.jpg" alt="" style="width: 238px; height: 240px;">
               </a>
 
             <% else %>
          
               <a href="<%= polymorphic_url([@albumable, album]) %>">
-                <img src="<%= album.pictures.first.file_url(:album) %>" alt="" style="width: 242px; height: 240px;">
+                <img src="<%= album.pictures.first.file_url(:album) %>" alt="" style="width: 238px; height: 240px;">
               </a>
              </div>
              </div>

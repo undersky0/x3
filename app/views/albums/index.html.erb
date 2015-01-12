@@ -6,33 +6,5 @@
   <%= render "albums/form" %>
  	 </div>
 </div>
-  
-    <% @albums.each do |album| %>
-	<div class="col-md-4">
-          <div class="thumbnail">
-            <% if album.pictures.empty? %>
-            <a href="<%= polymorphic_url([@albumable, album]) %>">
-                <img src="/assets/NoImageAvailable.jpg" alt="" style="width: 326px; height: 228px;">
-            </a>
-            <% else %>
-              <a href="<%= polymorphic_url([@albumable, album]) %>">
-                <img src="<%= album.pictures.first.file_url(:album) %>" alt="">
-              </a>
-            <% end %>
-            <div class="caption">
-              <p style="text-align: center;">
-               <%if album.name.nil?%> <%else%> <%= album.name.truncate(14) %> <%end%>
-                <a href="<%= edit_album_path(:id => album.id) %>" class="btn btn-mini">
-                  <i class="icon-edit "></i>
-                  Edit
-                </a>
-                <a class="btn btn-mini btn-delete" confirm="are you sure?" data-method="delete" href="<%= album_path(:id => album.id) %>" data-remote=true>
-                  <i class="icon-trash"></i>
-                  Delete
-                </a>
-              </p>
-            </div>
-          </div>
-          </div>
-    <% end %>
+  <%=render "albums/albums"%>
 </div>

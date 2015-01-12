@@ -17,7 +17,13 @@
             	<%= picture.description%>
             </p>
             <p>
-            	<%= button_to "remove", album_picture_path(:picture_id => picture.id, :album_id => @album.id), :confirm => 'Are you sure?', :method => :delete, :class => :destroy %>
+            	<div class="center">
+            	<%= button_to album_picture_path(:picture_id => picture.id, :album_id => @album.id),
+            	 :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-info btn-block", data: { confirm: "Are you sure?" }  do %>
+            	 <span class="fa fa-edit"></span>
+				 Remove
+				<% end %>
+				</div>
             </p>
           </div>
         </div>
