@@ -1,15 +1,20 @@
-<div class="col-md-10 nopadding">
+<div class="row">
+<div class="col-md-10">
 <%= form_tag skills_path, method: :get do %>
-<div class="form-inline">
-		<%= search_field_tag :q, params[:q], placeholder: "Look by name", autocomplete: "off", class: "form-control", :style=>"width:80%;"%> 
-		<%= submit_tag "Search", class: "btn btn-success" %>	
-</div>					 
+	<div class="form-inline">
+		<div class="form-group">
+			<%= search_field_tag :q, params[:q], placeholder: "Look-up by name", 
+			autocomplete: "off", :class => "form-control"%> 
+		</div>	
+		<div class="form-group" style="margin-top: -10px;">
+			<%= submit_tag "Search", class: "btn btn-info" %>
+		</div>	
+	</div>			 
   <%end%>
 </div>
 <div class="col-md-2">
-	<div class="center">
 	<%= link_to "New Skill", new_skill_path, :class=> "btn btn-success btn-block "%>
-	</div>	
+</div>
 </div>
 
 <%if !@skills.nil?%>

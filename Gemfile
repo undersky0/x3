@@ -78,10 +78,11 @@ group :development do
   gem 'binding_of_caller'
 end
 
-gem "rspec-rails", :group => [:test, :development]
+gem "rspec-rails", :group => [:development]
 gem "factory_girl_rails", :group => [:test, :development]
 group :test do
-  gem 'shoulda-matchers'
+  gem "rspec-rails"
+  gem 'shoulda-matchers', :require => false
   gem "capybara"
   gem "guard-rspec"
   gem "database_cleaner"

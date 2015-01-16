@@ -15,6 +15,7 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 #require 'devise'
+require 'shoulda/matchers'
 RSpec.configure do |config|
   #config.include ControllerHelpers, type: :controller
   #config.include Devise::TestHelpers, :type => :controller

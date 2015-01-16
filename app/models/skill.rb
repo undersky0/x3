@@ -7,7 +7,7 @@ class Skill < ActiveRecord::Base
   attr_accessible :photo_attributes, :name, :description,
   :skill_type_id, :properties, :teachers_title, :necessary_resources, :level, 
   :required_experience,:price, :start_date, :min_students, :max_students, :activity_duration,
-  :location_id, :user_id, :location_attributes, :skill_type_attributes
+  :location_id, :user_id, :location_attributes, :skill_type_attributes, :skillimage_attributes
   
   has_many :invites, :as => :inviteable
   accepts_nested_attributes_for :invites
@@ -45,7 +45,7 @@ class Skill < ActiveRecord::Base
     end
   end
   
-    def build_image
+  def build_image
      if self.skillimage.nil?
        self.build_skillimage()
      end

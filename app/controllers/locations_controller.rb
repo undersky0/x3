@@ -49,11 +49,8 @@ class LocationsController < ApplicationController
   # GET /locations/new.json
   def new
     @user = current_user
-    @user.build_location
     @context = context
     @location = @context.build_location
-    #@location = Location.new
-    gon.user = current_user
   end
 
   # GET /locations/1/edit
@@ -68,16 +65,12 @@ class LocationsController < ApplicationController
     @context = context
     @location = @context.build_location(params[:location])
     @user = current_user
-    #@mappable = load_mappable
     respond_to do |format|
     if @location.save     
       format.html { redirect_to @context, notice: " Created"}
-      #format.json { render :json => :back, :status => :created, :location => @user }
-      #redirect_to @commentable, notice: "Comment created."
     else
       format.html { redirect_to @location }
       format.json { render :json => @location.errors, :status => :unprocessable_entity }
-      #render :new
     end
     end
   end

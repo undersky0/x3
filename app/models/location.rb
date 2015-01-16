@@ -9,9 +9,8 @@ class Location < ActiveRecord::Base
   belongs_to :mappable, :polymorphic => true
   include HTTParty
   searchkick word_start: [:city]
-  #has_one :map, :dependent => :destroy
   before_validation :downcase
-    has_many :scribbles, :as => :scribbled
+  has_many :scribbles, :as => :scribbled
   accepts_nested_attributes_for :scribbles 
   belongs_to :ward
   accepts_nested_attributes_for :ward
@@ -32,20 +31,16 @@ class Location < ActiveRecord::Base
     :ward_id,
     :location,
     :type
-  #before_save :geocode
- # geocoded_by :to_s
-  #before_save :geolocate
-  #validate :street_address, :address_validator => true
   
   after_validation :geocode
-  #before_save :geolocate
+  
   before_save :get_ward #, :ward_exists?
-  #after_save :ward_present #creates new ward and feed if not existant
-  after_save :first_scribble
   before_save { |location|
     location.city = location.city.downcase
-    location.locality = location.locality.downcase
+    location.try(:locality).try(downcase)
     location.political = location.political.downcase}
+  
+  after_save :first_scribble
   
   def get_ward
     postcode = self.postcode.delete(' ')
@@ -54,7 +49,7 @@ class Location < ActiveRecord::Base
     self.locality = response["result"]["admin_ward"]
     self.political = response["result"]["parliamentary_constituency"]
     self.city = response["result"]["admin_district"]
-    createlocalfeed
+    createlocalfeed unless self.locality.nil?
     else
       puts "error"
     end
@@ -97,9 +92,7 @@ end
   
   def geolocate 
     res = GoogleGeocoder.geocode(address_string)
-    
     if res.success
-
     self.latitude = res.latitude
     self.lonitude = res.longitude
     else
@@ -155,35 +148,10 @@ end
      self.ward_id = @c.id if self.ward_id.nil?
   end
 
-
-  
-
   def self.users_city(city)
     self.where(:mappable_type => "User", :city => city).map(&:mappable_id).uniq
-    #returns array  of user_ids!
   end
   
-  # def search_and_fill_latlng(address=nil)
-    # okresponse = false
-    # geocoder = "http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address="
-# 
-    # if address == nil
-      # address = self.address
-    # end
-# 
-    # if address != nil && address != ""
-      # url = URI.escape(geocoder+address)
-      # resp = RestClient.get(url)
-      # result = JSON.parse(resp.body)
-# 
-      # if result["status"] == "OK"
-        # self.latitude = result["results"][0]["geometry"]["location"]["lat"]
-        # self.longitude = result["results"][0]["geometry"]["location"]["lng"]
-        # okresponse = true
-      # end
-    # end
-    # okresponse
-  # end
   def downcase
     self.city = self.city.downcase if self.city.present?
     self.political = self.political.downcase if self.political.present?
@@ -193,9 +161,7 @@ end
     self.scribbles.create!(:user_id => User.first.id, :post => "Welcome, You are the first in #{self.locality} to join our network! ") if self.type.present?
   end
   
-    def city_localities(city)
-        Location.where(city: city).map
-    end
-
-
+  def city_localities(city)
+      Location.where(city: city).map
+  end
 end
