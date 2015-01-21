@@ -24,7 +24,7 @@
 		 	<% n.times do%>
 	    <div class="col-md-6 whitesmoke-boarder nopadding">
 	         <a href="<%= user_skill_path(@user, f) %>">
-	      		<img src="<%= f.skillimage.url(:default)%>" alt="" style="width: 100%; height: 140px;">
+	      		<img src="<%= f.skillimage.url(:small)%>" alt="" style="width: 100%; height: 140px;">
 	         </a>
 		</div>
 			<%end%>
