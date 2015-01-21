@@ -12,6 +12,7 @@ bootstrap-modal/js/bootstrap-modalmanager.js
 bootstrap/js/modal.js
 bootstrap-modal/js/bootstrap-modal.js
 fileinput.js
+skills.css.sccs
 skillvalidator.js
 moment/min/moment.min.js
 moment/locale/en-gb.js
