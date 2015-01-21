@@ -81,7 +81,6 @@ end
 gem "rspec-rails", :group => [:development]
 gem "factory_girl_rails", :group => [:test, :development]
 group :test do
-  gem "rspec-rails"
   gem 'shoulda-matchers', :require => false
   gem "capybara"
   gem "guard-rspec"

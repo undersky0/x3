@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
     # GET /users
   # GET /users.js.coffee
-
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   def user_skills
-    @user = User.find(params[:id])
+    @user = set_user
     @skills = @user.skills
   end
   def show
@@ -138,7 +138,6 @@ end
   end
   
   def update
-    @user = User.find(params[:id])
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { render "crop" , flash[:notice]=>'Card was successfully updated.'} #redirect_to @card, notice: 'Card was successfully created.' }
@@ -199,5 +198,7 @@ end
       end
     end
   end
-  
+    def set_user
+      @user = User.find(params[:id])
+    end
 end

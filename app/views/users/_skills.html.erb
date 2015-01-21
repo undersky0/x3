@@ -1,14 +1,14 @@
 
 <% @skills.each do |skill| %>
-
 	<div class="skillbox">
 		<div class= "row">
 			<div class= "col-md-2 no-padd">
-				<%= link_to image_tag(skill.skillimage.url(:small)), skill_path(skill), :style => "z-index: 1;"%>
+				<%= %>
+				<%= link_to image_tag(skill.skillimage.url(:default)), skill_path(skill), :style => "z-index: 1;"%>
 				<% if skill.user.useravatar.nil?%>
 				<%skill.user.build_useravatar%>
 				<% else %>
-				<%= link_to image_tag(skill.user.useravatar.url(:thumb)), user_path(skill.user), :class => "pin" %>
+				<%= link_to image_tag(skill.user.useravatar.url(:default)), user_path(skill.user), :class => "pin" %>
 				<%end%> 
 		</div>
 		<div class= "col-md-8">

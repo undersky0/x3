@@ -7,7 +7,6 @@ $(document).ready(function(){
       url: '/search/query?q=%QUERY'
        ,
        filter: function(results){
-       console.log(results.user);
             return results.user;
         },
         cache: false

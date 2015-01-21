@@ -4,7 +4,6 @@ class Invite < ActiveRecord::Base
   
   belongs_to :inviteable, :polymorphic => true
   belongs_to :user
-  s
 
     def self.send_invite(user, inviteable)
     f1 = self.new(:user_id => user.id, :inviteable_id => inviteable.id, :inviteable_type => inviteable.class.base_class.name, :status => "Invited", :sent_at => Time.now)

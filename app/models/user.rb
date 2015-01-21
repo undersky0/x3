@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
- acts_as_messageable
+  acts_as_messageable
   #acts_as_authorization_subject  :association_name => :roles
   include Scrubber
   searchkick
@@ -67,7 +67,6 @@ class User < ActiveRecord::Base
            
   has_many :pending_friends, -> { where "friendships.status = 'pending'" },
            through: :friendship, source: :friend
-           
      
   def create_actor_id
     begin
@@ -241,6 +240,9 @@ end
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
   end    
+  
+  
+  
   end
   
   
