@@ -1,4 +1,7 @@
 Uu2::Application.routes.draw do
+  resources :contact_froms, only: [:index, :create]
+  get "contact" => "contact_forms#index"
+
     root :to => 'localfeeds#index'
     get "search/index"
     get "search/query"

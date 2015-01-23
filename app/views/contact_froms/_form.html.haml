@@ -1,0 +1,11 @@
+= simple_form_for(ContactFrom.new, :html => {:multipart => true, :class => 'form-horizontal' }) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :email, label: 'Email address'
+    = f.input :message_title, label: 'Title'
+    = f.input :message, label: 'Your message', as: :text
+
+  .form-actions
+    = f.button :submit, "Send!", class: "btn btn-success"

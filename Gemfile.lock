@@ -226,6 +226,9 @@ GEM
     lumberjack (1.0.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    mail_form (1.5.0)
+      actionmailer (>= 3.2, < 5)
+      activemodel (>= 3.2, < 5)
     mailboxer (0.12.4)
       carrierwave (>= 0.5.8)
       foreigner (>= 0.9.1)
@@ -499,6 +502,7 @@ DEPENDENCIES
   koala
   launchy
   less-rails
+  mail_form
   mailboxer
   make_flaggable!
   make_resourceful

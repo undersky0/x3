@@ -78,8 +78,8 @@ Uu2::Application.configure do
     address: 'smtp.gmail.com', 
     port: '587',
     enable_starttls_auto: true,
-    user_name: 'someuser',
-    password: 'somepass',
+    user_name: 'richardlonesteen@gmail.com',
+    password: ENV['SMTP_PASSWORD'],
     authentication: :plain,
     domain: 'http://undersky.co.uk'
   }
