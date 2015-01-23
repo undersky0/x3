@@ -81,7 +81,7 @@ Uu2::Application.configure do
     user_name: 'richardlonesteen@gmail.com',
     password: ENV['SMTP_PASSWORD'],
     authentication: :plain,
-    domain: 'http://undersky.co.uk'
+    enable_starttls_auto: true
   }
   
 end
