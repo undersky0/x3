@@ -14,6 +14,12 @@ $(document).ready(function(){
     });
 });
 
+$(function() {
+  setTimeout(function(){
+    $('.alert').slideUp(500);
+  }, 3000);
+});
+
 
 $(document).ready(function(){
 
