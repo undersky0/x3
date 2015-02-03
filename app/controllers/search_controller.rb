@@ -17,10 +17,7 @@ class SearchController < ApplicationController
       skillresults = skillsearch.map do |skills|
         {sname: skills.name.to_s.truncate(20), tname: skills.user.full_name, skillimage: skills.skillimage.url(:tiny), sid: skills.id}
       end
-      # puts users
       results = {user: profile, skill: skillresults }
-      #results = profile
-      puts results
       render json: results
     end
   end
@@ -33,8 +30,7 @@ class SearchController < ApplicationController
         profile = search.map do |profiles|
           {name: profiles.firstname.to_s.truncate(16) + " " + profiles.lastname.to_s.truncate(16), id: profiles.user_id}
         end
-
-      results ={users: profile }
+      results = {users: profile }
       render json: results
       end
   end

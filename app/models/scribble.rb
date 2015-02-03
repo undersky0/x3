@@ -9,9 +9,15 @@ class Scribble < ActiveRecord::Base
   acts_as_voteable
   paginates_per 12
   mount_uploader :file, FileUploader
-  
+  after_initialize :defaults
     def scribbled_type=(class_name)
      super(class_name.constantize.base_class.to_s)
   end
   
+    
+
+  def defaults
+    self.promotes ||= 0
+    self.demotes ||= 0
+  end
 end

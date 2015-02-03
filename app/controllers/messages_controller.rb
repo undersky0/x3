@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   
-    def new
+  def new
     if params[:receiver].present?
       @recipient = User.find_by_slug(params[:receiver])
       return if @recipient.nil?

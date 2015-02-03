@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     @skills = @user.skills
   end
   def show
-      @user = User.find(params[:id])
       @albumscover = @user.albums.last(2)
       @userskillscover = @user.skills.last(2)
       @all_connections = User.all

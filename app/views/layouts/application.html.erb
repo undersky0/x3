@@ -24,7 +24,6 @@
 		<div class="col-md-12">
 			<div id="flash-message"></div>
 			<%= render partial: "shared/flash_messages", flash: flash %> 
-
   	<%=yield%>
 
 
@@ -36,8 +35,13 @@
 </div>
 <div class="container">
 <%else%>
-<%= render partial: "shared/flash_messages", flash: flash %> 
+<div class="boardered">
+
+<%= render partial: "shared/flash_messages", flash: flash %>
+<%= render partial: "messages"%>
+<%= render partial: "messages2"%>
 <%= gflash %>
+</div>
 <%=yield%>
 
 

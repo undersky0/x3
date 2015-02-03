@@ -1,11 +1,10 @@
 class ScribblesController < ApplicationController
   # GET /scribbles
   # GET /scribbles.json
-  #before_filter :load_scribbled
+  before_filter :set_scribble
     
   def promote
     @user = current_user
-    @scribble = Scribble.find(params[:id])
       if @user.flagged?(@scribble, :promote)
           @user.unflag(@scribble, :promote)
       else
@@ -16,7 +15,6 @@ class ScribblesController < ApplicationController
   
   
   def vote
-    @scribble = Scribble.find(params[:id])
     @vote = params[:vote]
     if @vote == "true"
       @v = :up
@@ -36,21 +34,16 @@ class ScribblesController < ApplicationController
     render :nothing => true, :notice => "Demoted"
   end
     
-  def index
-    
+  def index   
   end
 
   def edit
-    @scribble = Scribble.find(params[:id])
   end
   
-  # POST /scribbles
-  # POST /scribbles.json
+
   def create
     @user = current_user
     @scribble = @user.scribbles.new(params[:scribble])
-    @scribble.promotes = 0
-    @scribble.demotes = 0
     @scribble.scribbled_type = params[:scribbled_type]
     @scribble.scribbled_id = params[:scribbled_id]
     respond_to do |format|
@@ -75,7 +68,6 @@ class ScribblesController < ApplicationController
   end
 
   def update
-    @scribble = Scribble.find(params[:id])
     respond_to do |format|
       if @scribble.update_attributes(params[:scribble])
         format.html { redirect_to @scribble, :notice => 'Scribble was successfully updated.' }
@@ -90,16 +82,20 @@ class ScribblesController < ApplicationController
   # DELETE /scribbles/1
   # DELETE /scribbles/1.json
   def destroy
-    @scribble = Scribble.find(params[:id])
     @scribble.destroy
     respond_to do |format|
       format.html { redirect_to scribbles_url }
       format.json { head :no_content }
     end
   end
-    def load_scribbled
-    resource, id = request.path.split('/')[1,2]
-    @scribbled = resource.singularize.classify.constantize.find(id)
-    end
-    
+  
+  def load_scribbled
+  resource, id = request.path.split('/')[1,2]
+  @scribbled = resource.singularize.classify.constantize.find(id)
+  end
+      private
+  
+  def set_scribble
+     @scribble = Scribble.find(params[:id])
+  end
 end

@@ -2,11 +2,10 @@ class ProfilesController < ApplicationController
   skip_filter :redirect_invalid_locations, :only => [:new, :create]
   skip_filter :ensure_signup_complete
   layout "about", :only => :new
-  # before_filter :load_user
+  before_filter :set_profile, :only => [:edit, :destroy, :update]
+  before_filter :set_userprofile, :only => [:index, :show, :namereg]
   def index
     @profiles = Profile.all
-    @profile = current_user.profile
-    
     if params[:query].present?
       @user = Profile.search(params[:query])
     else
@@ -36,11 +35,9 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-   @profile = Profile.find(params[:id])
   end
 
   def update
-    @profile = Profile.find(params[:id])
     if @profile.update_attributes(params[:profile])
       redirect_to @profile, :notice  => "Successfully updated profile."
     else
@@ -49,19 +46,22 @@ class ProfilesController < ApplicationController
   end
 
   def destroy
-    @profile = Profile.find(params[:id])
     @profile.destroy
     redirect_to profiles_url, :notice => "Successfully destroyed profile."
   end
   
   def namereg
-    @user = current_user
-    @profile = @user.profile
     if @profile.update_attributes(profile_params)
       redirect_to @profile, :notice  => "Successfully updated profile."
     else
       render :action => 'edit'
     end
   end
-
+  
+  def set_profile
+    @profile = Profile.find(params[:id])
+  end
+  def set_userprofile
+    @profile = current_user.profile
+  end
 end

@@ -1,35 +1,28 @@
 class SkillsController < ApplicationController
+  before_action :set_skill, only: [:show, :edit, :update, :destroy]
   def index
-    sleep 1
-    if params[:skill_id].present?
-      @users = Skill.find(params[:skill_id])
-       respond_to do |format|
-         puts @users.id
-          #format.html
-          #format.html {render :partial => "skills/joined", :locals => {:users => @users}}
-          format.js 
-       end
-    end
-    @s = Skill.all
-    @skills = Kaminari.paginate_array(@s).page(params[:page]).per(25)
-    @skilltypes = SkillType.all
-    @skill = User.all
-    
+    #search by word && type && ID
     if params[:q].present?
       @s = Skill.search(params[:q], fields: [{name: :word_start}], misspellings: true, limit:3)
       @skills = Kaminari.paginate_array(@s).page(params[:page]).per(25)
-    end
-    
+    end   
     if params[:id].present?
       @s = Skill.where(skill_type_id: params[:id])
       @skills = Kaminari.paginate_array(@s).page(params[:page]).per(25)
-    end
-
+    end 
     
+    if params[:skill_id].present?
+      @users = Skill.find(params[:skill_id])
+       respond_to do |format|
+          format.js 
+       end
+    end
+    @skills = Kaminari.paginate_array(Skill.all).page(params[:page]).per(25)
+    @skilltypes = SkillType.all
+    @skill = User.all
   end
 
   def show
-    @skill = Skill.find(params[:id])
     @location = @skill.location
     @distance_from = @location.distance_to(current_user.location)
     @scribbled = @skill
@@ -59,11 +52,9 @@ class SkillsController < ApplicationController
   end
 
   def edit
-    @skill = Skill.find(params[:id])
   end
 
   def update
-    @skill = Skill.find(params[:id])
     if @skill.update_attributes(params[:skill])
       redirect_to @skill, :notice  => "Successfully updated skill."
     else
@@ -72,7 +63,6 @@ class SkillsController < ApplicationController
   end
 
   def destroy
-    @skill = Skill.find(params[:id])
     @skill.destroy
     redirect_to skills_url, :notice => "Successfully destroyed skill."
   end
@@ -83,6 +73,10 @@ class SkillsController < ApplicationController
   :skill_type_id, :properties, :teachers_title, :necessary_resources, :level, 
   :required_experience,:price, :start_date, :min_students, :max_students, :activity_duration,
   :location_id, :user_id, :location_attributes => [:address, :street_address, :post_code], skillimage_attributes: :attachment)
+  end
+  
+  def set_skill
+    @skill = Skill.find(params[:id])
   end
   
 end

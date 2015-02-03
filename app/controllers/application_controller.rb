@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   #before_filter :authenticate_user!
     include ApplicationHelper
   helper_method :recipients
-  after_filter :prepare_unobtrusive_flash
   before_filter :ensure_signup_complete, only: [:new, :create, :update, :destroy]
 
 
@@ -13,15 +12,6 @@ class ApplicationController < ActionController::Base
     User.all.reject { |u| u.id == curr_u.id }.compact
   end
   
-
-  def set_flash_message(key, kind, options = {})
-    message = find_message(kind, options)
-    flash[key] = message if message.present?
-  end
-
-  def find_message(kind, options = {})
-    I18n.t("#{controller_name}.#{kind}", options)
-  end
   
   private
   def redirect_invalid_locations

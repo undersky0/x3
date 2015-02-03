@@ -1,7 +1,6 @@
 class NavigationController < ApplicationController
   before_filter :update_scribblestreams, :only => [:home, :refreshscribbles]
   before_filter :update_feed
-  
   def home
 
   end

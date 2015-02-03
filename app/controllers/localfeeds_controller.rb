@@ -1,5 +1,6 @@
 class LocalfeedsController < ApplicationController
   before_filter :loadscribbles
+  before_filter :set_localfeed, only: [:edit, :update, :destroy]
   def index
     @user = current_user
     @location = @user.location.city
@@ -47,11 +48,9 @@ class LocalfeedsController < ApplicationController
   end
 
   def edit
-    @localfeed = Localfeed.find(params[:id])
   end
 
   def update
-    @localfeed = Localfeed.find(params[:id])
     if @localfeed.update_attributes(params[:localfeed])
       redirect_to @localfeed, :notice  => "Successfully updated localfeed."
     else
@@ -60,7 +59,6 @@ class LocalfeedsController < ApplicationController
   end
 
   def destroy
-    @localfeed = Localfeed.find(params[:id])
     @localfeed.destroy
     redirect_to localfeeds_url, :notice => "Successfully destroyed localfeed."
   end
@@ -82,5 +80,11 @@ class LocalfeedsController < ApplicationController
     if current_user.location.nil?
       redirect_to new_user_locations_path(current_user.id)
     end
+  end
+  
+  private
+  
+  def set_localfeed
+    @localfeed = Localfeed.find(params[:id])
   end
 end
