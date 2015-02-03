@@ -22,11 +22,9 @@ class AlbumsController < ApplicationController
     @album = @albumable.albums.new(params[:album])
     @pictures = Picture.where(:album_token => @album.token)
     @album.pictures << @pictures
-    
-    
     respond_to do |format|
       if @album.save
-        format.html { redirect_to :back, notice: 'Gallery was successfully created.', error: 'crap' }
+        format.html { redirect_to polymorphic_url([@albumable, @album]), notice: 'Gallery was successfully created.' }
         format.json { render json: @albumable, status: :created, location: @album }      
       else
         format.html { render action: "new" }
@@ -69,10 +67,6 @@ class AlbumsController < ApplicationController
   
   def set_album
     @albumable = load_albumable
-    if @albumable.nil?
-      @album = @albumable.albums.find(params[:id]) 
-    else
-      @album = Album.find([:id])
-    end
+    @album = @albumable.albums.find(params[:id]) 
  end
 end
