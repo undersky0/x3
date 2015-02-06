@@ -1,7 +1,7 @@
 class ScribblesController < ApplicationController
   # GET /scribbles
   # GET /scribbles.json
-  before_filter :set_scribble
+  before_filter :set_scribble, except:[:create, :new]
     
   def promote
     @user = current_user
