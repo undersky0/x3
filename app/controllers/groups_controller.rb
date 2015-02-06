@@ -5,19 +5,15 @@ class GroupsController < ApplicationController
   def autocomplete
     render json: Groop.search(params[:query], autocomplete: true, limit: 10).map(&:name)
   end
-  
-  
-  def index
 
+  def index
     if params[:query].present? && params[:location].blank?
       @groups = Group.search(params[:query])
-      #@location = current_user.location.city
-     # @user = Kamari.paginate_array(@use).page(params[:page]).per(5)
-     elsif params[:query].blank? && params[:location].present? 
-       @distance = 20
-       @location = Location.near(params[:location], @distance, :order => 'distance').where(:user_id => nil).map(&:group_id)
-       @l = Group.find([@location])
-       @groups = Kaminari.paginate_array(@l).page(params[:page]).per(5)
+    elsif params[:query].blank? && params[:location].present? 
+      @distance = 20
+      @location = Location.near(params[:location], @distance, :order => 'distance').where(:user_id => nil).map(&:group_id)
+      @l = Group.find([@location])
+      @groups = Kaminari.paginate_array(@l).page(params[:page]).per(5)
     elsif params[:query].present? && params[:location].present?
       @location = Location.near(params[:location], 20, :order => 'distance').where(:user_id => nil).map(&:group_id)
       @grouplocation = Kaminari.paginate_array(@location).page(params[:page]).per(5)
@@ -34,7 +30,6 @@ class GroupsController < ApplicationController
   end
 
   def show
-
     @group = Group.find(params[:id])
     @groupscribbles = Scribble.where(:scribbled_id => @group, :scribbled_type => "Group")
     @scribbled = @group

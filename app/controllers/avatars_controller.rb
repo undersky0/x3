@@ -1,13 +1,13 @@
 class AvatarsController < ApplicationController
   
   before_filter :load_avatarable
+  before_action :set_avatar, only: [:destroy,:update,:edit,:show]
   
   def index
     @avatars = Avatar.all
   end
 
   def show
-    @avatar = Avatar.find(params[:id])
     @user = current_user
   end
 
@@ -38,11 +38,9 @@ class AvatarsController < ApplicationController
   end
 
   def edit
-    @avatar = Avatar.find(params[:id])
   end
 
   def update
-    @avatar = Avatar.find(params[:id])
     if @avatar.update_attributes(params[:avatar])
       redirect_to :back
     else
@@ -51,9 +49,12 @@ class AvatarsController < ApplicationController
   end
 
   def destroy
-    @avatar = Avatar.find(params[:id])
     @avatar.destroy
     redirect_to avatars_url, :notice => "Successfully destroyed avatar."
+  end
+  
+  def set_avatar
+    @avatar = Avatar.find(params[:id])
   end
   
   private 
@@ -61,7 +62,4 @@ class AvatarsController < ApplicationController
     resource, id = request.path.split('/')[1,2]
     @avatarable = resource.singularize.classify.constantize.find(id)
 end
-  
-  
-  
 end

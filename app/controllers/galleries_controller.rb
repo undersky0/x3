@@ -1,13 +1,13 @@
 class GalleriesController < ApplicationController
   
   before_filter :load_gallery
+  before_action :set_gallery, only: [:show,:edit,:update,:destroy]
   
   def index
     @galleries = @gallerable.galeries
   end
 
   def show
-    @gallery = Gallery.find(params[:id])
   end
 
   def new
@@ -24,11 +24,9 @@ class GalleriesController < ApplicationController
   end
 
   def edit
-    @gallery = Gallery.find(params[:id])
   end
 
   def update
-    @gallery = Gallery.find(params[:id])
     if @gallery.update_attributes(params[:gallery])
       redirect_to @gallery, :notice  => "Successfully updated gallery."
     else
@@ -37,11 +35,13 @@ class GalleriesController < ApplicationController
   end
 
   def destroy
-    @gallery = Gallery.find(params[:id])
     @gallery.destroy
     redirect_to galleries_url, :notice => "Successfully destroyed gallery."
   end
   
+  def set_gallery
+    @gallery = Gallery.find(params[:id])
+  end
   private
   def load_gallery
     resource, id = request.path.split('/')[1,2]

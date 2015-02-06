@@ -17,8 +17,7 @@ class ScribblesController < ApplicationController
   def vote
     @vote = params[:vote]
     if @vote == "true"
-      @v = :up
-      current_user.vote(@scribble, :direction => @v)
+      current_user.vote(@scribble, :direction => :up)
     else
       current_user.unvote_for(@scribble)
     end

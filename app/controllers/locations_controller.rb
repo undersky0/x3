@@ -49,6 +49,11 @@ class LocationsController < ApplicationController
   # GET /locations/new.json
   def new
     @user = current_user
+    if current_user.location.nil?
+      @user.build_location
+    else
+      @user = current_user
+    end
     @context = context
     @location = @context.build_location
   end

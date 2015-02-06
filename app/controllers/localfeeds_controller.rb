@@ -2,11 +2,9 @@ class LocalfeedsController < ApplicationController
   before_filter :loadscribbles
   before_filter :set_localfeed, only: [:edit, :update, :destroy]
   def index
-    @user = current_user
-    @location = @user.location.city
+    @location = current_user.location.city
     @cities = Localfeed.select(:id, :locality, :city).order('city ASC')
-    r = @cities.group_by {|k| k[:city] }
-    @localfeeds = r
+    @localfeeds = @cities.group_by {|k| k[:city] }
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @localfeeds }
@@ -16,8 +14,7 @@ class LocalfeedsController < ApplicationController
 
   def show
     @cities = Localfeed.select(:id, :locality, :city).order('city ASC')
-    r = @cities.group_by {|k| k[:city] }
-    @localfeeds = r
+    @localfeeds = @cities.group_by {|k| k[:city] }
     if params[:id].present?
       @localfeed = Localfeed.find(params[:id])
     else
@@ -25,7 +22,6 @@ class LocalfeedsController < ApplicationController
     end
     @scribbles = @localfeed.scribbles.order("created_at DESC").page params[:page]
     @scribbled = @localfeed
-    
       respond_to do |format|
       format.js
       format.html

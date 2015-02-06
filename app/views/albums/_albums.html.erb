@@ -4,37 +4,32 @@
     <% @albums.each do |album| %>
     <div class = "col-md-3 no-padd">
     	<div class = "picture-cover">
-    		<h4 class="text-center"><%= album.name.truncate(14) %></h4>
-    		
-    <div class= "thumbnails">
-            <% if album.pictures.empty? %>
-              <a href="<%= polymorphic_url([@albumable, album]) %>">
-                <img src="/assets/NoImageAvailable.jpg" alt="" style="width: 238px; height: 240px;">
-              </a>
-
-            <% else %>
-         
-              <a href="<%= polymorphic_url([@albumable, album]) %>">
-                <img src="<%= album.pictures.first.file_url(:album) %>" alt="" style="width: 238px; height: 240px;">
-              </a>
-             </div>
-             </div>
-            <% end %>
-            
-
-                 <div class="btn-group-justified">
-                 	
-                <a href="<%= edit_polymorphic_url([@albumable, album]) %>" class="btn btn-primary btn-sm btn-justified">
-                  <i class="fa fa-edit"></i>
-                  Edit
-                </a>
-                
-                <a class="btn btn-primary btn-sm" confirm="are you sure?" data-method="delete" href="<%= album_path(:id => album.id) %>" data-remote=true>
-                  <i class="fa fa-trash-o"></i>
-                  Delete
-                </a>
-                </div>
-                </div>
+    		<h4 class="text-center"><%= album.name.truncate(14) %></h4>	
+			    <div class= "thumbnails">
+			        <% if album.pictures.empty? %>
+			          <a href="<%= polymorphic_url([@albumable, album]) %>">
+			            <img src="/assets/no-photo-available.png" alt=""  class="img-responsive aspect">
+			          </a>
+			        <% else %>
+			          <a href="<%= polymorphic_url([@albumable, album]) %>">
+			            <img src="<%= album.pictures.first.file_url(:album) %>" alt="" style="width: 238px; height: 240px;">
+			          </a>
+			        <% end %>
+			    </div>
+       </div>
+            	  
+				    <div class="btn-group-justified">	
+				        <a href="<%= edit_polymorphic_url([@albumable, album]) %>" class="btn btn-primary btn-sm btn-justified">
+				          <i class="fa fa-edit"></i>
+				          Edit
+				        </a>
+				        
+				        <a class="btn btn-primary btn-sm" confirm="are you sure?" data-method="delete" href="<%= album_path(:id => album.id) %>" data-remote=true>
+				          <i class="fa fa-trash-o"></i>
+				          Delete
+				        </a>
+				    </div>
+    </div>
                 
          
     <% end %>

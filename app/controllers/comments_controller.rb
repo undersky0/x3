@@ -1,12 +1,11 @@
 class CommentsController < ApplicationController
   before_filter :load_commentable
   
-    def vote
+  def vote
   @comment = Comment.find(params[:id])
   @vote = params[:vote]
   if @vote == "true"
-    @v = :up
-    current_user.vote(@comment, :direction => @v)
+    current_user.vote(@comment, :direction => :up)
   else
     current_user.unvote_for(@comment)
   end
@@ -28,18 +27,16 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new  
   end
   
-    def create
+  def create
     @user = current_user
     @commentable = load_commentable
-    @comment = @commentable.comments.new(params[:comment])
-    
+    @comment = @commentable.comments.new(params[:comment])    
     respond_to do |format|
-    if @comment.save
-      @user.comments << @comment
-      format.js {}
+      if @comment.save
+        @user.comments << @comment
+        format.js {}
+      end
     end
-    end
-    
   end
   
   private

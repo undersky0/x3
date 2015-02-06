@@ -9,7 +9,7 @@ class Location < ActiveRecord::Base
   belongs_to :mappable, :polymorphic => true
   include HTTParty
   searchkick word_start: [:city]
-  before_validation :downcase
+
   has_many :scribbles, :as => :scribbled
   accepts_nested_attributes_for :scribbles 
   belongs_to :ward
@@ -33,14 +33,14 @@ class Location < ActiveRecord::Base
     :type
   
   after_validation :geocode
+  before_validation :downcase
+  before_save :get_ward, if: :postcode? 
   
-  before_save :get_ward #, :ward_exists?
-  before_save { |location|
-    location.city = location.city.downcase
-    location.try(:locality).try(downcase)
-    location.political = location.political.downcase}
-  
-  after_save :first_scribble
+   before_save { |location|
+     location.city = location.city.downcase
+     location.try(:locality).try(downcase)
+     location.political = location.political.downcase}
+   after_save :first_scribble, if: :postcode? 
   
   def get_ward
     postcode = self.postcode.delete(' ')
