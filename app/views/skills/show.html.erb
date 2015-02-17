@@ -66,7 +66,9 @@
 	
 	<strong>Maximum students</strong>
 	<input class="form-control" type="text" placeholder="<%= @skill.max_students %>" readonly>
-	
+<%if @skill.location.nil?%>	
+-
+<%else%>
   <strong>Location</strong> </br>
 	<address>
 	<%= @skill.location.address%></br>
@@ -74,6 +76,7 @@
 	</address>
 	<strong>Distance from you</strong></br>
 	<input class="form-control" type="text" placeholder="<%= number_with_precision(@distance_from, precision: 0, significant: true)%> miles" readonly>
+<%end%>
   	<strong>Price</strong>
   	<input class="form-control" type="text" placeholder="<%= quid(@skill.price) %>" readonly>
 
