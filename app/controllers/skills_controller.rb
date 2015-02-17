@@ -24,7 +24,7 @@ class SkillsController < ApplicationController
 
   def show
     @location = @skill.location
-    @distance_from = @location.distance_to(current_user.location)
+    @distance_from ||= @location.distance_to(current_user.location) if !@location.nil?
     @scribbled = @skill
     @scribbles = @scribbled.scribbles.order("created_at DESC").page params[:page]
   end
