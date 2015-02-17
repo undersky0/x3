@@ -18,22 +18,22 @@ $(window).load(function(){
 		</div>
 	</div>
 	<div class="col-md-4">
+		<%= simple_form_for([@context, @location]) do |form| %>
+		  <div class="map_panel">	
+		  <%= form.input :street_address, input_html: {:onkeyup => 'timed_input(this)', :value => @user.location.address, :autocomplete => :off}, :label => "Your Post Code" %>
+			you can also drag and drop marker!			  
+		  </div>
 		
-			<%= simple_form_for([@context, @location], :html => {:class => 'form-horizontal' }) do |form| %>
-			<div class="map_panel">	
-			  <%= form.input :street_address, input_html: {:onkeyup => 'timed_input(this)', :value => @user.location.address, :autocomplete => :off}, :label => "Your Post Code" %>
-				you can also drag and drop marker!			  
-			  </div>
-			  <div class="boarder-white">
-			  <%= form.input :address, :label => "Approximate Address", :value => @user.location.address, :disabled => :true, input_html: {:class=>'form-control'}%>
-			  <%= form.input :google_address, :value => @user.location.address, :label=> "Address first line",  input_html: {:class=>'validate[required]'} %>
-			  <%= form.input :postcode, :label => "Post Code",  input_html: {:class=>'validate[required]'} %>
-			  <%= form.input :city, :label => "City", input_html: {:class=>'validate[required]'}%>
-			  <%= form.input :political, as: :hidden, :label => "Political"%>
-			  <%= form.input :latitude, as: :hidden, input_html: {:value => @user.location.latitude}%>
-			  <%= form.input :longitude, as: :hidden, input_html: {:value => @user.location.longitude}%>
-			  <%= form.submit "Enter Location", :class => "btn btn-large btn-success" %>
-	</div>
-<%end%>
+		  <div class="boarder-white">
+		  <%= form.input :address, :label => "Approximate Address", :value => @user.location.address, :disabled => :true, input_html: {class: 'form-control'}%>
+		  <%= form.input :google_address, :value => @user.location.address, :label=> "Address first line",  input_html: {:class=>'validate[required]'} %>
+		  <%= form.input :postcode, :label => "Post Code",  input_html: {:class=>'validate[required]'} %>
+		  <%= form.input :city, :label => "City", input_html: {:class=>'validate[required]'}%>
+		  <%= form.input :political, as: :hidden, :label => "Political"%>
+		  <%= form.input :latitude, as: :hidden, input_html: {:value => @user.location.latitude}%>
+		  <%= form.input :longitude, as: :hidden, input_html: {:value => @user.location.longitude}%>
+		  <%= form.submit "Enter Location", :class => "btn btn-large btn-success" %>
+		  </div>
+	    <%end%>
 	</div>
 </div>
