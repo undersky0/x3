@@ -1,6 +1,10 @@
 <%=javascript_include_tag "googlemaps"%>
 <%= include_gon %>
 <script src="http://maps.google.com/maps/api/js?sensor=false&amp;v=3&amp;libraries=geometry" ></script>
+<%=javascript_include_tag "bootstrapvalidator/dist/js/bootstrapValidator"%>
+<%=javascript_include_tag "bootstrapvalidator/dist/js/language/en_US"%>
+<%=javascript_include_tag "locationvalidator"%>
+<%=stylesheet_link_tag "bootstrapvalidator/dist/css/bootstrapValidator"%>
 <script>
 source = document.getElementById("location_street_address");
 $(window).load(function(){
@@ -11,6 +15,7 @@ $(window).load(function(){
 	googlemapMarkerInit("settings_map_canvas","location","location_street_address", true, "location_latitude", "location.longitude");
 });
 </script>
+
 <div class="row">
 	<div class="col-md-8">
 		<div class="map_container" id="map_container">
