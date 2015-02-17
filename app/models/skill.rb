@@ -15,12 +15,7 @@ class Skill < ActiveRecord::Base
 
   has_one :location, :as => :mappable, :dependent => :destroy
   accepts_nested_attributes_for :location
-  
-  
-  # has_one :skilllocation, :as => :mappable, :class_name => "Location::Skilllocation", :dependent => :destroy
-  # accepts_nested_attributes_for :skilllocation
-  
-  
+
   has_one :skillimage, :as => :assetable, :class_name => "Group::Skillimage", :dependent => :destroy
   accepts_nested_attributes_for :skillimage, reject_if: :all_blank
   
@@ -36,6 +31,8 @@ class Skill < ActiveRecord::Base
 
   has_many :scribbles, :as => :scribbled, :dependent => :destroy
   accepts_nested_attributes_for :scribbles
+  
+  scope :available, -> {where('start_date >= ?', Time.now)}
                       
   def places_left
     if self.max_students.nil? && self.min_students.nil?
@@ -50,17 +47,4 @@ class Skill < ActiveRecord::Base
        self.build_skillimage()
      end
   end
-    
-    # def search_data
-    # {
-      # name: name
-    # }
-  # end
-#   
-  # def reindex
-    # self.reindex
-  # end
-
-  
-  
 end

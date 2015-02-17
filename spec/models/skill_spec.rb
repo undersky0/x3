@@ -21,6 +21,11 @@ RSpec.describe Skill, :type => :model do
     should validate_presence_of(:max_students)
   end
   
+  it "available" do
+    Skill.available.each {|a|
+    expect(a.start_date).to be > Time.now
+    }
+  end
   
   it "returns places left" do
     skill = create(:skill, max_students: '10', min_students: '5')
