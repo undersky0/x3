@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   acts_as_voter
   before_save :create_avatar, :create_cover, :create_profile
   before_save :create_actor_id
- # before_save :create_location
+  
   has_many :scribbles, :as => :scribbled, :dependent => :destroy
   accepts_nested_attributes_for :scribbles
   has_many :invitations, :as => :invited  

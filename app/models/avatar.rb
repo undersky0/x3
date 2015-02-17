@@ -3,6 +3,7 @@ class Avatar < ActiveRecord::Base
   belongs_to :avatarable, :polymorphic => true
   attr_accessible :photo_content_type, :photo_file_name, :photo_file_size, :photo
   delegate :url, :to => :photo
+  
   has_attached_file :photo,
   :styles => {
   :tiny => "36x36#",
@@ -14,4 +15,6 @@ class Avatar < ActiveRecord::Base
   :gcover => "1078x286"},
   :default_url => "./images/default_avatar_:style.jpg"
   validates_attachment_content_type :photo, :content_type => /^image\/(png|gif|jpeg)/
+  validates_attachment_size :photo, :in => 0..2.megabytes
+  validates_attachment :photo, presence: true
 end

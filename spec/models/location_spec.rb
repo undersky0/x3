@@ -30,7 +30,7 @@ RSpec.describe Location, :type => :model do
   
   it "creates localfeed if ward doesn't exist" do
     l = Location.where(locality: location.locality.downcase).count
-    expect(l).to eq 0
+    expect(l).to eq 1
   end
   end
   
