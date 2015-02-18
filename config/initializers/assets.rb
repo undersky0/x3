@@ -43,4 +43,5 @@ bootstrap/js/scrollspy.js
 hogan/web/builds/3.0.2/template-3.0.2.min.js
 hogan/web/builds/3.0.2/hogan-3.0.2.min.js
 locationvalidator.js
+tinymce-jquery.js
 )

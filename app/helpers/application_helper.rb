@@ -75,5 +75,8 @@ end
     'joined' if !invite.users_joined.where(user_id: current_user.id).empty?
     end
     
+    def is_admin?
+      return current_user.try(:admin?)
+    end
   
 end

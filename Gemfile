@@ -17,6 +17,7 @@ gem 'mailboxer'
 gem "font-awesome-rails"
 gem 'fancybox2-rails'
 gem 'httparty'
+gem 'tinymce-rails'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 #avatar

@@ -27,6 +27,9 @@
 	
 		
 	  	<strong>Description</strong>
+	  	<p><%= @skill.description.html_safe %></p>
+	  	
+	  	<strong>Necessary Resources</strong>
 	  	<p><%= @skill.necessary_resources %></p>
 		
 	 	<strong>level</strong>
@@ -83,7 +86,7 @@
 <p>
 
 	</br>
-	<%= facebook_button :title => "#{@skill.name}, At Undersky.co.uk", :url=> 'http://github.com/hermango/', :send => true, :url => 'http://www.undersky.co.uk' %>
+	<!-- <%= facebook_button :title => "#{@skill.name}, At Undersky.co.uk", :url=> 'http://github.com/hermango/', :send => true, :url => 'http://www.undersky.co.uk' %> -->
 </p>
 		</div>
 			</div>
@@ -94,6 +97,6 @@
 <div class="row">
 	<div class="col-md-12">
 <%= render partial: 'users/feeds'%>
-	</div>
+
 </div>
 </div>

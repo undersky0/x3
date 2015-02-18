@@ -10,7 +10,10 @@
 <%=stylesheet_link_tag "bootstrapvalidator/dist/css/bootstrapValidator"%>
 <%=stylesheet_link_tag "eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker"%>
 <%=stylesheet_link_tag "fileinput"%>
+
+
 <%end%>
+<%= tinymce_assets %>
 
 <div class="container-fluid">
 <%= simple_form_for @skill, :html => {:multipart => true, :class => 'form-horizontal' } do |f| %>
@@ -39,7 +42,7 @@
 </div>
 <div class="col-md-12">
 	<div class="form-group">
-	<%= f.input :description,as: :text, placeholder: 'Be creative ', :input_html => {:rows => 3, :style => 'width: 100%', :class=>"form-control"}%>
+	<%= f.input :description,as: :text, placeholder: 'Be creative ', :input_html => {:rows => 3, :style => 'width: 100%', :class=>"tinymce"}%>
 	</div>
 	<div class="form-group">
 	<%= f.input :necessary_resources,as: :text, placeholder: 'What should people bring with them?', :input_html => {:rows => 3, :style => 'width: 100%', :class=>"form-control"}%>
@@ -79,3 +82,4 @@
 </div>
 <% end%>
 </div>
+<%= tinymce %>
