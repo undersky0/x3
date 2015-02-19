@@ -336,6 +336,7 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
+    redcarpet (3.2.2)
     redis (3.2.0)
     ref (1.0.5)
     request_store (1.1.0)
@@ -530,6 +531,7 @@ DEPENDENCIES
   rails (= 4.1.7)
   rails-observers
   rails_12factor
+  redcarpet
   rmagick
   rspec-rails
   ruby_parser

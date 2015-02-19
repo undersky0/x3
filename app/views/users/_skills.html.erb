@@ -4,16 +4,16 @@
 		<div class= "row">
 			<div class= "col-md-2 no-padd">
 				<%= %>
-				<%= link_to image_tag(skill.skillimage.url(:default)), skill_path(skill), :style => "z-index: 1;"%>
+				<%= link_to image_tag(skill.skillimage.url(:small)), skill_path(skill), :style => "z-index: 1;"%>
 				<% if skill.user.useravatar.nil?%>
 				<%skill.user.build_useravatar%>
 				<% else %>
-				<%= link_to image_tag(skill.user.useravatar.url(:default)), user_path(skill.user), :class => "pin" %>
+				<%= link_to image_tag(skill.user.useravatar.url(:thumb)), user_path(skill.user), :class => "pin" %>
 				<%end%> 
 		</div>
 		<div class= "col-md-8">
 			<h3><%= link_to skill.name, skill_path(skill)%></h3> by <strong> <%= skill.user.name%></strong> - <%= skill.teachers_title%><br>
-			<%= skill.description.first(300)%>
+			<%= markdown skill.description.first(300)%>
 		</div>
 		<div class= "col-md-2 text-center">
 			<div class = "skill-minibox">

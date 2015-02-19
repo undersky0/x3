@@ -14,7 +14,7 @@
 		</div>
 		<div class= "col-md-8">
 			<h3><%= link_to skill.name, skill_path(skill)%></h3> by <strong> <%= skill.user.name%></strong> - <%= skill.teachers_title.humanize%><br>
-			<%= skill.description.first(300)%>
+			<%= markdown skill.description.first(300)%>
 		</div>
 		<div class= "col-md-2 text-center">
 			<div class = "skill-minibox">
