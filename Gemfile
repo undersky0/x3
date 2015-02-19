@@ -18,6 +18,7 @@ gem "font-awesome-rails"
 gem 'fancybox2-rails'
 gem 'httparty'
 gem 'tinymce-rails'
+gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 #avatar

@@ -1,4 +1,9 @@
 menubar: false
+toolbar: "bold,italic,underline,forecolor backcolor,|,bullist,numlist,outdent,indent,|,alignleft, aligncenter, alignright,|,uploadimage,emoticons"
 plugins:
-  - image
   - link
+  - uploadimage
+  - emoticons
+  - textcolor
+browser_spellcheck: true
+relative_urls: false

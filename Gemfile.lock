@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/PerfectlyNormal/tinymce-rails-imageupload.git
+  revision: f37a98c1b1c9eecc650661d986d97d08f12ebfa2
+  specs:
+    tinymce-rails-imageupload (4.0.16.beta)
+      railties (>= 3.2, < 5)
+      tinymce-rails (~> 4.0)
+
+GIT
   remote: git://github.com/cavneb/make_flaggable.git
   revision: 9819f5c75df76633bf365bcbbaf9716bd3f65c37
   specs:
@@ -537,6 +545,7 @@ DEPENDENCIES
   therubyracer
   thumbs_up
   tinymce-rails
+  tinymce-rails-imageupload!
   tire
   turbolinks
   twitter
