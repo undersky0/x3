@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [ :index, :new, :edit, :show, :destroy]
+  before_action :set_skills, only: [:new, :edit]
   respond_to :html
 
   def index
@@ -13,7 +14,6 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @skills = @user.skills
     @project = @user.projects.new
     respond_with(@project)
   end
@@ -53,4 +53,15 @@ class ProjectsController < ApplicationController
     def set_user
        @user = User.find(params[:user_id])
     end
+    
+    def set_skills
+    #combines skills associated with user from multiple dbs - later more will need to be added
+    @skills = current_user.skills
+    u = current_user.invites.joined
+      u.each do |p|
+        s = Skill.find_by_id(p.inviteable_id)
+        @skills << s
+      end     
+    end
+    
 end

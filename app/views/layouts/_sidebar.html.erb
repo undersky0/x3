@@ -35,7 +35,7 @@
 								<%= render_cell :arealist, :show %>						
 								<%= render_cell :grouplist, :show %>
 								<li><i class="fa fa-bullseye"></i> <%= link_to "Friends", showusers_path(current_user.id)%> <span class="badge badge-danger pull-right"><%= current_user.requested_friends.count + current_user.pending_friends.count%></span></a></li>						
-								<li><a href=#><i class="fa fa-folder-open-o"></i> <%= link_to "Projects", user_projects_path(current_user.id)%> <span class="badge badge-danger pull-right">1</span></a></li>	
+								<li><a href=#><i class="fa fa-folder-open-o"></i> <%= link_to "Projects", user_projects_path(current_user.id)%> <span class="badge badge-danger pull-right"><%=current_user.projects.count%></span></a></li>	
 								<li><a href=#><i class="fa fa-paper-plane-o"></i> Skills Attended<span class="badge badge-danger pull-right">3</span></a></li>
 								<li><a href=#><i class="fa fa-paper-plane"></i> Skills Created<span class="badge badge-danger pull-right">1</span></a></li>								
 								<li><a href=#><i class="fa fa-heart-o"></i> Endorsements <span class="badge badge-danger pull-right">23</span></a></li>	

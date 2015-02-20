@@ -24,8 +24,8 @@
             %a.btn.btn-default.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"} Remove
     .col-md-6
       %br
-      = f.label "To associate a class with a skill please"
-      = f.input :skill_id,label: false, :collection => @skills.map { |p| ["#{p.name}", p.id]}, prompt: "Choose a Skill"
+      = f.label "To associate your project with a skill or activity please"
+      = f.input :skill_id,label: false, :collection => @skills.map { |p| ["#{p.name}", p.id]}, prompt: "Choose a Skill or activity"
       = f.label "Project name"
       = f.input :name, label: false
     .col-md-12
