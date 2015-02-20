@@ -2,7 +2,7 @@
 <div class="row">
 	<div class="col-md-12 nopadding" style="top:-10px;">
 		<%= image_tag(@user.usercover.url(:large), :class => "img-thumbnail", :style => "width:100%; height:286px;")%>
-		<%= link_to image_tag(@user.useravatar.url(:small)), user_path(@user), :class => "userpin" %>
+		<%= link_to image_tag(@user.useravatar.url(:small),:size => "138x138"), user_path(@user), :class => "userpin"%>
 	</div>
 </div>
 
@@ -20,7 +20,7 @@
 </div>
 <br>
 <div class="row">
-<div class="col-md-12" style="padding-top: 10px;">
+<div class="col-md-12" style="padding-top: 10px; margin-left: 5px;">
 <%= render :partial => "feeds", :locals => {:scribbled => @scribbled} %>
 </div>
 </div>

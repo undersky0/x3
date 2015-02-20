@@ -1,0 +1,19 @@
+- content_for :script do 
+  - javascript_include_tag "bootstrap/js/scrollspy"
+.col-md-12
+  %h1.pull-left
+    = @project.name
+  %h1.pull-right
+    = link_to skill_path(@project.skill) do
+      = @project.skill.name
+      %i.fa.fa-paper-plane-o
+.col-md-12
+  #conversation{:style => "overflow:scroll; height:680px; background:white;"}
+    .boarder-white2{:style=>"word-wrap: break-word;"}
+      %strong.pull-right 
+        = @project.created_at.strftime("%d %b. %Y")
+      %br
+      = mark @project.about
+  = link_to 'Edit', edit_user_project_path(current_user, @project), :class=>"btn btn-primary" if current_user.id == @project.user_id
+  .pull-right
+    = link_to 'Back', user_projects_path(@user), :class=>"btn btn-primary"

@@ -1,4 +1,6 @@
 Uu2::Application.routes.draw do
+  resources :projects
+
   resources :contact_froms, only: [:index, :create]
   get "contact" => "contact_forms#index"
   post '/tinymce_assets' => 'tinymce_assets#create'
@@ -51,6 +53,7 @@ Uu2::Application.routes.draw do
     match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
     
     resources :users do
+      resources :projects
       member do
         get 'crop', :action => :crop
       end

@@ -1,18 +1,17 @@
-<%= form_for(@location || Location.new, :url => { :action => "create", :controller => "locations" }) do |f| %>
-
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :postcode %><br />
-    <%= f.text_field :postcode %>
-  </div>
-    <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<div class="col-md-4 top-buffer">
+	<div class="group-header">
+		<div class="text-center"><h4>Address Details</h4></div>
+	</div>
+		<div class="col-md-12 whitesmoke-boarder">	
+			<%= simple_form_for [@user,@location],:html => { :class => 'form-horizontal' }, url: {action: :update, controller: 'locations'}, method: :patch do |f| %>
+			<%= f.label "Address" %>
+		    <%= f.input :address, label: false %>
+			<%= f.label "Post Code" %>
+		    <%= f.input :postcode, label: false %>
+			<%= f.label "City" %>
+		    <%= f.input :city, label: false %>
+			<%= f.submit "Enter", :class=>"btn btn-success btn-block btn-lg" %>
+			</br>
+		</div>
+			<% end %>
+</div>

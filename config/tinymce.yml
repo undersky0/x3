@@ -1,5 +1,5 @@
 menubar: false
-toolbar: "bold,italic,underline,forecolor backcolor,|,bullist,numlist,outdent,indent,|,alignleft, aligncenter, alignright,|,uploadimage,emoticons"
+toolbar: "bold,italic,underline,forecolor backcolor,|,fontselect  fontsizeselect,|,bullist,numlist,outdent,indent,|,alignleft, aligncenter, alignright,|,uploadimage,emoticons"
 plugins:
   - link
   - uploadimage

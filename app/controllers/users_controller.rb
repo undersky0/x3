@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     # GET /users
   # GET /users.js.coffee
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy]
   def user_skills
     @user = set_user
     @skills = @user.skills
@@ -135,12 +135,18 @@ end
     @users = Kaminari.paginate_array(@us).page(params[:page]).per(40)
   end
   end
+  def edit
+    @profile = current_user.profile
+    @location = current_user.location
+    @user = current_user
+  end
   
   def update
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { render "crop" , flash[:notice]=>'Card was successfully updated.'} #redirect_to @card, notice: 'Card was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
+        format.html { redirect_to :back }
+        #format.html { render "crop" , flash[:notice]=>'Card was successfully updated.'} #redirect_to @card, notice: 'Card was successfully created.' }
+        format.json { render json: @user, status: :updated, location: @user }
       else
         format.html { redirect_to @user }
         format.json { render json: @user.errors, status: :unprocessable_entity }

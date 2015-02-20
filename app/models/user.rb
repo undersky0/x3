@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   before_save :create_avatar, :create_cover, :create_profile
   before_save :create_actor_id
   
+  has_many :projects, :dependent => :destroy
   has_many :scribbles, :as => :scribbled, :dependent => :destroy
   accepts_nested_attributes_for :scribbles
   has_many :invitations, :as => :invited  

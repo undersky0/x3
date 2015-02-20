@@ -6,8 +6,8 @@ class Profile < ActiveRecord::Base
   belongs_to :user
 
   
-  attr_accessible :firstname, :lastname, :age, :website, :phoneNo, :profile_id, :actor_id, :name
-  
+  attr_accessible :firstname, :lastname, :age, :website, :phoneNo, :profile_id, :actor_id, :name,
+  :about, :skills, :interests, :university, :college, :school
   # def search_data
     # {
       # firstname: firstname,

@@ -1,0 +1,40 @@
+- content_for :script do
+  =javascript_include_tag "fileinput"
+  =stylesheet_link_tag "fileinput"
+= tinymce_assets 
+= form_for @project, :html => { :multipart => true } do |f|
+  %p
+    = f.fields_for :projectimage do |g|
+      = g.file_field :attachment
+    = f.submit
+  %p
+= simple_form_for @project,:html => { :multipart => true } do |f|
+  = f.simple_fields_for :projectimage do |p|
+    .col-md-12
+      = p.input :attachment, as: :file
+  = f.error_notification
+  .form-inputs
+    .col-md-3
+      .fileinput.fileinput-new{"data-provides" => "fileinput"}
+        .fileinput-preview.thumbnail{"data-trigger" => "fileinput", :style => "width: 200px; height: 150px; margin-top: 10%;"}
+        %div
+          .text-center
+            %span.btn.btn-default.btn-file
+              %span.fileinput-new Select image
+              %span.fileinput-exists Change
+              %input#project_projectimage_attributes_attachment{:name => "project[projectimage_attributes][attachment]", :type => "file"}/
+            %a.btn.btn-default.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"} Remove
+    .col-md-6
+      %br
+      = f.input :skill_id, :collection => @skills.map { |p| ["#{p.name}", p.id]}, :selected => :id
+      = f.input :name
+    .col-md-12
+      = f.input :about,as: :text, placeholder: 'Be creative, here is your chance to impres the reader with your project', :input_html => {:rows => 20, :style => 'width: 100%', :class=>"tinymce"}
+    .col-md-12
+      .form-actions
+        = f.button :submit, :class=>"btn btn-success"
+        .pull-right
+          = link_to 'Back', user_projects_path(@user), :class=>"btn btn-primary"
+
+
+= tinymce

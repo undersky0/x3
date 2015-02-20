@@ -1,0 +1,83 @@
+<% content_for :script do %>
+<%=javascript_include_tag "fileinput"%>
+<%=stylesheet_link_tag "fileinput"%>
+<%end%>
+<% title "Edit Profile" %>
+<div class="row">
+<div class="col-md-4 top-buffer">
+	<div class="group-header">
+		<div class="text-center"><h4>Personal Details</h4></div>
+	</div>
+		<div class="col-md-12 whitesmoke-boarder">	
+			<%= simple_form_for @profile,:html => { :class => 'form-horizontal' } do |f| %>
+			<%= f.label "First name" %>
+		    <%= f.input :firstname, label: false %>
+			<%= f.label "Last name" %>
+		    <%= f.input :lastname, label: false %>
+			<%= f.label "Age" %>
+		    <%= f.input :age, label: false %>
+		  	<%= f.label "Phone Number" %>
+		    <%= f.input :phoneNo, label: false %>
+		    <%= f.label "Website" %>
+		    <%= f.input :website, label: false %>
+			<%= f.submit "Enter", :class=>"btn btn-success btn-block btn-lg" %>
+			</br>
+		</div>
+			<% end %>
+	</div>
+<%= render partial: "locations/form"%>
+<div class="col-md-4 top-buffer">
+	<div class="group-header">
+		<div class="text-center"><h4>Profile Picture</h4></div>
+	</div>
+		<div class="col-md-12 whitesmoke-boarder">	
+			
+		<%= simple_form_for @user, :html => { :multipart => true } do |f| %>
+		<div class="col-md-4">
+			<div class="fileinput fileinput-new" data-provides="fileinput">
+			  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 274px; height: 180px; margin-top: 10%;"></div>
+			  <div>
+			  	<div class="text-center">
+			    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span>
+			    <span class="fileinput-exists">Change</span><input type="file" id="user_useravatar_attributes_attachment" name="user[useravatar_attributes][attachment]"></span>
+			    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+			    </div>
+			  </div>
+			</div>
+		</div>	
+		<%= f.submit "Enter", :class=>"btn btn-success btn-block btn-lg" %>
+		
+		<%end%>
+
+			</br>
+		</div>
+</div>
+
+<div class="col-md-4 top-buffer">
+	<div class="group-header">
+		<div class="text-center"><h4>Personal Details</h4></div>
+	</div>
+		<div class="col-md-12 whitesmoke-boarder">	
+			<%= simple_form_for @profile,:html => { :class => 'form-horizontal' } do |f| %>
+		   	<%= f.label "What skills do you have?" %>
+		    <%= f.input :skills, label: false %>
+		    <%= f.label "What are you interested in?" %>
+		    <%= f.input :interests, label: false %>
+		   	<%= f.label "Any notes about you ?" %>
+		    <%= f.input :about, as: :text, label: false, :input_html => {:rows => 5} %>
+		   	<%= f.label "University?" %>
+		    <%= f.input :university, label: false %>
+		   	<%= f.label "College?" %>
+		    <%= f.input :college, label: false %>
+		   	<%= f.label "School?" %>
+		    <%= f.input :school, label: false %>
+			<%= f.submit "Enter", :class=>"btn btn-success btn-block btn-lg" %>
+			</br>
+		</div>
+			<% end %>
+	</div>
+</div>
+
+
+
+

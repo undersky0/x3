@@ -1,4 +1,31 @@
 <% title "Edit Profile" %>
+<div class="row">
+<div class="col-md-4">
+	<div class="group-header">
+		<div class="text-center"><h4>Personal Details</h4></div>
+	</div>
+		<div class="col-md-12 whitesmoke-boarder">	
+			<%= simple_form_for @profile,:html => { :class => 'form-horizontal' } do |f| %>
+			<%= f.label "First name" %>
+		    <%= f.input :firstname, label: false %>
+			<%= f.label "Last name" %>
+		    <%= f.input :lastname, label: false %>
+			<%= f.label "Age" %>
+		    <%= f.input :age, label: false %>
+		  	<%= f.label "Phone Number" %>
+		    <%= f.input :phoneNo, label: false %>
+		    <%= f.label "Website" %>
+		    <%= f.input :website, label: false %>
+			<%= f.submit "Enter", :class=>"btn btn-success btn-block btn-lg" %>
+			</br>
+		</div>
+			<% end %>
+	</div>
 
-<%= render 'form' %>
+
+</div>
+
+
+
+
 

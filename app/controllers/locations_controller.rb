@@ -84,14 +84,17 @@ class LocationsController < ApplicationController
   # PATCH/PUT /locations/1.json
   def update
     @context = context
+    if @context == current_user
+      @location = current_user.location
+    else 
     @location = @context.location.find(params[:id])
-
+    end 
     respond_to do |format|
-      if @location.update_attributes(location_params)
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
+      if @location.update_attributes(params[:location])
+        format.html { redirect_to :back, notice: 'Location was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { redirect_to :back }
         format.json { render json: @location.errors, status: :unprocessable_entity }
       end
     end
@@ -110,14 +113,13 @@ class LocationsController < ApplicationController
   end
 private 
   def context
-    if params[:user_id]
-      id = params[:user_id]
+    if params[:user_id] 
       User.find(params[:user_id])
+    elsif params[:id]
+      current_user
     elsif params[:skill_id]
-      id = params[:skill_id]
       Skill.find(params[:skill_id])
     else
-      id = params[:group_id]
       Group.find(params[:group_id])
     end
   end 

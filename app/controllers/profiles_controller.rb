@@ -2,8 +2,8 @@ class ProfilesController < ApplicationController
   skip_filter :redirect_invalid_locations, :only => [:new, :create]
   skip_filter :ensure_signup_complete
   layout "about", :only => :new
-  before_filter :set_profile, :only => [:edit, :destroy, :update]
-  before_filter :set_userprofile, :only => [:index, :show, :namereg]
+  before_filter :set_profile, :only => [:destroy]
+  before_filter :set_userprofile, :only => [:update,:index, :show, :namereg]
   def index
     @profiles = Profile.all
     if params[:query].present?
@@ -35,11 +35,12 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    @profile = current_user.profile
   end
 
   def update
     if @profile.update_attributes(params[:profile])
-      redirect_to @profile, :notice  => "Successfully updated profile."
+      redirect_to :back, :notice  => "Successfully updated profile."
     else
       render :action => 'edit'
     end
