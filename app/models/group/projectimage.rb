@@ -3,7 +3,8 @@ class Group::Projectimage < Asset
   :styles => {
   :small  => "136x146#"},
   :default_url => "images/default_skill_:style",
-  :processors => [:cropper]
+  :processors => [:cropper],
+  :ulr => "/public/..."
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   attr_accessible :attachment_content_type, :attachment_file_size, :attachment,
   :crop_x, :crop_y, :crop_w, :crop_h
