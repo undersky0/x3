@@ -1,14 +1,12 @@
 - content_for :script do
+  =javascript_include_tag "projects"
+  =javascript_include_tag "bootstrapvalidator/dist/js/bootstrapValidator"
+  =javascript_include_tag "bootstrapvalidator/dist/js/language/en_US"
+  =stylesheet_link_tag "bootstrapvalidator/dist/css/bootstrapValidator"
   =javascript_include_tag "fileinput"
   =stylesheet_link_tag "fileinput"
 = tinymce_assets 
-= form_for @project, :html => { :multipart => true } do |f|
-  %p
-    = f.fields_for :projectimage do |g|
-      = g.file_field :attachment
-    = f.submit
-  %p
-= simple_form_for @project,:html => { :multipart => true } do |f|
+= simple_form_for @project,:html => { :multipart => true,:class => 'form-horizontal' } do |f|
   = f.simple_fields_for :projectimage do |p|
     .col-md-12
       = p.input :attachment, as: :file
@@ -26,8 +24,10 @@
             %a.btn.btn-default.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"} Remove
     .col-md-6
       %br
-      = f.input :skill_id, :collection => @skills.map { |p| ["#{p.name}", p.id]}, :selected => :id
-      = f.input :name
+      = f.label "To associate a class with a skill please"
+      = f.input :skill_id,label: false, :collection => @skills.map { |p| ["#{p.name}", p.id]}, prompt: "Choose a Skill"
+      = f.label "Project name"
+      = f.input :name, label: false
     .col-md-12
       = f.input :about,as: :text, placeholder: 'Be creative, here is your chance to impres the reader with your project', :input_html => {:rows => 20, :style => 'width: 100%', :class=>"tinymce"}
     .col-md-12

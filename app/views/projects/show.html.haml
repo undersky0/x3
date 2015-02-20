@@ -4,12 +4,13 @@
   %h1.pull-left
     = @project.name
   %h1.pull-right
-    = link_to skill_path(@project.skill) do
-      = @project.skill.name
-      %i.fa.fa-paper-plane-o
+    =if !@project.skill.nil?
+      = link_to_unless skill_path(@project.skill) do
+        = @project.skill.name
+        %i.fa.fa-paper-plane-o
 .col-md-12
   #conversation{:style => "overflow:scroll; height:680px; background:white;"}
-    .boarder-white2{:style=>"word-wrap: break-word;"}
+    .boarder-white2{:style=>"word-wrap: break-word; margin:14px;"}
       %strong.pull-right 
         = @project.created_at.strftime("%d %b. %Y")
       %br
