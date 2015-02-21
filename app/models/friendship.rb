@@ -11,7 +11,7 @@ class Friendship < ActiveRecord::Base
     @friend = User.find_by_id(friend)
     subject = "#{@user.name}"
     body = "#{@user.name} Has accepted your friednship request"
-    @friend.notify(subject, body, @user)
+    #@friend.notify(subject, body, @user)
   end
   
   def self.request_friend_notification(user, friend)
@@ -19,7 +19,7 @@ class Friendship < ActiveRecord::Base
     @user = User.find_by_id(user)
     subject = "#{@user.name}"
     body = "#{@user.name} Sent you a friend request"
-    @friend.notify(subject, body)
+    #@friend.notify(subject, body)
   end
   
   def self.are_friends(user, friend)
@@ -45,7 +45,7 @@ class Friendship < ActiveRecord::Base
       f1.save
       f2.save
     end
-    request_friend_notification(user,friend)
+    #request_friend_notification(user,friend)
   end
   
   def self.accepted(user, friend)
@@ -59,7 +59,7 @@ class Friendship < ActiveRecord::Base
         f2.update_attributes(:status => "accepted")
         
       end 
-      accepted_friend_notification(user,friend)
+      #accepted_friend_notification(user,friend)
     end
     return true
   end
