@@ -1,7 +1,4 @@
-<%if invite.count == 1 %>
-<% @i = Invite.find(invite)%>
-<% @invite =@i.first%>
-<%end%>
+
 <%= link_to leave_invites_path(:id => @invite.id), :remote => true, :class=>"btn btn-danger btn-xs", :id=>"cbutton_#{inviteable.id}" do %>
 <span class="fa fa-plus-circle fa-1.5x"></span>
   Leave

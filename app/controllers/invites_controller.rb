@@ -12,16 +12,16 @@ respond_to :js
     end
   end
 
-    def join
-      #should be redirecting to payment page for skills
-    @user = User.find_by_id(params[:user_id])
-    @inviteable = inviteable 
-      unless @user.nil? || @inviteable.nil?
-       @invite = Invite.join(@user, @inviteable)
-      else
-        flash[:notice] = "something went wrong, try again"
-      end
+  def join
+    #should be redirecting to payment page for skills
+  @user = User.find_by_id(params[:user_id])
+  @inviteable = inviteable 
+    unless @user.nil? || @inviteable.nil?
+     @invite = Invite.join(@user, @inviteable)
+    else
+      flash[:notice] = "something went wrong, try again"
     end
+  end
 
   def leave
     #should be redirecting to leaving page for skils
@@ -49,10 +49,12 @@ respond_to :js
     @invites = Invite.find(params[:id])
     @invite = invitetype
     @user = current_user
-    unless @invites.nil?
-      Invite.removewatchlist(@invites)
-    else
+    if @invites.nil?
       flas[:notice] = "something went wrong, try again"
+    else
+      puts @invites.inspect
+      Invite.removewatchlist(@invites)
+      flash[:notice] = "Removed"
     end
   end
 
