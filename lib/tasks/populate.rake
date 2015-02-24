@@ -7,7 +7,7 @@ namespace :db do
      
 
                 displayName = Faker::Name.name
-                email = "test-#{531+11238}@tests.org"
+                email = "test-#{Faker::number.number(100)}@tests.org"
                 password = "password"
                 test_user = User.create!(
                   :email => email,
