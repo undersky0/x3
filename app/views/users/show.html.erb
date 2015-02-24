@@ -1,3 +1,10 @@
+<%=javascript_include_tag "best_in_place"%>
+<script>
+	$(document).ready(function() {
+  /* Activating Best In Place */
+  jQuery(".best_in_place").best_in_place();
+});
+</script>
 <div class="container nopadding">
 <div class="row">
 	<div class="col-md-12 nopadding" style="top:-10px;">
@@ -20,9 +27,16 @@
 </div>
 <br>
 <div class="row">
-<div class="col-md-12" style="padding-top: 10px; margin-left: 5px;">
-<%= render :partial => "feeds", :locals => {:scribbled => @scribbled} %>
+	<div class="col-md-8" >
+	<%= render :partial => "feeds", :locals => {:scribbled => @scribbled} %>
+	</div>
+	<div class="col-md-4 whitesmoke-boarder no-padd">
+	<div class="element-header text-center">
+		<strong>In place editing</strong>
+	</div>
+		<%= best_in_place @user.profile,:firstname, :as => :textarea, :path => user_profile_path(@user,@user.profile)%>
+	</div>
 </div>
-</div>
+
 
 

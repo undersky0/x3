@@ -5,8 +5,10 @@
 	<div class="col-md-6 whitesmoke-boarder nopadding" style="height: 141px;">
 	<%if current_user == @user%>
 	<p strong> <i class="fa fa-child"></i> <%= link_to "Your Profile", edit_user_path(@user)%></p>
+	<p strong> <i class="fa fa-folder-open-o"></i> <%= link_to "Your Projects", user_projects_path(@user)%><span class="badge badge-danger pull-right"><%= @user.projects.count%></span></p>
 	<%else%>
 	<p strong> <i class="fa fa-child"></i> <%= link_to "Users Profile", user_profile_path(@user, @user.profile)%></p>
+	<p strong> <i class="fa fa-folder-open-o"></i> <%= link_to "Users Projects", user_projects_path(@user)%><span class="badge badge-danger pull-right"><%= @user.projects.count%></span></p>
 	<%end%>
 	<p strong> <i class="fa fa-smile-o"></i> <%= link_to "Friends", showusers_path(@user)%> <span class="badge badge-danger pull-right"><%= @user.friends.count%></span></p>
 	<p strong> <i class="fa fa-users"></i> <%= link_to "Groups", groups_path %> </p>

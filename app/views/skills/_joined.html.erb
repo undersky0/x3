@@ -1,10 +1,10 @@
 <% if @users.nil?%>
-
+Be the first!
 <%else%>
 <div class="row">
 <% @users.users_joined.each do |u| %>
-<div class="col-md-6 bl">
-<%= link_to image_tag(u.user.useravatar.url(:thumb), :size => "42x42"), user_path(u.user.id), :class => "img-thumbnail" %> 
+<div class="col-md-6">
+<%= link_to image_tag(u.user.useravatar.url(:small), :size => "42x42", :class => "img-thumbnail" ), user_path(u.user.id)%> 
 <%= link_to u.user.full_name, user_path(u.user.id)%>
 </div>
 <% end %>

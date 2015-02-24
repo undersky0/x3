@@ -14,9 +14,11 @@ class SkillsController < ApplicationController
     if params[:skill_id].present?
       @users = Skill.find(params[:skill_id])
        respond_to do |format|
-          format.js 
+          format.html {render partial: "skills/joined"}
+          format.js
        end
     end
+    
     @skills = Kaminari.paginate_array(Skill.all).page(params[:page]).per(25)
     @skilltypes = SkillType.all
     @skill = User.all
