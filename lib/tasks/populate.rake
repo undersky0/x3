@@ -49,7 +49,7 @@ namespace :db do
                 location.save
                 ward.save
 
-10.times do |n|
+25.times do |n|
                 skilltype = SkillType.create(:name => Faker::Commerce.department,
                 :description => Faker::Company.catch_phrase)
                 
