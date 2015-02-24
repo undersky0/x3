@@ -13,6 +13,19 @@ namespace :db do
                   :email => email,
                   :password => password,
                   :password_confirmation => password) 
+                
+                test_user.build_profile(
+                firstname: Faker::Name.first_name,
+                lastname: Faker::Name.last_name,
+                website: Faker::Internet.url,
+                phoneNo: Faker::PhoneNumber.phone_number,
+                about: Faker::Lorem.sentence(6),
+                skills: Faker::Lorem.words(3),
+                interests: Faker::Lorem.words(3),
+                university:Faker::Lorem.words(3),
+                college:Faker::Lorem.words(3),
+                school:Faker::Lorem.words(3), 
+                )
                   
                 location = test_user.build_location(:address => "116 Farringdon Road",
                 :street_address => "116 Farringdon Road",
@@ -21,7 +34,7 @@ namespace :db do
                 :longitude => -0.1110795637328,
                 :google_address => "116 Farringdon Road",
                 :city => "London",
-                :locality => "Clerkenwell1",
+                :locality => "Clerkenwell",
                 :political => "Islington South and Finsbury",
                 :type => "Localfeed")
 
@@ -34,24 +47,18 @@ namespace :db do
                 test_user.save
 
 50.times do |n|
-                
-               
-               # test_user = User.first
-
-
-
                 skilltype = SkillType.create(:name => Faker::Commerce.department,
                 :description => Faker::Company.catch_phrase)
                 
                 skills = test_user.skills.build(
-                :name => Faker::Hacker.ingverb,
-                :description => Faker::Hacker.say_something_smart,
+                Faker::Company.bs,
+                Faker::Lorem.sentence(3),
                 :skill_type_id => skilltype.id,
                 :level => "Beginners",
-                :required_experience => Faker::Lorem.characters(10),
+                :required_experience => Faker::Lorem.sentences(1),
                 :start_date => rand(1.year).from_now,
                 :max_students => Faker::Number.number(2),
-                :min_students => Faker::Number.digit,
+                :min_students => 1,
                 :price => Faker::Number.digit,
                 :user_id => test_user.id,
                 :location_id => test_user.location.id,
