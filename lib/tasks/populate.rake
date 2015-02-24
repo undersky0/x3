@@ -20,11 +20,11 @@ namespace :db do
                 website: Faker::Internet.url,
                 phoneNo: Faker::PhoneNumber.phone_number,
                 about: Faker::Lorem.sentence(6),
-                skills: Faker::Lorem.words(3),
-                interests: Faker::Lorem.words(3),
-                university:Faker::Lorem.words(3),
-                college:Faker::Lorem.words(3),
-                school:Faker::Lorem.words(3), 
+                skills: Faker::Commerce.color,
+                interests: Faker::Commerce.color,
+                university:Faker::Commerce.color,
+                college:Faker::Commerce.color,
+                school:Faker::Commerce.color, 
                 )
                   
                 location = test_user.build_location(:address => "116 Farringdon Road",
@@ -49,16 +49,16 @@ namespace :db do
                 location.save
                 ward.save
 
-50.times do |n|
+10.times do |n|
                 skilltype = SkillType.create(:name => Faker::Commerce.department,
                 :description => Faker::Company.catch_phrase)
                 
-                skills = test_user.skills.build(
+                skills = test_user.skills.build(:name=>
                 Faker::Company.bs,
-                Faker::Lorem.sentence(3),
+                :description=> Faker::Lorem.paragraph,
                 :skill_type_id => skilltype.id,
                 :level => "Beginners",
-                :required_experience => Faker::Lorem.sentences(1),
+                :required_experience => Faker::Lorem.paragraph,
                 :start_date => rand(1.year).from_now,
                 :max_students => Faker::Number.number(2),
                 :min_students => 1,
