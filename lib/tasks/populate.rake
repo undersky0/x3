@@ -37,14 +37,17 @@ namespace :db do
                 :locality => "Clerkenwell",
                 :political => "Islington South and Finsbury",
                 :type => "Localfeed")
+               
 
 
                 ward = Ward.new(:city => location.city, :locality => location.locality)
-                ward.save
-                                location.save
+                
+                                
                 test_user.build_useravatar
                 test_user.build_usercover
                 test_user.save
+                location.save
+                ward.save
 
 50.times do |n|
                 skilltype = SkillType.create(:name => Faker::Commerce.department,
@@ -65,8 +68,16 @@ namespace :db do
                 :activity_duration => Faker::Number.digit,
                 :teachers_title => Faker::Name.title)
                 # location.save
-                skills.build_location
-                skills.location = location
+                skills.build_location(:address => "116 Farringdon Road",
+                :street_address => "116 Farringdon Road",
+                :postcode => "EC1R 3AP",
+                :latitude => 51.5255389407005,
+                :longitude => -0.1110795637328,
+                :google_address => "116 Farringdon Road",
+                :city => "London",
+                :locality => "Clerkenwell",
+                :political => "Islington South and Finsbury")
+                
                 skills.save
 
                 
