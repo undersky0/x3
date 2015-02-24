@@ -52,9 +52,7 @@ respond_to :js
     if @invites.nil?
       flas[:notice] = "something went wrong, try again"
     else
-      puts @invites.inspect
       Invite.removewatchlist(@invites)
-      flash[:notice] = "Removed"
     end
   end
 
