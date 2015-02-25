@@ -40,6 +40,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update_attributes(params[:profile])
+      #format.json { respond_with_bip(@profile) }
       redirect_to :back, :notice  => "Successfully updated profile."
     else
       render :action => 'edit'
