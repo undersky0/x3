@@ -46,4 +46,6 @@ locationvalidator.js
 tinymce-jquery.js
 projects.js
 best_in_place.js
+style.css
+custom.js
 )
