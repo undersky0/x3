@@ -35,7 +35,7 @@
 		<%= simple_form_for @user, :html => { :multipart => true } do |f| %>
 		<div class="col-md-4">
 			<div class="fileinput fileinput-new" data-provides="fileinput">
-			  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 274px; height: 180px; margin-top: 10%;"></div>
+			  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 274px; height: 180px; margin-top: 10%;"><%=image_tag(@user.useravatar.url(:small),:class=>"img-responsive aspect")%></div>
 			  <div>
 			  	<div class="text-center">
 			    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span>
