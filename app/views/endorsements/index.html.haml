@@ -6,7 +6,7 @@
           %h2
             %i.fa.fa-heart  Endorsements
         .pull-right
-          = link_to new_user_endorsement_path, remote: true, class: "btn btn-danger", :style => "margin-top: 30px" do
+          = link_to new_user_endorsement_path(:endorser_id => @user), remote: true, class: "btn btn-danger", :style => "margin-top: 30px" do
             %i.fa.fa-heart
             endorse
   - else

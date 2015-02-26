@@ -1,0 +1,18 @@
+.skill {
+  /* off by default */ }
+  .skill .leave {
+    display: none; }
+
+/* when the skill is favorited show the unfavorite button instead */
+.skill.joined .join {
+  display: none; }
+.skill.joined .leave {
+  display: inline-block; }
+
+.invite .unwatch {
+  display: none; }
+
+.skill.watched .watch {
+  display: none; }
+.skill.watched .unwatch {
+  display: inline-block; }
