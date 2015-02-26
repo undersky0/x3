@@ -1,0 +1,21 @@
+.row
+  - @endorsements.each do |f|
+      
+    .col-md-6.nopadding.boarder-white
+      .col-md-12.element-header.nopadding
+        Endorsed by: 
+        %strong= f.user.name
+        .pull-right
+          = f.created_at.strftime(date)      
+      .col-md-1.nopadding
+        %strong= image_tag(f.user.useravatar.url(:thumb), :size=>"40x40")
+      .col-md-11.nopadding       
+        %strong= f.message
+      
+      
+      
+      
+      
+   
+-# %strong= link_to "Edit", edit_user_endorsement_path(current_user,@endorsements.first), remote: true, class: "btn"
+-# %strong= link_to "Delete", user_endorsement_delete_path(current_user,@endorsements.first), remote: true, class: "btn btn-danger"

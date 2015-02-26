@@ -10,6 +10,7 @@
 	<p strong> <i class="fa fa-child"></i> <%= link_to "Users Profile", user_profile_path(@user, @user.profile)%></p>
 	<p strong> <i class="fa fa-folder-open-o"></i> <%= link_to "Users Projects", user_projects_path(@user)%><span class="badge badge-danger pull-right"><%= @user.projects.count%></span></p>
 	<%end%>
+	<p strong> <i class="fa fa-heart"></i> <%= link_to "Endorsements", user_endorsements_path(@user)%><span class="badge badge-danger pull-right"><%= @user.inverse_endorsements.count%></span></p>
 	<p strong> <i class="fa fa-smile-o"></i> <%= link_to "Friends", showusers_path(@user)%> <span class="badge badge-danger pull-right"><%= @user.friends.count%></span></p>
 	<p strong> <i class="fa fa-users"></i> <%= link_to "Groups", groups_path %> </p>
 	</div>
@@ -31,18 +32,23 @@
 	<%end%>
 	</div>
 	<% unless current_user==@user%>
-			<div class="btn-group btn-group-justified">
-	<%= link_to new_message_path, :class=> "btn btn-info btn-block" do %>
-	<span class ="fa fa-envelope-o"></span>
-		Message
-		<%end%>
-
-		<%else%>
-	<%= link_to conversations_path, :class=> "btn btn-info btn-block" do%>
-	<span class ="fa fa-envelope"></span>
-	Inbox
-	<%end%>
-			</div>
+		<div class="btn-group btn-group-justified">
+			<%= link_to new_message_path, :class=> "btn btn-info btn-block" do %>
+			<i class="fa fa-envelope-o"></i>Message <%end%>
+		</div>
+		<div class="btn-group btn-group-justified">		
+			<%= link_to new_user_endorsement_path(@user, :endorser_id => @user), remote: true, class: "btn btn-danger btn-block" do%>
+  			<i class="fa fa-heart"></i>Endorse <%end%>	
+  		</div>						
+	<%else%>
+		<div class="btn-group btn-group-justified">
+			<%= link_to conversations_path, :class=> "btn btn-info btn-block" do%>
+			<i class="fa fa-envelope"></i>Inbox<%end%>
+		</div>
+		<div class="btn-group btn-group-justified">
+			<%= link_to user_endorsements_path(@user), class: "btn btn-danger btn-block" do%>
+  			<i class="fa fa-heart"></i>Endorsements <%end%>	
+		</div>
 			<%end%>
 	</div>
 	

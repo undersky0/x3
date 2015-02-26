@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
   before_save :create_avatar, :create_cover, :create_profile
   before_save :create_actor_id
   
+  has_many :endorsements
+  has_many :endorsers, :through => :endorsements
+  has_many :inverse_endorsements, :class_name => "Endorsement", :foreign_key => "endorser_id"
+  has_many :inverse_endorsers, :through => :inverse_endorsements, :source => :user
   has_many :projects, :dependent => :destroy
   has_many :scribbles, :as => :scribbled, :dependent => :destroy
   accepts_nested_attributes_for :scribbles

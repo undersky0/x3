@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [ :index, :new, :edit, :show, :destroy]
   before_action :set_skills, only: [:new, :edit]
+  before_action :set_friend, only: [:new]
   respond_to :html
 
   def index
@@ -52,6 +53,9 @@ class ProjectsController < ApplicationController
     
     def set_user
        @user = User.find(params[:user_id])
+    end
+    def set_friend
+       @user = User.find(params[:friend_id])
     end
     
     def set_skills

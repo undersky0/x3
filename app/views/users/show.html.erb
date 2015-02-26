@@ -4,6 +4,7 @@
 	<div class="col-md-12 nopadding" style="top:-10px;">
 		<%= image_tag(@user.usercover.url(:large), :class => "img-thumbnail", :style => "width:100%; height:286px;")%>
 		<%= link_to image_tag(@user.useravatar.url(:small),:size => "138x138"), user_path(@user), :class => "userpin"%>
+		<div class="name"><%=@user.name%></div>
 	</div>
 </div>
 
@@ -24,6 +25,10 @@
 	<div class="col-md-8" >
 	<%= render :partial => "feeds", :locals => {:scribbled => @scribbled} %>
 	</div>
-
+</div>
+<div class="modal fade" id="endorsement-modal">
+  <div class="modal-dialog">
+    <div class="modal-content" id="inner-endorsement-modal"></div>
+  </div>
 </div>
 

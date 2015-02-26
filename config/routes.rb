@@ -1,4 +1,6 @@
 Uu2::Application.routes.draw do
+
+
   resources :projects
 
   resources :contact_froms, only: [:index, :create]
@@ -54,6 +56,9 @@ Uu2::Application.routes.draw do
     
     resources :users do
       resources :projects
+        resources :endorsements do 
+          get "delete"
+        end
       member do
         get 'crop', :action => :crop
       end

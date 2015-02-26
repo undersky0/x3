@@ -25,6 +25,16 @@ border-radius: 1px 1px 1px 1px;
    margin-top: 0px;
    border-width: 7px;
  }
+ .name {
+	position: absolute;
+	z-index: 2;
+	left: 58%;
+	top: 88%;
+	font-size: x-large;
+	font-weight: 800;
+	color: white;
+	-webkit-text-stroke: 1px black;
+ }
  .userpin {
 	height: 142px;
 	width: 142px;

@@ -1,0 +1,11 @@
+= simple_form_for([@endorser, @endorsement], remote:true) do |f|
+  %ul.errors
+  .modal-body
+    = f.error_notification
+  
+    .form-inputs
+      = f.input :message
+      
+  .modal-footer
+    = f.button :submit, class: "btn btn-primary"
+    = link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"}

@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Message:
+  = @endorsement.message
+%p
+  %b User:
+  = @endorsement.user_id
+%p
+  %b Friend:
+  = @endorsement.friend_id
+
+= link_to 'Edit', edit_endorsement_path(@endorsement)
+\|
+= link_to 'Back', endorsements_path

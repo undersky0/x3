@@ -1,0 +1,9 @@
+$("ul.errors").html("")
+<% if @endorsement.errors.any? %>
+  <% @endorsements.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+<% else %>
+  $("#inner-endorsement-modal").html("<%= escape_javascript(render 'thanks') %>")
+  $("#endorsement-modal").modal("show")
+<% end %>

@@ -124,5 +124,8 @@ end
   }
   Redcarpet::Markdown.new(renderer, extensions).render(text).html_safe
 end
+def date
+  return "%d %b %Y"
+end
   
 end

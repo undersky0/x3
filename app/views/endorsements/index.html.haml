@@ -1,0 +1,20 @@
+.container
+  - if @user != current_user
+    .row
+      .col-md-12
+        .pull-left
+          %h2
+            %i.fa.fa-heart  Endorsements
+        .pull-right
+          = link_to new_user_endorsement_path, remote: true, class: "btn btn-danger", :style => "margin-top: 30px" do
+            %i.fa.fa-heart
+            endorse
+  - else
+    %h1
+      %i.fa.fa-heart  Endorsements
+.new-endorsement
+  = render "index"
+#endorsement-modal.modal.fade
+  .modal-dialog
+    #inner-endorsement-modal.modal-content
+
