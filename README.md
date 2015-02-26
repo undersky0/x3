@@ -1,8 +1,11 @@
 # [Undersky Project](http://www.undersky.co.uk) by Richard D'Lonesteen
 
 To see the project in action visit: http://www.undersky.co.uk
+
 account:user@user.com
+
 password:test1234
+
 or register new account
 
 To find out more about the project and author visit: http://www.undersky.co.uk/home
