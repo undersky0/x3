@@ -91,6 +91,13 @@ padding:6px;
 margin-left:20px;
 margin-right:20px;
 }
+.boardered2{
+border-color: #999;
+border-radius: 8px 8px 1px 1px;
+border-width: 1px;
+border-style: solid;
+padding:6px;
+}
 .skill-bottom{
 	
 }
