@@ -7,7 +7,7 @@ class BlogPostsController < ApplicationController
   respond_to :html
 
   def index
-    @blog_posts = BlogPost.all
+    @blog_posts = BlogPost.all.order('created_at DESC')
     respond_with(@blog_posts)
   end
 

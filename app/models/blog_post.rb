@@ -5,7 +5,7 @@ class BlogPost < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
   def keyword_extraction
-    results = AlchemyAPI.search(:keyword_extraction, html: self.content)
+    results = AlchemyAPI.search(:keyword_extraction, html: self.content.html_safe)
     keywords = ''
     if results.nil?
        nil

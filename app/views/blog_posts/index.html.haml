@@ -4,19 +4,20 @@
 -#{:style => "min-height:15em; height:100%; background-color: rgb(19, 131, 199);"}
 -#= link_to image_tag(post.blogpostattachment.url(:small), :class=>"img-responsive aspect"), blog_post_path(post), :style => "max-width:136; max-heigh:146;"
 %h1 Archive
-- @blog_posts.each do |post|
-  .row.whitesmoke-boarder
-    .col-md-2{:style => "padding:0px;"}
-      %input.form-control{:class => "keywords", :type => "text", :value => post.keywords}
-    .col-md-10
-      %h3
-        %strong
-          #{link_to post.title, post}
-      %h5
-        By: #{post.author_name}
-      .post_content
-        %p
-          #{post.content.html_safe}
+- if !@blog_posts.nil?
+  - @blog_posts.each do |post|
+    .row.whitesmoke-boarder
+      .col-sm-2.col-md-2.hidden-sm.hidden-xs{:style => "padding:0px;"}
+        %input.form-control{:class => "keywords", :type => "text", :value => post.keywords}
+      .col-sm-10.col-md-10
+        %h3
+          %strong
+            #{link_to post.title, post}
+        %h5
+          By: #{post.author_name}
+        .post_content
+          %p
+            #{post.content.html_safe}
 
 
 
@@ -29,8 +30,8 @@
     });
     var x = $('.tokenfield');
     x.css('background-color','rgb(19, 131, 199)');
-    x.css('max-height', '15em');
-    x.css('min-height', '15em');
+    x.css('max-height', '17em');
+    x.css('min-height', '17em');
     x.css('overflow', 'hidden');
     x.css('-ms-text-overflow', 'ellipsis');
     x.css('-o-text-overflow', 'ellipsis');
