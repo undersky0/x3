@@ -9,8 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require typeaheadjs
- *= require style
  *= require bootstrap-material-design/dist/css/material.min
  *= require bootstrap/dist/css/bootstrap
  *= require font-awesome
+ *= require style.css
  */
