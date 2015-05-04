@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails x3: development" uuid="099448c3-e961-4c8f-91d9-2e65b43d0fc2">
+      <user-name>postgres</user-name>
+      <user-password>dfdadfcbdfd9dfd9dfdddfc5dfd8dfce</user-password>
+    </data-source>
+    <data-source name="Rails x3: test" uuid="f29a5852-f4c1-4d29-bc18-256aeee5bae6">
+      <user-name>postgres</user-name>
+      <user-password>dfdadfcbdfd9dfd9dfdddfc5dfd8dfce</user-password>
+    </data-source>
+    <data-source name="Rails x3: production" uuid="63df4c7d-1019-4c67-bfaf-fba35a164608">
+      <user-name>postgres</user-name>
+      <user-password>dfdadfcbdfd9dfd9dfdddfc5dfd8dfce</user-password>
+    </data-source>
+  </component>
+</project>

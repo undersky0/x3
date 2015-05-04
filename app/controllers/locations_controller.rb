@@ -72,9 +72,9 @@ class LocationsController < ApplicationController
     @user = current_user
     respond_to do |format|
     if @location.save     
-      format.html { redirect_to @context, notice: " Created"}
+      format.html { redirect_to @context, notice: "Successfully Created"}
     else
-      format.html { redirect_to @location }
+      format.html { redirect_to @location, error: "something went wrong" }
       format.json { render :json => @location.errors, :status => :unprocessable_entity }
     end
     end

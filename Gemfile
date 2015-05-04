@@ -20,6 +20,7 @@ gem 'httparty'
 gem 'tinymce-rails'
 gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
 gem 'redcarpet'
+gem 'rails-jquery-tokeninput'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 #avatar
@@ -65,6 +66,10 @@ gem 'make_flaggable', :git => 'git://github.com/cavneb/make_flaggable.git'
 gem 'rails_12factor', group: :production
 gem 'faker'
 gem 'mail_form'
+#text analyzer
+gem 'alchemy-api-rb', :require => 'alchemy_api'
+#keys
+gem 'figaro'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -92,7 +97,7 @@ group :test do
   gem "launchy"
   gem "selenium-webdriver"
 end
-
+gem "friendly_id", "~> 5.0.1"
 gem 'jquery-ui-rails'
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
@@ -110,6 +115,7 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 
 # To use debugger
 # gem 'debugger'
+gem "html_truncator", "~>0.2"
 gem 'protected_attributes'
 gem 'rails-observers'
 gem 'actionpack-page_caching'

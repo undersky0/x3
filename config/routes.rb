@@ -1,6 +1,8 @@
 Uu2::Application.routes.draw do
 
 
+  resources :blog_posts
+
   resources :projects
 
   resources :contact_froms, only: [:index, :create]
@@ -12,6 +14,8 @@ Uu2::Application.routes.draw do
     get "search/tokenquery"
     get "friendmap/index"
     get 'home', to: 'home#index'
+    get 'aboutme', to: 'home#aboutme'
+    get 'undersky_project', to: 'home#undersky_project'
     get "invites/user_invite" => 'invites#user_invite', :as => :user_invite
     resources :locations
     resources :prelaunches
@@ -23,7 +27,8 @@ Uu2::Application.routes.draw do
     resources :memberships, :only => [:create, :destroy]
     resource :avatars
     resource :home, :only => [:index]
-    resources :skills do
+
+    resources :skills do
       resource :locations, only: [:index, :new, :create, :edit, :update]
     end
   

@@ -43,15 +43,18 @@ class Location < ActiveRecord::Base
    after_save :first_scribble, if: :postcode? 
   
   def get_ward
+    print 'getting wards'
     postcode = self.postcode.delete(' ')
     response = HTTParty.get("http://api.postcodes.io/postcodes/#{postcode}").parsed_response
     if response["status"] == 200
     self.locality = response["result"]["admin_ward"]
     self.political = response["result"]["parliamentary_constituency"]
     self.city = response["result"]["admin_district"]
+    self.longitude = response["result"]["longitude"]
+    self.latitude = response["result"]["latitude"]
     createlocalfeed unless self.locality.nil?
     else
-      puts "error"
+      errors[:base] << "Invalid address"
     end
   end
   
@@ -61,7 +64,7 @@ class Location < ActiveRecord::Base
   end
   
   def address_string
-    "#{google_address} #{city} #{postal_code}" +" GB"
+    "#{google_address} #{city} #{postcode}" +" GB"
   end
   
   def ward_present
@@ -109,10 +112,6 @@ end
       createward
     end
     end
-  end
-  
-  def type_ward
-    
   end
   
   def locality=(val)

@@ -19,7 +19,7 @@ $('#new_location').bootstrapValidator({
                         message: 'Must be more than 1 characters long'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9_]+$/,
+                        regexp: /^[a-zA-Z0-9_\s]+$/,
                         message: 'The name can only consist of alphabetical, number and underscore'
                     }
                 }

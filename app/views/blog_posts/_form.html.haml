@@ -1,0 +1,59 @@
+- content_for :script do
+  =javascript_include_tag "blog_posts"
+  =javascript_include_tag "fileinput"
+  =stylesheet_link_tag "fileinput"
+  =javascript_include_tag "bootstrap-tokenfield/dist/bootstrap-tokenfield"
+  =stylesheet_link_tag "bootstrap-tokenfield/dist/css/bootstrap-tokenfield"
+
+
+= tinymce_assets
+
+= simple_form_for @blog_post, :html => {:multipart => true, :class => 'form-horizontal' } do |f|
+  = f.error_notification
+
+  .col-md-4
+  .fileinput.fileinput-new{"data-provides" => "fileinput"}
+    .fileinput-preview.thumbnail{"data-trigger" => "fileinput", :style => "width: 200px; height: 150px; margin-top: 10%;"}
+    %div
+      .text-center
+        %span.btn.btn-default.btn-file
+          %span.fileinput-new Select image
+          %span.fileinput-exists Change
+          %input#blog_post_blogpostattachment_attributes_attachment{:name => "blog_post[blogpostattachment_attributes][attachment]", :type => "file"}/
+        %a.btn.btn-default.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"} Remove
+
+  .form-inputs
+    = f.input :author_name
+    = f.input :title
+    = f.input :content, as: :text, placeholder: 'Be creative ', :input_html => {:rows => 10, :style => 'width: 100%', :class=>"tinymce"}
+  .form-actions
+    = f.input :keywords, as: :text, :input_html => {:id => "tokenfield", :value => "red, green"}
+    = f.button :submit
+
+= tinymce
+
+-#:javascript
+-#  $(document).ready(function() {
+-#    $('#tokenfield').tokenfield();
+-#
+-#
+-#    $("#pressed").click(function(){
+-#      console.log("clicked");
+-#      tinyMCE.triggerSave();
+-#      //var wysiwyg = $('#tinymce').tinymce(tinymce_settings);
+-#      //var content = wysiwyg.html();
+-#      tinyMCE.triggerSave();
+-#
+-#      var content = tinyMCE.activeEditor.getContent();
+-#      console.log(content);
+-#          $.ajax({
+-#          url: "/keywords?content=" + content.toString(),
+-#          type: "POST",
+-#          success: function (data) {
+-#              alert(data);
+-#          }
+-#      });
+-#      $('#tokenfield').tokenfield('setTokens', keywords);
+-#    });
+-#  });
+

@@ -5,4 +5,12 @@ class HomeController < ApplicationController
   def index
     
   end
+
+  def aboutme
+
+  end
+
+  def undersky_project
+
+  end
 end

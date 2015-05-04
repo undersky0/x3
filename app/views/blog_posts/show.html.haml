@@ -1,0 +1,25 @@
+- content_for :script do
+  =javascript_include_tag "bootstrap-tokenfield/dist/bootstrap-tokenfield"
+  =stylesheet_link_tag "bootstrap-tokenfield/dist/css/bootstrap-tokenfield"
+
+%p#notice= notice
+.row
+  .col-md-12
+    .whitesmoke-boarder{:style => "padding:20px"}
+      %h3.text-center
+        %strong
+          = @blog_post.title
+      %h5.pull-right
+        = @blog_post.created_at.strftime("%v")
+      %br
+      %p
+        = @blog_post.content.html_safe
+      %p
+      %input#keywords.form-control{:type => "text", :value => @blog_post.keywords}
+
+:javascript
+  $(document).ready(function() {
+    $('#keywords').tokenfield();
+    $('#keywords').tokenfield('disable');
+    $('.tokenfield').css('height', '100%');
+  });

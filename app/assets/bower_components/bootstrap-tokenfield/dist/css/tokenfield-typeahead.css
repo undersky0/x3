@@ -90,8 +90,8 @@
   background-color: #ffffff;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  border-right-width: 2px;
-  border-bottom-width: 2px;
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
   border-radius: 6px;
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);

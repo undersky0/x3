@@ -48,4 +48,7 @@ projects.js
 best_in_place.js
 style.css
 custom.js
+blog_posts.js
+bootstrap-tokenfield/dist/bootstrap-tokenfield.js
+bootstrap-tokenfield/dist/css/bootstrap-tokenfield.css
 )

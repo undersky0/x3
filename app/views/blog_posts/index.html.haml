@@ -1,0 +1,38 @@
+- content_for :script do
+  =javascript_include_tag "bootstrap-tokenfield/dist/bootstrap-tokenfield"
+  =stylesheet_link_tag "bootstrap-tokenfield/dist/css/bootstrap-tokenfield"
+-#{:style => "min-height:15em; height:100%; background-color: rgb(19, 131, 199);"}
+-#= link_to image_tag(post.blogpostattachment.url(:small), :class=>"img-responsive aspect"), blog_post_path(post), :style => "max-width:136; max-heigh:146;"
+%h1 Archive
+- @blog_posts.each do |post|
+  .row.whitesmoke-boarder
+    .col-md-2{:style => "padding:0px;"}
+      %input.form-control{:class => "keywords", :type => "text", :value => post.keywords}
+    .col-md-10
+      %h3
+        %strong
+          #{link_to post.title, post}
+      %h5
+        By: #{post.author_name}
+      .post_content
+        %p
+          #{post.content.html_safe}
+
+
+
+:javascript
+  $(document).ready(function() {
+    $('.keywords').each(function(){
+    var el = $(this);
+    el.tokenfield();
+    el.tokenfield('disable');
+    });
+    var x = $('.tokenfield');
+    x.css('background-color','rgb(19, 131, 199)');
+    x.css('max-height', '15em');
+    x.css('min-height', '15em');
+    x.css('overflow', 'hidden');
+    x.css('-ms-text-overflow', 'ellipsis');
+    x.css('-o-text-overflow', 'ellipsis');
+    x.css('text-overflow', 'ellipsis');
+  });

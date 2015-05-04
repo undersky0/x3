@@ -19,21 +19,39 @@
     <div class="container">
     	<div class="row">
     		<div class="col-md-6">
-    			<%= link_to image_tag('57.png'), root_path%>
+    			<%= link_to image_tag('57.png'), home_path%>
     		</div>
     		<div class="col-md-5">
     			</br>
     			</br>
     			</br>
     			</br>
-    			</div>
-    		</div>
-       
-<div class="row">
-							<%=yield %>
-							</div>
+            </div>
         </div>
+      <% if current_page?(:controller => 'profiles', :action => 'new') %>
+      <br>
+          <%else%>
+      <div class="row">
+          <nav class="navbar navbar-default" style="background-color: #FFFFFF;">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <%= link_to image_tag("1logo.png", :alt=>"https://www.undersky.co.uk/home", :class => "navbar-brand"), "https://www.undersky.co.uk/home"%>
+                  <ul class="nav navbar-nav">
+                    <li><%= link_to "Home", home_path %></li>
+                    <li><%= link_to "About me", aboutme_path %></li>
+                    <li><%= link_to "Undersky project", undersky_project_path %></li>
+                    <li><%= link_to "Archive", blog_posts_path %></li>
+                  </ul>
+              </div>
+            </div>
+          </nav>
+      </div>
+          <%end%>
+      <div class="row">
+        <%=yield %>
+      </div>
     </div>
 
 </body>
+<%=yield(:script)%>
 </html>
