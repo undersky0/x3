@@ -3,21 +3,21 @@
   =stylesheet_link_tag "bootstrap-tokenfield/dist/css/bootstrap-tokenfield"
 -#{:style => "min-height:15em; height:100%; background-color: rgb(19, 131, 199);"}
 -#= link_to image_tag(post.blogpostattachment.url(:small), :class=>"img-responsive aspect"), blog_post_path(post), :style => "max-width:136; max-heigh:146;"
-%h1 Archive
-- if !@blog_posts.nil?
-  - @blog_posts.each do |post|
-    .row.whitesmoke-boarder
-      .col-sm-2.col-md-2.hidden-sm.hidden-xs{:style => "padding:0px;"}
-        %input.form-control{:class => "keywords", :type => "text", :value => post.keywords}
-      .col-sm-10.col-md-10
-        %h3
-          %strong
-            #{link_to post.title, post}
-        %h5
-          By: #{post.author_name}
-        .post_content
-          %p
-            #{post.content.html_safe}
+.container
+  - if !@blog_posts.nil?
+    - @blog_posts.each do |post|
+      .row.whitesmoke-boarder
+        .col-sm-2.col-md-2.hidden-sm.hidden-xs{:style => "padding:0px;"}
+          %input.form-control{:class => "keywords", :type => "text", :value => post.keywords}
+        .col-sm-10.col-md-10
+          %h3
+            %strong
+              #{link_to post.title , post}
+          %h5
+            By: #{post.author_name}
+          .post_content
+            %p
+              #{post.content.html_safe}
 
 
 
