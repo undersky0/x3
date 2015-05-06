@@ -18,7 +18,7 @@ Uu2::Application.routes.draw do
     get "search/tokenquery"
     get "friendmap/index"
     get 'home', to: 'home#index'
-    get 'aboutme', to: 'home#aboutme'
+    get 'cv', to: 'home#aboutme'
     get 'undersky_project', to: 'home#undersky_project'
     get "invites/user_invite" => 'invites#user_invite', :as => :user_invite
     resources :locations
