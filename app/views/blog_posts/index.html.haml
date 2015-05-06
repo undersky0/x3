@@ -6,7 +6,7 @@
 .container
   - if !@blog_posts.nil?
     - @blog_posts.each do |post|
-      .row.whitesmoke-boarder
+      .row.whitesmoke-boarder{:style => "margin-bottom:10px;"}
         .col-sm-2.col-md-2.hidden-sm.hidden-xs{:style => "padding:0px;"}
           %input.form-control{:class => "keywords", :type => "text", :value => post.keywords}
         .col-sm-10.col-md-10
