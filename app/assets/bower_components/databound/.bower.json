@@ -1,0 +1,41 @@
+{
+  "name": "databound",
+  "version": "1.1.0",
+  "authors": [
+    "Domas Bitvinskas <domas.bitvinskas@me.com>"
+  ],
+  "description": "Provides Javascript a simple API to the Ruby on Rails CRUD",
+  "main": "dist/databound.js",
+  "dependencies": {
+    "jquery": "^2.1.1",
+    "lodash": "^2.4.1"
+  },
+  "license": "MIT",
+  "keywords": [
+    "queries",
+    "rest",
+    "rails",
+    "backend",
+    "activerecord",
+    "mongoid",
+    "orm"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/Nedomas/databound",
+  "_release": "1.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.1.0",
+    "commit": "1e97f2e307da7b1a123433533945596f9c96c91b"
+  },
+  "_source": "git://github.com/Nedomas/databound.git",
+  "_target": "~1.1.0",
+  "_originalSource": "databound",
+  "_direct": true
+}

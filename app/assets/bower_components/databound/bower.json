@@ -1,0 +1,30 @@
+{
+  "name": "databound",
+  "version": "1.1.0",
+  "authors": [
+    "Domas Bitvinskas <domas.bitvinskas@me.com>"
+  ],
+  "description": "Provides Javascript a simple API to the Ruby on Rails CRUD",
+  "main": "dist/databound.js",
+  "dependencies": {
+    "jquery": "^2.1.1",
+    "lodash": "^2.4.1"
+  },
+  "license": "MIT",
+  "keywords": [
+    "queries",
+    "rest",
+    "rails",
+    "backend",
+    "activerecord",
+    "mongoid",
+    "orm"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

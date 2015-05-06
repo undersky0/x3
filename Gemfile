@@ -21,6 +21,7 @@ gem 'tinymce-rails'
 gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
 gem 'redcarpet'
 gem 'rails-jquery-tokeninput'
+gem 'databound', '3.1.3' # Javascript CRUD API
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 #avatar

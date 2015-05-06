@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @blog_comment.name
+%p
+  %b Comment:
+  = @blog_comment.comment
+%p
+  %b Blog post:
+  = @blog_comment.blog_post_id
+
+= link_to 'Edit', edit_blog_comment_path(@blog_comment)
+\|
+= link_to 'Back', blog_comments_path

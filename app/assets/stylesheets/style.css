@@ -6,6 +6,12 @@ Designed by : http://responsivewebinc.com
 /* assets/stylesheets/posts.css.scss */
 
 /*user */
+.blog-text{
+    line-height: 2;
+    padding: 15px;
+    /* border: 1px solid #dadada; */
+    color: #9a9a9a;
+}
 .element-header{
 background:white;
 border-color:#000000;

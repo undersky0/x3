@@ -1,6 +1,10 @@
 Uu2::Application.routes.draw do
 
 
+  resources :blog_comments
+  databound :blog_comments, columns: [:name, :comment, :blog_post_id]
+
+
   resources :blog_posts
 
   resources :projects

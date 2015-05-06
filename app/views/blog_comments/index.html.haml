@@ -1,0 +1,25 @@
+%h1 Listing blog_comments
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Comment
+      %th Blog post
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @blog_comments.each do |blog_comment|
+      %tr
+        %td= blog_comment.name
+        %td= blog_comment.comment
+        %td= blog_comment.blog_post_id
+        %td= link_to 'Show', blog_comment
+        %td= link_to 'Edit', edit_blog_comment_path(blog_comment)
+        %td= link_to 'Destroy', blog_comment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Blog comment', new_blog_comment_path
