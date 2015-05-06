@@ -5,7 +5,7 @@ class BlogPostsController < ApplicationController
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
-
+  http_basic_authenticate_with name: "demon", password: ENV['blog_pw'], only: [:edit, :destroy, :new, :create]
   def index
     @blog_posts = BlogPost.all.order('created_at DESC')
     respond_with(@blog_posts)
