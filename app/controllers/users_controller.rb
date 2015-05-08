@@ -2,6 +2,16 @@ class UsersController < ApplicationController
     # GET /users
   # GET /users.js.coffee
   before_action :set_user, only: [:show, :update, :destroy]
+
+  databound do
+    model :user
+    columns :email
+
+    permit(:update, :destroy) do |params, record|
+      record.id == current_user.id
+    end
+  end
+
   def user_skills
     @user = set_user
     @skills = @user.skills

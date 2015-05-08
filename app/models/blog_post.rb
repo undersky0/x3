@@ -4,6 +4,7 @@ class BlogPost < ActiveRecord::Base
   before_save :keyword_extraction
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
+  has_many :blogComments
   def keyword_extraction
     results = AlchemyAPI.search(:keyword_extraction, html: self.content.html_safe)
     keywords = ''

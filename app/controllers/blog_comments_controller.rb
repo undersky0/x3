@@ -2,9 +2,8 @@ class BlogCommentsController < ApplicationController
   before_action :set_blog_comment, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
-
   def index
-    @blog_comments = BlogComment.all
+    @blog_comments = BlogComments.all
     respond_with(@blog_comments)
   end
 
@@ -13,7 +12,8 @@ class BlogCommentsController < ApplicationController
   end
 
   def new
-    @blog_comment = BlogComment.new
+    @blog = BlogPost.find(params[:blog_post_id])
+    @blog_comment = @blog.blogComments.new
     respond_with(@blog_comment)
   end
 
@@ -21,7 +21,8 @@ class BlogCommentsController < ApplicationController
   end
 
   def create
-    @blog_comment = BlogComment.new(blog_comment_params)
+    @blog = BlogPost.find(params[:blog_post_id])
+    @blog_comment = @blog.blogComments.new(blog_comment_params)
     @blog_comment.save
     respond_with(@blog_comment)
   end

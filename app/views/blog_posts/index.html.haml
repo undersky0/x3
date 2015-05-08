@@ -1,6 +1,8 @@
 - content_for :script do
   =javascript_include_tag "bootstrap-tokenfield/dist/bootstrap-tokenfield"
   =stylesheet_link_tag "bootstrap-tokenfield/dist/css/bootstrap-tokenfield"
+  -#=javascript_include_tag "lodash/dist/lodash"
+  -#=javascript_include_tag "databound/dist/databound-standalone"
 -#{:style => "min-height:15em; height:100%; background-color: rgb(19, 131, 199);"}
 -#= link_to image_tag(post.blogpostattachment.url(:small), :class=>"img-responsive aspect"), blog_post_path(post), :style => "max-width:136; max-heigh:146;"
 .container
@@ -36,4 +38,16 @@
     x.css('-ms-text-overflow', 'ellipsis');
     x.css('-o-text-overflow', 'ellipsis');
     x.css('text-overflow', 'ellipsis');
+
+    //var User = new Databound('/users');
+    //
+    //User.find(1).then(function(user) {
+    //  print('Yo, ' + user.email);
+    //});
+
+    //var BlogPost = new Databound('/blog_posts');
+    //
+    //BlogPost.find(2).then(function(blog) {
+    //  console.log(blog.title)
+    //});
   });

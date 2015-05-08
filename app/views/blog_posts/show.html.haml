@@ -1,7 +1,8 @@
 - content_for :script do
   =javascript_include_tag "bootstrap-tokenfield/dist/bootstrap-tokenfield"
   =stylesheet_link_tag "bootstrap-tokenfield/dist/css/bootstrap-tokenfield"
-  =javascript_include_tag "databound/dist/databound"
+  -#=javascript_include_tag "lodash/dist/lodash"
+  -#=javascript_include_tag "databound/dist/databound-standalone"
 
 %p#notice= notice
 .row
@@ -18,9 +19,34 @@
       %p
       %input#keywords.form-control{:type => "text", :value => @blog_post.keywords}
 
+.row{:style => "margin:10px"}
+  .col-md-12.whitesmoke-boarder{:style => "padding:20px"}
+    = simple_form_for([@blog_post, BlogComment.new]) do |f|
+      = f.error_notification
+      .form-inputs
+        = f.input :name
+        = f.input :comment
+
+      .form-actions
+        = f.button :submit, :id => "comment"
+    .btn-success#target
+      Click here
+
 :javascript
   $(document).ready(function() {
     $('#keywords').tokenfield();
     $('#keywords').tokenfield('disable');
     $('.tokenfield').css('height', '100%');
+    //var BlogPost = new Databound('/blog_posts');
+    //var BlogComment = new Databound('/blog_comments');
+    //
+    //$('#target').click(function(){
+    //  var n = $('#blog_comment_name').val();
+    //  var c = $('#blog_comment_comment').val();
+    //  BlogPost.find(2).then(function(blog) {
+    //    BlogComment.create({ name: n, comment: c })
+    //    });
+    //  console.log(n);
+    //  console.log(c);
+    //});
   });

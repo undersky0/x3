@@ -3,9 +3,11 @@ Uu2::Application.routes.draw do
 
   resources :blog_comments
   databound :blog_comments, columns: [:name, :comment, :blog_post_id]
-
-
-  resources :blog_posts
+  databound :blog_posts, columns: [:author_name, :title, :content]
+  databound :users, columns: [:email]
+  resources :blog_posts do
+    resources :blog_comments
+  end
 
   resources :projects
 
