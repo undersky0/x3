@@ -4,7 +4,7 @@ class BlogPostsController < ApplicationController
   layout "about"
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
   http_basic_authenticate_with name: "demon", password: ENV['blog_pw'], only: [:edit, :destroy, :new, :create]
 
 

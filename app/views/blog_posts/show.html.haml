@@ -1,6 +1,8 @@
 - content_for :script do
   =javascript_include_tag "bootstrap-tokenfield/dist/bootstrap-tokenfield"
   =stylesheet_link_tag "bootstrap-tokenfield/dist/css/bootstrap-tokenfield"
+  =javascript_include_tag "components"
+  -#=javascript_include_tag "blog_comments.js"
   -#=javascript_include_tag "lodash/dist/lodash"
   -#=javascript_include_tag "databound/dist/databound-standalone"
 
@@ -19,18 +21,14 @@
       %p
       %input#keywords.form-control{:type => "text", :value => @blog_post.keywords}
 
-.row{:style => "margin:10px"}
-  .col-md-12.whitesmoke-boarder{:style => "padding:20px"}
-    = simple_form_for([@blog_post, BlogComment.new]) do |f|
-      = f.error_notification
-      .form-inputs
-        = f.input :name
-        = f.input :comment
+= react_component('CommentBox',
+  { initialBlogComments: @blog_post.blogComments.order(created_at: :desc), initialBlogID: @blog_post.id })
+#comments
+-##jsx
 
-      .form-actions
-        = f.button :submit, :id => "comment"
-    .btn-success#target
-      Click here
+-#= react_component('MessageBox')
+
+
 
 :javascript
   $(document).ready(function() {

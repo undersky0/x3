@@ -21,6 +21,8 @@ gem 'tinymce-rails'
 gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
 gem 'redcarpet'
 gem 'rails-jquery-tokeninput'
+gem 'react-rails', '~> 1.0'
+gem 'showdown-rails'
 # gem 'databound', '3.1.3' # Javascript CRUD API
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -121,4 +123,5 @@ gem 'protected_attributes'
 gem 'rails-observers'
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
+gem "awesome_print", require:"ap"
 

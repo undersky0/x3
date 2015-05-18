@@ -1,9 +1,10 @@
 class BlogCommentsController < ApplicationController
   before_action :set_blog_comment, only: [:show, :edit, :update, :destroy]
-
-  respond_to :html
+  skip_before_action :verify_authenticity_token
+  respond_to :html, :json
   def index
-    @blog_comments = BlogComments.all
+    @blog = BlogPost.find(params[:blog_post_id])
+    @blog_comments = @blog.blogComments.all
     respond_with(@blog_comments)
   end
 

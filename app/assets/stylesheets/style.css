@@ -306,6 +306,11 @@ overflow:hidden;
 padding:5px;
 font-family:'Georgia', Times New Roman, Times, serif
 }
+
+.longtext
+{
+    word-wrap: break-word;
+}
 .scribbletime
 {
 font-size:12px;

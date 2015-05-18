@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [ :index, :new, :edit, :show, :destroy]
   before_action :set_skills, only: [:new, :edit]
-  before_action :set_friend, only: [:new]
+  #before_action :set_friend, only: [:new]
   respond_to :html
 
   def index

@@ -14,15 +14,16 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-#require 'devise'
+require 'devise'
 require 'shoulda/matchers'
 require "paperclip/matchers"
+# require 'devise'
 RSpec.configure do |config|
   #config.include ControllerHelpers, type: :controller
-  #config.include Devise::TestHelpers, :type => :controller
-  #config.extend AuthHelper, :type => :controller
+  config.include Devise::TestHelpers, :type => :controller
+  #config.extend ControllerMacros, :type => :controller
   # rspec-expectations config goes here. You can use an alternate
-  # assertion/expectation library such as wrong or the stdlib/minitest
+  # assertion/expectation library such as wrong or the stdlib/minitesta
   # assertions if you prefer.
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`

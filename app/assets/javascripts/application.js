@@ -22,5 +22,9 @@
 //= require typeahead.js/dist/typeahead.bundle
 //= require hogan/web/builds/3.0.2/template-3.0.2.min
 //= require hogan/web/builds/3.0.2/hogan-3.0.2.min
+//= require react
+//= require react_ujs
+//= require showdown
 //
+
 

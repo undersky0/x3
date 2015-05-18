@@ -5,7 +5,7 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w( databound/dist/databound.js lodash/dist/lodash.js databound/dist/databound-standalone.js style.css bootstrap-material-design/dist/js/material.min.js
+Rails.application.config.assets.precompile += %w( components.js blog_comments.js databound/dist/databound.js lodash/dist/lodash.js databound/dist/databound-standalone.js style.css bootstrap-material-design/dist/js/material.min.js
 bootstrap-material-design/dist/css/material.css search.js devise.css localfeeds.js 
 bootstrap-modal/css/bootstrap-modal.css modals.js skills.css
 bootstrap-modal/js/bootstrap-modalmanager.js
