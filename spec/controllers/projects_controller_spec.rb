@@ -1,11 +1,11 @@
-require 'spec_helper'
 require 'rails_helper'
-require 'support/auth_helper'
+require 'spec_helper'
 
 RSpec.describe ProjectsController, :type => :controller do
-  let(:user) { login_user }
+  login_user
+
   # This should return the minimal set of attributes required to create a valid
-  # Project. As you add validations to Project, be sure to11
+  # Project. As you add validations to Pro1ject, be sure to111111
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -17,12 +17,11 @@ RSpec.describe ProjectsController, :type => :controller do
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # ProjectsController. Be sure to keep this updated too.
+  # ProjectsController. Be sure to keep this upda1ted too.1111
   let(:valid_session) { {} }
 
   describe "GET index" do
     fit "assigns all projects as @projects" do
-      puts User.last
       project = Project.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:projects)).to eq([project])
@@ -38,9 +37,9 @@ RSpec.describe ProjectsController, :type => :controller do
   end
 
   describe "GET new" do
-    it "assigns a new project as @project" do
-      get :new, {}
-      expect(assigns(:project)).to be_a_new(User.project)
+    it "assigns a new project as @project11" do
+      get :new, {:user_id => current_user.id}
+      expect(assigns(:project)).to be_a_new Project
     end
   end
 

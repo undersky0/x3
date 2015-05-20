@@ -1,6 +1,7 @@
 class BlogPost < ActiveRecord::Base
   has_one :blogpostattachment, :as => :assetable, :class_name => "Group::BlogPostAttachment", :dependent => :destroy
   accepts_nested_attributes_for :blogpostattachment, reject_if: :all_blank
+  validates_presence_of :content, :author_name
   before_save :keyword_extraction
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]

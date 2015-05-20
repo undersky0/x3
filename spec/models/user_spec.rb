@@ -17,7 +17,7 @@ RSpec.describe User, :type => :model do
   it { should have_many(:skills).dependent(:destroy)}
   it { should have_many(:albums).dependent(:destroy)}
   
-  it "returns a users's full name as a string" do
+  it "returns a users's full name as a st1ring" do
     user = create(:user)
     profile = create(:profile)
     user.profile = profile

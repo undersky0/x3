@@ -43,7 +43,6 @@ class Location < ActiveRecord::Base
    after_save :first_scribble, if: :postcode? 
   
   def get_ward
-    print 'getting wards'
     postcode = self.postcode.delete(' ')
     response = HTTParty.get("http://api.postcodes.io/postcodes/#{postcode}").parsed_response
     if response["status"] == 200
@@ -125,10 +124,8 @@ end
   def createlocalfeed
    l = Location.where(locality: self.locality.downcase).count
     if l == 0
-      puts "localfeed created"
       self.type = "Localfeed"
     else
-      puts "localfeed exists"
       return l 
     end
   end

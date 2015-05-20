@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "blog_posts/show", :type => :view do
+  #testing
   before(:each) do
     @blog_post = assign(:blog_post, BlogPost.create!(
       :author_name => "Author Name",
