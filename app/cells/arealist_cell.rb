@@ -6,7 +6,8 @@ include Devise::Controllers::Helpers
   def show
     @user = current_user
     @location = @user.location.city
-    @localfeeds = Localfeed.where(city: @location).map(&:locality)
+    @localfeeds = Localfeed.where(city: @location)
+    
     #@localfeeds = Localfeed.all
     render
   end

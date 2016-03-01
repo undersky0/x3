@@ -22,4 +22,8 @@ class Localfeed < Location
   def cities
     Localfeed.all.map(&:city).uniq
   end
+
+  def locality_name
+    locality ? locality.capitalize : nil
+  end
 end

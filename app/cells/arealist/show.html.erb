@@ -3,9 +3,18 @@
 <li class="has_submenu">
 <a href="#"><i class="fa fa-arrow-circle-right"></i> Your City Districts <span class="nav-caret fa fa-caret-down"></span></a>
 <!-- Submenu -->
-<ul class="list-unstyled">
-  <% @localfeeds.each do |f| %>
-  <li><i class="fa fa-angle-double-right"></i> <%= link_to f, f %></a></li>
+
+<ul class="list-unstyled"
+<% if @localfeds %>
+  <% @localfeds.each do |f| %>
+   <li><i class="fa fa-angle-double-right"></i> <%= link_to f.locality_name, f %></a></li>
   <% end %>
+<%else%>
+ <li> <%= link_to "Add Location", new_user_locations_path(current_user.id)%> </li>
+<%end%>
 </ul>
+
+
+
+
 </li>
