@@ -105,12 +105,9 @@ end
   
   
   def ward_exists?
-    unless self.city.nil?
-    w = Ward.find_by_name(self.city)
-    if w.nil?
-      createward
-    end
-    end
+    w = nil
+    w = Ward.find_by_name(self.city) unless self.city.nil?
+    createward if w.nil?
   end
   
   def locality=(val)
@@ -133,12 +130,15 @@ end
   def createward
     tries ||= 2
     begin
+    pp "CRAP"
     @c = Ward.where(
      locality: self.locality,
      political: self.political,
-     city: self.city).first_or_create
-     puts @c.id  
-     rescue ActiveRecord::RecordNotUnique
+     city: self.city).first_or_initialize
+    @c.save(validate:false) unless @c.id
+    pp @c.inspect
+    pp "res?"
+    rescue ActiveRecord::RecordNotUnique
         retry unless (tries -= 1).zero?
     end
      self.ward_id = @c.id if self.ward_id.nil?
@@ -153,7 +153,8 @@ end
     self.political = self.political.downcase if self.political.present?
     self.locality = self.locality.downcase if self.locality.present?
   end
-    def first_scribble
+
+  def first_scribble
     self.scribbles.create!(:user_id => User.first.id, :post => "Welcome, You are the first in #{self.locality} to join our network! ") if self.type.present?
   end
   

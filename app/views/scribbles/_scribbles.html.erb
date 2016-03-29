@@ -2,7 +2,7 @@
 <h2 class="text-center"> Be The First To Write A Post </h2>
 <% else %>
   <% @scribbles.each do |scribble| %>
-
+      <%next unless scribble.user && scribble.user.location %>
     	<div class="container" style="padding: 0px;">
     		<div class="scribblebody"> 
     	<div class="row">

@@ -15,12 +15,14 @@ class ApplicationController < ActionController::Base
   
   private
   def redirect_invalid_locations
+    pp current_user
     unless current_user.nil?
     redirect_to(new_user_locations_path(current_user.id)) if invalid_location?
     end
   end
 
   def invalid_location?
+    Rails.logger.info current_user.location
     current_user.try(:location).try(:city).nil?
   end
   

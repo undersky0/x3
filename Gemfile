@@ -73,6 +73,7 @@ gem 'mail_form'
 gem 'alchemy-api-rb', :require => 'alchemy_api'
 #keys
 gem 'figaro'
+gem "lograge"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -84,6 +85,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 group :development do
+  gem 'quiet_assets'
   gem 'hpricot'
   gem 'ruby_parser'
   gem 'better_errors'
