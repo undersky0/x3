@@ -130,14 +130,11 @@ end
   def createward
     tries ||= 2
     begin
-    pp "CRAP"
     @c = Ward.where(
      locality: self.locality,
      political: self.political,
      city: self.city).first_or_initialize
     @c.save(validate:false) unless @c.id
-    pp @c.inspect
-    pp "res?"
     rescue ActiveRecord::RecordNotUnique
         retry unless (tries -= 1).zero?
     end

@@ -2,7 +2,6 @@ class LocalfeedsController < ApplicationController
   before_filter :loadscribbles
   before_filter :set_localfeed, only: [:edit, :update, :destroy]
   def index
-    Rails.logger.info current_user
     @location = current_user.location.city
     @cities = Localfeed.select(:id, :locality, :city).order('city ASC')
     @localfeeds = @cities.group_by {|k| k[:city] }
